@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aarav Agrawal | Student, Coder & Designer</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- GSAP & ScrollTrigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        space: {
+                            950: '#02040a',
+                            900: '#060a12',
+                            800: '#0b111e',
+                            700: '#1e293b'
+                        },
+                        neon: {
+                            purple: '#8b5cf6',
+                            blue: '#3b82f6',
+                            emerald: '#10b981'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            background-color: #02040a;
+            overflow-x: hidden;
+        }
+
+        /* Ambient scanline scan and digital CRT noise */
+        .noise-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.80' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            opacity: 0.012;
+            pointer-events: none;
+            z-index: 90;
+        }
+
+        /* High-Performance Canvas */
+        #quantum-canvas {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Dynamic follow spotlight */
+        .ambient-spotlight {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            pointer-events: none;
+            z-index: 2;
+            background: radial-gradient(
+                700px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+                rgba(139, 92, 246, 0.07),
+                transparent 80%
+            );
+        }
+
+        /* 3D tiltable glassmorphic panel base style (Optimized with solid contrast fallback for mobile readability) */
+        .tilt-card {
+            background: #060a12;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 20px;
+            position: relative;
+            transition: transform 0.2s ease-out, border-color 0.4s;
+            z-index: 10; 
+        }
+        
+        .tilt-card::before {
+            content: '';
+            position: absolute;
+            inset: -1px;
+            border-radius: 20px;
+            background: radial-gradient(350px circle at var(--x, 0px) var(--y, 0px), rgba(139, 92, 246, 0.12), transparent 80%);
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.4s;
+            z-index: 2;
+        }
+        .tilt-card:hover::before {
+            opacity: 1;
+        }
+
+        /* Mobile Layer Bug Protection: Only execute 3D rendering environments on desktop views */
+        @media (min-width: 768px) {
+            .tilt-card {
+                transform-style: preserve-3d;
+            }
+            .tilt-content {
+                transform: translateZ(25px);
+            }
+        }
+
+        /* Border Beams */
+        .border-beam {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            border-radius: 20px;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+        .tilt-card:hover .border-beam {
+            opacity: 1;
+        }
+        .border-beam::after {
+            content: '';
+            position: absolute; 
+            top: -2.5px; left: -2.5px; right: -2.5px; bottom: -2.5px;
+            border-radius: 20px;
+            background: linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.25), rgba(59, 130, 246, 0.25), transparent);
+            background-size: 200% 200%;
+            animation: beam-run 4.5s linear infinite;
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+        }
+        @keyframes beam-run {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 200% 50%; }
+        }
+
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+        ::-webkit-scrollbar-track { 
+            background: #02040a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #111827;
+            border-radius: 2px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #8b5cf6;
+        }
+    </style>
+</head>
+<body class="text-gray-300 font-sans selection:bg-neon-purple selection:text-white relative overflow-x-hidden">
+
+    <!-- Active Loader Screen -->
+    <div id="loader" class="fixed inset-0 bg-space-950 z-[999] flex flex-col justify-center items-center gap-6">
+        <div class="flex flex-col items-center gap-2">
+            <div class="font-mono text-[10px] tracking-[0.4em] text-gray-500 uppercase">SYS_INITIALIZE_SECTIONS</div>
+            <div class="font-mono text-2xl text-white font-bold tracking-widest">AARAV<span class="text-neon-purple">/</span>DEV</div>
+        </div>
+        <div class="w-64 space-y-2">
+            <div class="h-[2px] bg-space-900 rounded-full overflow-hidden relative">
+                <div id="loader-progress-bar" class="h-full bg-gradient-to-r from-neon-purple to-neon-blue w-0 transition-all duration-75"></div>
+            </div>
+            <div class="flex justify-between font-mono text-[10px] text-gray-500">
+                <span>CONNECTING AUTOMATION FRAMEWORKS</span>
+                <span><span id="loader-percentage">00</span>%</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page Transition Curtain wiping left-to-right -->
+    <div id="transition-curtain" class="fixed inset-y-0 left-full w-full bg-space-950 border-l border-white/10 backdrop-blur-2xl z-[100] flex justify-center items-center">
+        <div class="font-mono text-xs tracking-widest text-neon-purple animate-pulse">SWAPPING PIPELINES...</div>
+    </div>
+
+    <!-- UI Background Layers -->
+    <div class="noise-overlay"></div>
+    <div class="ambient-spotlight" id="spotlight"></div>
+    <canvas id="quantum-canvas"></canvas>
+
+    <!-- Header Navigation with Solid Mobile Stacking Context -->
+    <header class="fixed top-0 w-full z-[100] bg-space-950/40 border-b border-white/5 backdrop-blur-xl">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center relative z-[110]">
+            <a href="javascript:void(0)" onclick="switchView('home')" class="font-mono text-lg font-bold tracking-tight text-white hover:text-neon-purple transition-colors relative z-50">
+                aarav<span class="text-neon-purple">/</span>dev
+            </a>
+            
+            <!-- Desktop Navigation Links -->
+            <nav class="hidden md:flex items-center gap-8 text-xs font-mono uppercase tracking-wider">
+                <a href="javascript:void(0)" onclick="switchView('home')" class="text-white transition-colors nav-link" data-view="home">Home</a>
+                <a href="javascript:void(0)" onclick="switchView('about')" class="text-gray-400 hover:text-white transition-colors nav-link" data-view="about">About</a>
+                <a href="javascript:void(0)" onclick="switchView('console')" class="text-gray-400 hover:text-white transition-colors nav-link" data-view="console">Console</a>
+                <a href="javascript:void(0)" onclick="switchView('skills')" class="text-gray-400 hover:text-white transition-colors nav-link" data-view="skills">Skills</a>
+                <a href="javascript:void(0)" onclick="switchView('projects')" class="text-gray-400 hover:text-white transition-colors nav-link" data-view="projects">Projects</a>
+                <a href="javascript:void(0)" onclick="switchView('contact')" class="text-gray-400 hover:text-white transition-colors nav-link" data-view="contact">Contact</a>
+            </nav>
+
+            <!-- Mobile Menu Toggle Button (Forced Stack Over Overlay) -->
+            <button id="mobile-menu-toggle" class="md:hidden text-white hover:text-neon-purple transition-colors p-1 relative z-[110]">
+                <i data-lucide="menu" id="menu-icon" class="w-6 h-6"></i>
+            </button>
+
+            <!-- Desktop Call-To-Action Button -->
+            <a href="javascript:void(0)" onclick="switchView('contact')" class="hidden md:block bg-white/5 hover:bg-neon-purple/20 text-white text-[10px] font-mono py-2 px-5 rounded-full border border-white/10 hover:border-neon-purple/50 transition-all">
+                CONNECT PIPELINE
+            </a>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Overlay (Root Level, Completely Opaque Solid Black) -->
+    <div id="mobile-menu-overlay" class="fixed inset-0 bg-[#02040a] z-[95] transform translate-x-full transition-transform duration-500 ease-in-out flex flex-col justify-center items-center" style="background-color: #02040a;">
+        <nav class="flex flex-col items-center gap-6 text-sm font-mono uppercase tracking-[0.2em] w-full max-w-xs px-6">
+            <a href="javascript:void(0)" onclick="mobileSwitchView('home')" class="w-full text-center py-3.5 border border-white/5 bg-white/[0.01] rounded-xl hover:border-neon-purple/40 hover:text-neon-purple transition-all duration-300 mob-nav-link text-white" data-view="home">
+                <span class="text-gray-500 mr-2 text-[10px]">[01]</span>Home
+            </a>
+            <a href="javascript:void(0)" onclick="mobileSwitchView('about')" class="w-full text-center py-3.5 border border-white/5 bg-white/[0.01] rounded-xl hover:border-neon-purple/40 hover:text-neon-purple transition-all duration-300 mob-nav-link text-gray-400" data-view="about">
+                <span class="text-gray-500 mr-2 text-[10px]">[02]</span>About
+            </a>
+            <a href="javascript:void(0)" onclick="mobileSwitchView('console')" class="w-full text-center py-3.5 border border-white/5 bg-white/[0.01] rounded-xl hover:border-neon-purple/40 hover:text-neon-purple transition-all duration-300 mob-nav-link text-gray-400" data-view="console">
+                <span class="text-gray-500 mr-2 text-[10px]">[03]</span>Console
+            </a>
+            <a href="javascript:void(0)" onclick="mobileSwitchView('skills')" class="w-full text-center py-3.5 border border-white/5 bg-white/[0.01] rounded-xl hover:border-neon-purple/40 hover:text-neon-purple transition-all duration-300 mob-nav-link text-gray-400" data-view="skills">
+                <span class="text-gray-500 mr-2 text-[10px]">[04]</span>Skills
+            </a>
+            <a href="javascript:void(0)" onclick="mobileSwitchView('projects')" class="w-full text-center py-3.5 border border-white/5 bg-white/[0.01] rounded-xl hover:border-neon-purple/40 hover:text-neon-purple transition-all duration-300 mob-nav-link text-gray-400" data-view="projects">
+                <span class="text-gray-500 mr-2 text-[10px]">[05]</span>Projects
+            </a>
+            <a href="javascript:void(0)" onclick="mobileSwitchView('contact')" class="w-full text-center py-3.5 border border-white/5 bg-white/[0.01] rounded-xl hover:border-neon-purple/40 hover:text-neon-purple transition-all duration-300 mob-nav-link text-gray-400" data-view="contact">
+                <span class="text-gray-500 mr-2 text-[10px]">[06]</span>Contact
+            </a>
+        </nav>
+    </div>
+
+    <!-- Main View containers -->
+    <main class="relative z-10 max-w-7xl mx-auto px-6 pt-32 pb-16">
+        
+        <!-- ================= HOME VIEW ================= -->
+        <div id="view-home" class="view-panel space-y-12">
+            <!-- Hero banner inner -->
+            <div class="space-y-6">
+                <div class="inline-flex items-center gap-2 bg-neon-purple/10 border border-neon-purple/20 py-1 px-3 rounded-full text-[10px] font-mono text-neon-purple uppercase tracking-wider">
+                    <span class="w-1.5 h-1.5 rounded-full bg-neon-emerald animate-pulse"></span>
+                    CORE DASHBOARD LOADED
+                </div>
+                <h1 class="text-5xl sm:text-7xl font-extrabold text-white tracking-tight leading-none">
+                    Hi, I'm <span class="bg-gradient-to-r from-white via-gray-200 to-gray-400 bg-clip-text text-transparent">Aarav Agrawal</span>
+                </h1>
+                <h2 class="font-mono text-xl sm:text-2xl text-neon-purple">
+                    <span id="typewriter"></span><span class="animate-pulse">|</span>
+                </h2>
+                <p class="text-gray-400 text-sm sm:text-base max-w-2xl leading-relaxed font-sans">
+                    A Class 10 student from Prayagraj who loves code execution and interactive interface design. Select any dashboard card slot to inspect different project directories.
+                </p>
+            </div>
+
+            <!-- Dashboard Portal Hub (Bento Navigation Cards) -->
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-6 auto-rows-[minmax(180px,_auto)]">
+                
+                <!-- About Card Portal -->
+                <div onclick="switchView('about')" class="tilt-card md:col-span-8 p-6 flex flex-col justify-between cursor-pointer group hover:border-neon-purple/30 transition-all duration-300">
+                    <div class="border-beam"></div>
+                    <div class="space-y-3 tilt-content">
+                        <span class="font-mono text-[9px] text-gray-500 uppercase">DIRECTORY_NODE_01</span>
+                        <h4 class="text-2xl font-bold text-white group-hover:text-neon-purple transition-colors">Biography & Dossier</h4>
+                        <p class="text-gray-400 text-xs max-w-md leading-relaxed font-sans">
+                            15-year-old developer balancing Class 10 Board preparations at Maharshi Patanjali Vidya Mandir (MPVM) with managing systems, web design and creative coding communities.
+                        </p>
+                    </div>
+                    <div class="flex justify-between items-center pt-4 border-t border-white/5 tilt-content mt-4">
+                        <span class="text-[10px] font-mono text-gray-500">EXPLICIT SYSTEM LOGIC</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4 text-neon-purple group-hover:translate-x-1.5 transition-transform"></i>
+                    </div>
+                </div>
+
+                <!-- Personal Profile summary -->
+                <div class="tilt-card md:col-span-4 p-6 flex flex-col justify-between items-center text-center">
+                    <div class="relative w-20 h-20 mx-auto">
+                        <div class="absolute inset-0 bg-gradient-to-r from-neon-purple to-neon-blue rounded-full blur opacity-30"></div>
+                        <img src="https://raw.githubusercontent.com/agra-aarav15/agra-aarav15.github.io/main/profile.jpg" alt="Aarav" class="relative w-20 h-20 rounded-full border border-white/10 object-cover">
+                    </div>
+                    <div class="space-y-1">
+                        <h3 class="font-bold text-white text-sm">Aarav Agrawal</h3>
+                        <p class="text-[10px] font-mono text-gray-500">Class 10 Coder & Designer</p>
+                    </div>
+                    <span class="inline-flex items-center gap-1.5 bg-neon-emerald/10 text-neon-emerald px-2.5 py-1 rounded-full text-[9px] font-mono">
+                        <span class="w-1 h-1 rounded-full bg-neon-emerald animate-pulse"></span>Prayagraj, UP, IN
+                    </span>
+                </div>
+
+                <!-- Systems Console Quick Launcher -->
+                <div onclick="switchView('console')" class="tilt-card md:col-span-4 p-6 flex flex-col justify-between cursor-pointer group hover:border-neon-purple/30 transition-all duration-300">
+                    <div class="border-beam"></div>
+                    <div class="space-y-3 tilt-content">
+                        <span class="font-mono text-[9px] text-gray-500 uppercase">DIRECTORY_NODE_02</span>
+                        <h4 class="text-xl font-bold text-white group-hover:text-neon-purple transition-colors">Interactive Console</h4>
+                        <p class="text-gray-400 text-xs leading-relaxed font-sans">
+                            Run shell commands in the CLI simulator or check real-time telemetry pipelines.
+                        </p>
+                    </div>
+                    <div class="flex justify-between items-center pt-4 border-t border-white/5 tilt-content mt-4">
+                        <span class="text-[10px] font-mono text-gray-500">RUN SYSTEM OPERATIONS</span>
+                        <i data-lucide="terminal" class="w-4 h-4 text-neon-purple"></i>
+                    </div>
+                </div>
+
+                <!-- Skills Deck Quick Link -->
+                <div onclick="switchView('skills')" class="tilt-card md:col-span-4 p-6 flex flex-col justify-between cursor-pointer group hover:border-neon-blue/30 transition-all duration-300">
+                    <div class="border-beam"></div>
+                    <div class="space-y-3 tilt-content">
+                        <span class="font-mono text-[9px] text-gray-500 uppercase">DIRECTORY_NODE_03</span>
+                        <h4 class="text-xl font-bold text-white group-hover:text-neon-blue transition-colors">Technical Stack</h4>
+                        <p class="text-gray-400 text-xs leading-relaxed font-sans">
+                            Inspect programming languages, frontend layout engines, and microcontroller control standards.
+                        </p>
+                    </div>
+                    <div class="flex justify-between items-center pt-4 border-t border-white/5 tilt-content mt-4">
+                        <span class="text-[10px] font-mono text-gray-500">INSPECT COMPILERS</span>
+                        <i data-lucide="cpu" class="w-4 h-4 text-neon-blue"></i>
+                    </div>
+                </div>
+
+                <!-- Projects Directory launcher -->
+                <div onclick="switchView('projects')" class="tilt-card md:col-span-4 p-6 flex flex-col justify-between cursor-pointer group hover:border-neon-emerald/30 transition-all duration-300">
+                    <div class="border-beam"></div>
+                    <div class="space-y-3 tilt-content">
+                        <span class="font-mono text-[9px] text-gray-500 uppercase">DIRECTORY_NODE_04</span>
+                        <h4 class="text-xl font-bold text-white group-hover:text-neon-emerald transition-colors">Case Studies</h4>
+                        <p class="text-gray-400 text-xs leading-relaxed font-sans">
+                            Browse customized web applications, physical IoT appliances, and vintage console projects.
+                        </p>
+                    </div>
+                    <div class="flex justify-between items-center pt-4 border-t border-white/5 tilt-content mt-4">
+                        <span class="text-[10px] font-mono text-gray-500">PROJECT VAULT DIRECTORY</span>
+                        <i data-lucide="layers" class="w-4 h-4 text-neon-emerald"></i>
+                    </div>
+                </div>
+
+                <!-- Contact launcher (Spanned 12-columns to sit neatly across dashboard footer) -->
+                <div onclick="switchView('contact')" class="tilt-card md:col-span-12 p-6 flex flex-col justify-between cursor-pointer group hover:border-neon-purple/30 transition-all duration-300">
+                    <div class="border-beam"></div>
+                    <div class="space-y-3 tilt-content">
+                        <span class="font-mono text-[9px] text-gray-500 uppercase">DIRECTORY_NODE_05</span>
+                        <h4 class="text-xl font-bold text-white group-hover:text-neon-purple transition-colors">Initiate Handshake</h4>
+                        <p class="text-gray-400 text-xs leading-relaxed font-sans">
+                            Submit your parameters through our form to connect secure local channels.
+                        </p>
+                    </div>
+                    <div class="flex justify-between items-center pt-4 border-t border-white/5 tilt-content mt-4">
+                        <span class="text-[10px] font-mono text-gray-500">CONNECT CHANNELS</span>
+                        <i data-lucide="send" class="w-4 h-4 text-neon-purple"></i>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ================= ABOUT VIEW ================= -->
+        <div id="view-about" class="view-panel hidden space-y-12">
+            <div class="space-y-2">
+                <div class="flex items-center gap-3">
+                    <span class="font-mono text-neon-purple text-xs tracking-wider">SEC_01 // AGENT_RECORD</span>
+                    <div class="h-[1px] bg-white/5 flex-grow font-semibold"></div>
+                </div>
+                <h3 class="text-3xl font-extrabold text-white tracking-tight">Biography & Dossier</h3>
+            </div>
+
+            <div class="grid lg:grid-cols-12 gap-12 items-start">
+                <!-- Parameters card -->
+                <div class="lg:col-span-5 tilt-card p-6 flex flex-col justify-between gap-6">
+                    <div class="border-beam"></div>
+                    <div class="flex items-center gap-4 tilt-content">
+                        <img src="https://raw.githubusercontent.com/agra-aarav15/agra-aarav15.github.io/main/profile.jpg" alt="Aarav" class="w-16 h-16 rounded-xl border border-white/10 object-cover">
+                        <div>
+                            <h4 class="font-bold text-white">Aarav Agrawal</h4>
+                            <p class="text-xs font-mono text-gray-500">Maharshi Patanjali Vidya Mandir</p>
+                        </div>
+                    </div>
+                    <div class="space-y-2 border-t border-white/5 pt-4 text-[10px] font-mono tilt-content">
+                        <div class="flex justify-between"><span class="text-gray-500">INSTITUTION:</span><span class="text-white">MPVM School</span></div>
+                        <div class="flex justify-between"><span class="text-gray-500">TIER:</span><span class="text-white">Class 10 CBSE</span></div>
+                        <div class="flex justify-between"><span class="text-gray-500">LEADERSHIP:</span><span class="text-white">Codvyn Community</span></div>
+                        <div class="flex justify-between"><span class="text-gray-500">LOCATION:</span><span class="text-white">Prayagraj, UP, IN</span></div>
+                    </div>
+                </div>
+
+                <!-- Descriptive text -->
+                <div class="lg:col-span-7 space-y-6 text-sm leading-relaxed text-gray-400 font-sans">
+                    <p>
+                        I'm Aarav. I balance my Class 10 CBSE academic studies with programming, hardware tinkering, and interface design. Rather than relying on simple drag-and-drop web builders, I love writing custom, clean code to build highly aesthetic, interactive digital environments.
+                    </p>
+                    <p>
+                        I focus on front-end aesthetics, responsive Tailwind layouts, Python utilities, and embedded system controls. I enjoy designing sleek user interfaces that developers and designers love to look at.
+                    </p>
+                    <p>
+                        Whether managing technical communities like the Codvyn ecosystem or organizing community project files, I am always seeking new ways to make software more accessible, highly performant, and beautifully designed.
+                    </p>
+                    <a href="javascript:void(0)" onclick="switchView('home')" class="inline-flex items-center gap-2 text-neon-purple hover:text-white font-mono text-xs font-bold transition-colors">
+                        <i data-lucide="arrow-left" class="w-4 h-4"></i> BACK TO DASHBOARD
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= SYSTEM CONSOLE VIEW ================= -->
+        <div id="view-console" class="view-panel hidden space-y-12">
+            <div class="space-y-2">
+                <div class="flex items-center gap-3">
+                    <span class="font-mono text-neon-purple text-xs tracking-wider">SEC_02 // SYSTEM_CONSOLE</span>
+                    <div class="h-[1px] bg-white/5 flex-grow font-semibold"></div>
+                </div>
+                <h3 class="text-3xl font-extrabold text-white tracking-tight">System Console</h3>
+                <p class="text-gray-400 max-w-xl text-sm font-sans">Toggle between an interactive command-line interface and simulated real-time telemetry pipelines.</p>
+            </div>
+
+            <!-- Console Box -->
+            <div class="tilt-card w-full border border-white/5 shadow-2xl p-6 relative" id="console-widget">
+                <div class="border-beam"></div>
+                
+                <div class="flex justify-between items-center pb-4 border-b border-white/5 tilt-content">
+                    <div class="flex gap-1.5">
+                        <div class="w-3 h-3 bg-red-500/20 rounded-full border border-red-500/30"></div>
+                        <div class="w-3 h-3 bg-yellow-500/20 rounded-full border border-yellow-500/30"></div>
+                        <div class="w-3 h-3 bg-green-500/20 rounded-full border border-green-500/30"></div>
+                    </div>
+                    
+                    <!-- Mode Switcher -->
+                    <div class="flex bg-space-950 rounded-lg p-1 border border-white/5 text-[10px] font-mono">
+                        <button id="btn-cli" class="px-3 py-1 rounded bg-neon-purple text-white transition-all">CLI_SHELL</button>
+                        <button id="btn-tel" class="px-3 py-1 rounded text-gray-500 hover:text-white transition-all">TELEMETRY</button>
+                    </div>
+                </div>
+                
+                <!-- Screen 1: CLI Shell -->
+                <div id="cli-screen" class="h-80 overflow-y-auto space-y-2 pr-2 text-xs font-mono leading-relaxed pt-4 tilt-content">
+                    <div class="text-gray-500">// System initialization complete. Security layers running.</div>
+                    <div class="text-neon-purple">Type "help" to list available operational commands.</div>
+                    <div id="cli-buffer" class="space-y-1.5"></div>
+                </div>
+
+                <!-- Screen 2: System Telemetry -->
+                <div id="tel-screen" class="hidden h-80 overflow-y-auto space-y-4 pr-2 text-xs font-mono pt-4 tilt-content">
+                    <div class="grid grid-cols-2 gap-4 border-b border-white/5 pb-4">
+                        <div class="space-y-1.5">
+                            <div class="text-gray-500">SYS_OS:</div>
+                            <div class="text-white">Debian GNU/Linux 12 (bookworm)</div>
+                        </div>
+                        <div class="space-y-1.5">
+                            <div class="text-gray-500">CPU_ARCH:</div>
+                            <div class="text-white">MIPS/ARM dual-core virtualization</div>
+                        </div>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="space-y-1">
+                            <div class="flex justify-between text-gray-500 text-[10px]"><span>CPU LOAD</span><span id="tel-cpu-val">0%</span></div>
+                            <div class="h-1.5 bg-space-950 rounded-full overflow-hidden"><div id="tel-cpu-bar" class="h-full bg-neon-purple transition-all duration-300" style="width: 0%"></div></div>
+                        </div>
+                        <div class="space-y-1">
+                            <div class="flex justify-between text-gray-500 text-[10px]"><span>MEMORY USAGE</span><span id="tel-ram-val">0%</span></div>
+                            <div class="h-1.5 bg-space-950 rounded-full overflow-hidden"><div id="tel-ram-bar" class="h-full bg-neon-blue transition-all duration-300" style="width: 0%"></div></div>
+                        </div>
+                    </div>
+                    <div class="space-y-1 text-[10px] text-gray-500 pt-2 border-t border-white/5" id="tel-logs">
+                        <div>[OK] Connection to PostgreSQL established</div>
+                        <div>[OK] Oracle Cloud instance running proxy targets</div>
+                    </div>
+                </div>
+
+                <!-- Input line (Only visible/active in CLI mode) -->
+                <div id="cli-input-container" class="flex items-center gap-2 pt-3 border-t border-white/5 tilt-content">
+                    <span class="text-neon-emerald font-bold text-xs">guest@aarav.dev:~$</span>
+                    <input type="text" id="terminal-input" autocomplete="off" class="bg-transparent border-none outline-none text-white text-xs flex-grow font-mono" placeholder="run command...">
+                </div>
+            </div>
+            
+            <a href="javascript:void(0)" onclick="switchView('home')" class="inline-flex items-center gap-2 text-neon-purple hover:text-white font-mono text-xs font-bold transition-colors">
+                <i data-lucide="arrow-left" class="w-4 h-4"></i> BACK TO DASHBOARD
+            </a>
+        </div>
+
+        <!-- ================= SKILLS VIEW ================= -->
+        <div id="view-skills" class="view-panel hidden space-y-12">
+            <div class="space-y-2">
+                <div class="flex items-center gap-3">
+                    <span class="font-mono text-neon-purple text-xs tracking-wider">SEC_03 // SYSTEMS_CAPABILITIES</span>
+                    <div class="h-[1px] bg-white/5 flex-grow"></div>
+                </div>
+                <h3 class="text-3xl font-extrabold text-white tracking-tight">Technical Stack Capabilities</h3>
+                <p class="text-gray-400 text-sm max-w-lg font-sans">Staged performance meters compiled directly from practical development deployment hours.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Stack Core -->
+                <div class="tilt-card p-8 space-y-6">
+                    <div class="border-beam"></div>
+                    <div class="flex items-center gap-3 border-b border-white/5 pb-4 tilt-content">
+                        <i data-lucide="code" class="w-5 h-5 text-neon-purple"></i>
+                        <h4 class="font-bold text-white font-mono text-sm">Execution Core & Markups</h4>
+                    </div>
+                    
+                    <div class="space-y-5 tilt-content">
+                        <div class="space-y-2">
+                            <div class="flex justify-between text-xs font-mono"><span class="text-gray-300">HTML5 / Modern CSS (Design)</span><span class="text-neon-purple font-bold">95%</span></div>
+                            <div class="h-1.5 bg-space-950 rounded-full overflow-hidden">
+                                <div class="h-full bg-neon-purple skill-bar-anim" data-width="95" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        <div class="space-y-2">
+                            <div class="flex justify-between text-xs font-mono"><span class="text-gray-300">Python Execution Core</span><span class="text-neon-purple font-bold">90%</span></div>
+                            <div class="h-1.5 bg-space-950 rounded-full overflow-hidden">
+                                <div class="h-full bg-neon-purple skill-bar-anim" data-width="90" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        <div class="space-y-2">
+                            <div class="flex justify-between text-xs font-mono"><span class="text-gray-300">JavaScript Engine Logic</span><span class="text-neon-purple font-bold">80%</span></div>
+                            <div class="h-1.5 bg-space-950 rounded-full overflow-hidden">
+                                <div class="h-full bg-neon-purple skill-bar-anim" data-width="80" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        <div class="space-y-2">
+                            <div class="flex justify-between text-xs font-mono"><span class="text-gray-300">C++ Device Control Firmware</span><span class="text-neon-purple font-bold">75%</span></div>
+                            <div class="h-1.5 bg-space-950 rounded-full overflow-hidden">
+                                <div class="h-full bg-neon-purple skill-bar-anim" data-width="75" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Web Tags & Tunnels -->
+                <div class="tilt-card p-8 flex flex-col justify-between gap-6">
+                    <div class="border-beam"></div>
+                    <div class="space-y-4 tilt-content font-sans">
+                        <div class="flex items-center gap-3 border-b border-white/5 pb-4">
+                            <i data-lucide="layers" class="w-5 h-5 text-neon-blue"></i>
+                            <h4 class="font-bold text-white font-mono text-sm">Frameworks & Networks</h4>
+                        </div>
+                        <p class="text-gray-400 text-xs leading-relaxed">
+                            I implement modern frontend environments alongside local cloud virtualization. I utilize Cloudflared tunnels to project secure local system development routes onto verified global domains.
+                        </p>
+                    </div>
+
+                    <!-- Visual Tag Layout -->
+                    <div class="flex flex-wrap gap-2.5 tilt-content">
+                        <span class="text-[10px] font-mono bg-neon-blue/10 border border-neon-blue/20 px-3 py-1.5 rounded-md text-neon-blue">Next.js</span>
+                        <span class="text-[10px] font-mono bg-neon-blue/10 border border-neon-blue/20 px-3 py-1.5 rounded-md text-neon-blue">React</span>
+                        <span class="text-[10px] font-mono bg-neon-blue/10 border border-neon-blue/20 px-3 py-1.5 rounded-md text-neon-blue">TypeScript</span>
+                        <span class="text-[10px] font-mono bg-neon-blue/10 border border-neon-blue/20 px-3 py-1.5 rounded-md text-neon-blue">Tailwind CSS</span>
+                        <span class="text-[10px] font-mono bg-neon-purple/10 border border-neon-purple/20 px-3 py-1.5 rounded-md text-neon-purple">Cloudflared Tunnels</span>
+                    </div>
+                </div>
+            </div>
+
+            <a href="javascript:void(0)" onclick="switchView('home')" class="inline-flex items-center gap-2 text-neon-purple hover:text-white font-mono text-xs font-bold transition-colors">
+                <i data-lucide="arrow-left" class="w-4 h-4"></i> BACK TO DASHBOARD
+            </a>
+        </div>
+
+        <!-- ================= PROJECTS VIEW ================= -->
+        <div id="view-projects" class="view-panel hidden space-y-12">
+            <div class="space-y-2">
+                <div class="flex items-center gap-3">
+                    <span class="font-mono text-neon-purple text-xs tracking-wider">SEC_04 // CASE_STUDIES</span>
+                    <div class="h-[1px] bg-white/5 flex-grow"></div>
+                </div>
+                <h3 class="text-3xl font-extrabold text-white tracking-tight">Active Project Vault</h3>
+                <p class="text-gray-400 text-sm max-w-xl font-sans">Deep technical reviews of selected systems, software environments, and structural deployments built or maintained by me.</p>
+            </div>
+
+            <div class="space-y-8">
+                
+                <!-- Project 1: cfnkurties.in -->
+                <div class="tilt-card p-8 grid md:grid-cols-12 gap-8 items-center">
+                    <div class="border-beam"></div>
+                    <div class="md:col-span-7 space-y-4 tilt-content">
+                        <div class="flex items-center gap-3">
+                            <span class="font-mono text-[9px] text-neon-purple bg-neon-purple/5 border border-neon-purple/10 px-2.5 py-1 rounded tracking-wider">WEBSITE REDESIGN & OPTIMIZATION</span>
+                            <span class="text-xs text-gray-500 font-mono">2025</span>
+                        </div>
+                        <h4 class="text-2xl font-bold text-white">cfnkurties.in — Aesthetic E-Commerce Redesign</h4>
+                        <p class="text-gray-400 text-sm leading-relaxed font-sans">
+                            A complete visual and backend redesign for a commercial e-commerce application. Migrated the asset hosting to **Oracle Cloud Infrastructure (OCI)**, configuring custom routing engines to resolve hydration lag and improve mobile loading speeds.
+                        </p>
+                        <ul class="text-xs font-mono space-y-2 text-gray-400">
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-neon-purple"></i> Reconstructed the UI using clean Tailwind utilities and React frames</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-neon-purple"></i> hard-coded secure VPS connections and custom routing rules</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-neon-purple"></i> Reduced file weight to maximize mobile compatibility scores</li>
+                        </ul>
+                    </div>
+                    <div class="md:col-span-5 bg-space-950 p-6 rounded-xl border border-white/5 space-y-4 font-mono text-[10px] tilt-content">
+                        <div class="text-gray-500 border-b border-white/5 pb-2">ARCHITECTURE SCHEMATIC</div>
+                        <div class="space-y-1.5 text-gray-400">
+                            <div>[Client] -> HTTPS Requests -> Port 443</div>
+                            <div class="text-neon-purple">  └── [UFW Firewall Protection Layer]</div>
+                            <div>    └── [Apache Server Instance (Proxy Node)]</div>
+                            <div class="text-neon-purple">      └── [Hardened Ubuntu OS Kernels]</div>
+                            <div>        └── [MySQL Instance Databases]</div>
+                        </div>
+                        <a href="https://cfnkurties.in" target="_blank" class="inline-flex items-center gap-2 text-white hover:text-neon-purple transition-colors text-xs font-semibold pt-2">
+                            <span>Live Application Target</span>
+                            <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 2: ESP32 Smart Clock -->
+                <div class="tilt-card p-8 grid md:grid-cols-12 gap-8 items-center">
+                    <div class="border-beam"></div>
+                    <div class="md:col-span-7 space-y-4 tilt-content">
+                        <div class="flex items-center gap-3">
+                            <span class="font-mono text-[9px] text-neon-blue bg-neon-blue/5 border border-neon-blue/10 px-2.5 py-1 rounded tracking-wider">IoT INTEGRATED HARDWARE</span>
+                            <span class="text-xs text-gray-500 font-mono">2025</span>
+                        </div>
+                        <h4 class="text-2xl font-bold text-white">ESP32_Smart_Clock — Weather System Node</h4>
+                        <p class="text-gray-400 text-sm leading-relaxed font-sans">
+                            Constructed a standalone physical weather telemetry system built using PlatformIO C++ framework logic on the **ESP32 development board**. Integrated NTP protocol layers over Wi-Fi configurations to calculate real-time synchronization metrics.
+                        </p>
+                        <ul class="text-xs font-mono space-y-2 text-gray-400">
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-neon-blue"></i> Configured custom parsing engines to clean JSON outputs from OpenWeather APIs</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-neon-blue"></i> OLED display layout configurations using Adafruit GFX and SSD1306 drivers</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-neon-blue"></i> Implemented deep sleep states for reduced power consumption</li>
+                        </ul>
+                    </div>
+                    <div class="md:col-span-5 bg-space-950 p-6 rounded-xl border border-white/5 space-y-4 font-mono text-[10px] tilt-content">
+                        <div class="text-gray-500 border-b border-white/5 pb-2">HARDWARE SCHEMATIC</div>
+                        <div class="space-y-1.5 text-gray-400">
+                            <div>[Wi-Fi Node] -> NTP Servers -> Sync Time</div>
+                            <div class="text-neon-blue">  └── [ESP32 Processing Board Node]</div>
+                            <div>    └── [I2C Interface Bus Connections]</div>
+                            <div class="text-neon-blue">      └── [OLED SSD1306 Display Unit]</div>
+                            <div>        └── [Deep Sleep Cycle Controller]</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3: PS2 Legacy Linux Deployment -->
+                <div class="tilt-card p-8 grid md:grid-cols-12 gap-8 items-center">
+                    <div class="border-beam"></div>
+                    <div class="md:col-span-7 space-y-4 tilt-content">
+                        <div class="flex items-center gap-3">
+                            <span class="font-mono text-[9px] text-neon-emerald bg-neon-emerald/5 border border-neon-emerald/10 px-2.5 py-1 rounded tracking-wider">RETRO HARDWARE RESEARCH</span>
+                            <span class="text-xs text-gray-500 font-mono">2024</span>
+                        </div>
+                        <h4 class="text-2xl font-bold text-white">PS2_Linux_Project — Vintage Kernel Explorer</h4>
+                        <p class="text-gray-400 text-sm leading-relaxed font-sans">
+                            An experimental system optimization project. Built and executed legacy Linux kernel structures on vintage PlayStation 2 Slim hardware, optimizing MIPS instructions to fit within the 32MB physical memory limit.
+                        </p>
+                        <ul class="text-xs font-mono space-y-2 text-gray-400">
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-neon-emerald"></i> Hardcoded custom startup operations in vintage kernel files</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-neon-emerald"></i> Investigated system limits on retro MIPS microprocessor nodes</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-neon-emerald"></i> Configured a raw console interface output over older router connections</li>
+                        </ul>
+                    </div>
+                    <div class="md:col-span-5 bg-space-950 p-6 rounded-xl border border-white/5 space-y-4 font-mono text-[10px] tilt-content">
+                        <div class="text-gray-500 border-b border-white/5 pb-2">MIPS PIPELINE METRICS</div>
+                        <div class="space-y-1.5 text-gray-400">
+                            <div>CPU: Emotion Engine MIPS R5900 (294.9 MHz)</div>
+                            <div class="text-neon-emerald">System RAM: 32MB Direct RDRAM Parameters</div>
+                            <div>OS: Legacy Linux kernel 2.2.1 Integration</div>
+                            <div class="text-neon-emerald">Storage: Ext2 partitions mapped to memory blocks</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <a href="javascript:void(0)" onclick="switchView('home')" class="inline-flex items-center gap-2 text-neon-purple hover:text-white font-mono text-xs font-bold transition-colors">
+                <i data-lucide="arrow-left" class="w-4 h-4"></i> BACK TO DASHBOARD
+            </a>
+        </div>
+
+    </main>
+
+    <!-- Unified Footer element -->
+    <footer class="mt-48 border-t border-white/5 py-12 text-center text-xs font-mono text-gray-500 relative z-10 bg-space-950">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
+            <p>&copy; 2026 Aarav Agrawal. All systems operational.</p>
+            <div class="flex gap-6">
+                <a href="https://github.com/agra-aarav15" target="_blank" class="hover:text-neon-purple transition-colors">GitHub</a>
+                <a href="https://www.linkedin.com/in/aarav-agrawal-86a3553bb/" target="_blank" class="hover:text-neon-purple transition-colors">LinkedIn</a>
+                <a href="mailto:aarya121411@gmail.com" class="hover:text-neon-purple transition-colors">Email</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Execution Script Engine -->
+    <script>
+        lucide.createIcons();
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Ambient Spotlight mouse tracker
+        window.addEventListener('mousemove', (e) => {
+            document.documentElement.style.setProperty('--mouse-x', `${e.clientX}px`);
+            document.documentElement.style.setProperty('--mouse-y', `${e.clientY}px`);
+        });
+
+        // 3D PERSPECTIVE TILT MECHANICAL ENGINE
+        document.querySelectorAll('.tilt-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                if (window.innerWidth < 768) return; // Completely disable 3D transform layers on mobile to fix rendering bugs
+                const rect = card.getBoundingClientRect();
+                const cardX = e.clientX - rect.left;
+                const cardY = e.clientY - rect.top;
+                card.style.setProperty('--x', `${cardX}px`);
+                card.style.setProperty('--y', `${cardY}px`);
+
+                const widthCenter = rect.width / 2;
+                const heightCenter = rect.height / 2;
+                const tiltAngleX = (heightCenter - cardY) / 18;
+                const tiltAngleY = (cardX - widthCenter) / 18;
+
+                card.style.transform = `perspective(1000px) rotateX(${tiltAngleX}deg) rotateY(${tiltAngleY}deg)`;
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
+            });
+        });
+
+        // HIGH PERFORMANCE 3D QUANTUM VECTOR HORIZON ENGINE (2,500 Particles)
+        const canvas = document.getElementById('quantum-canvas');
+        const ctx = canvas.getContext('2d');
+        
+        let width = canvas.width = window.innerWidth;
+        let height = canvas.height = window.innerHeight;
+        
+        window.addEventListener('resize', () => {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        });
+
+        const particles = [];
+        const count = 2500;
+        
+        for (let i = 0; i < count; i++) {
+            particles.push({
+                x: (Math.random() - 0.5) * 1500,
+                y: (Math.random() - 0.5) * 1500,
+                z: Math.random() * 800 - 400,
+                speed: (Math.random() * 0.003 + 0.001) * (Math.random() < 0.5 ? 1 : -1),
+                color: Math.random() < 0.6 ? 'rgba(139, 92, 246,' : 'rgba(59, 130, 246,',
+                opacity: Math.random() * 0.5 + 0.2,
+                size: Math.random() * 1.5 + 0.5
+            });
+        }
+
+        const focalLength = 350;
+        let mouse = { x: -1000, y: -1000, active: false };
+
+        window.addEventListener('mousemove', (e) => {
+            mouse.x = e.clientX;
+            mouse.y = e.clientY;
+            mouse.active = true;
+        });
+
+        window.addEventListener('mouseleave', () => {
+            mouse.active = false;
+        });
+
+        function drawCanvas() {
+            ctx.clearRect(0, 0, width, height);
+            
+            const cx = width / 2;
+            const cy = height / 2;
+            
+            const cosTilt = Math.cos(0.5);
+            const sinTilt = Math.sin(0.5);
+            
+            for (let i = 0; i < count; i++) {
+                const p = particles[i];
+                
+                const rx = p.x * Math.cos(p.speed) - p.z * Math.sin(p.speed);
+                const rz = p.x * Math.sin(p.speed) + p.z * Math.cos(p.speed);
+                p.x = rx;
+                p.z = rz;
+                
+                const rotX = p.x;
+                const rotY = p.y * cosTilt - rz * sinTilt;
+                const rotZ = p.y * sinTilt + rz * cosTilt;
+                
+                const scale = focalLength / (focalLength + rotZ);
+                let projX = cx + rotX * scale;
+                let projY = cy + rotY * scale;
+                
+                if (mouse.active) {
+                    const dx = mouse.x - projX;
+                    const dy = mouse.y - projY;
+                    const dist = Math.hypot(dx, dy);
+                    
+                    if (dist < 180) {
+                        const pullFactor = (180 - dist) / 180;
+                        const spiralAngle = Math.atan2(dy, dx) + 0.5;
+                        projX += Math.cos(spiralAngle) * pullFactor * 85;
+                        projY += Math.sin(spiralAngle) * pullFactor * 85;
+                    }                }
+                
+                if (projX >= 0 && projX <= width && projY >= 0 && projY <= height) {
+                    const depthAlpha = ((400 - rotZ) / 800) * p.opacity;
+                    ctx.fillStyle = `${p.color} ${depthAlpha})`;
+                    ctx.fillRect(projX, projY, p.size * scale, p.size * scale);
+                }
+            }
+            requestAnimationFrame(drawCanvas);
+        }
+        drawCanvas();
+
+        // Active Loader bar
+        const loader = document.getElementById('loader');
+        const loaderProgressBar = document.getElementById('loader-progress-bar');
+        const loaderPercentage = document.getElementById('loader-percentage');
+        let loaderProgress = { value: 0 };
+
+        gsap.to(loaderProgress, { 
+            value: 100,
+            duration: 2.0,
+            ease: "power2.out",
+            onUpdate: () => {
+                const currentVal = Math.round(loaderProgress.value);
+                loaderPercentage.textContent = currentVal < 10 ? `0${currentVal}` : currentVal;
+                loaderProgressBar.style.width = `${currentVal}%`;
+            },
+            onComplete: () => {
+                gsap.to(loader, {
+                    yPercent: -100,
+                    duration: 0.8,
+                    ease: "power4.inOut",
+                    onComplete: () => {
+                        loader.style.display = 'none';
+                        triggerHomeEntrance();
+                    }
+                });
+            }
+        });
+
+        // Entrance animation on Home Dashboard load (Re-declared as solid fromTo to avoid rendering issues)
+        function triggerHomeEntrance() { 
+            const tl = gsap.timeline({ defaults: { ease: "power3.out", duration: 0.8 } });
+            
+            tl.fromTo("#view-home .inline-flex", { opacity: 0, y: 15 }, { opacity: 1, y: 0 })
+              .fromTo("#view-home h1", { opacity: 0, y: 25 }, { opacity: 1, y: 0 }, "-=0.4")
+              .fromTo("#view-home h2", { opacity: 0, y: 15 }, { opacity: 1, y: 0, onComplete: startTypewriter }, "-=0.4")
+              .fromTo("#view-home p", { opacity: 0, y: 15 }, { opacity: 1, y: 0 }, "-=0.4")
+              .fromTo("#view-home .tilt-card", {
+                  opacity: 0,
+                  scale: 0.95,
+                  y: 20
+              }, {
+                  opacity: 1,
+                  scale: 1,
+                  y: 0,
+                  stagger: 0.08
+              }, "-=0.3");
+        }
+
+        // Typewriter Loop
+        const typewriter = document.getElementById('typewriter');
+        const phrases = ['Class 10 Student', 'Creative Coder', 'Web Designer', 'UI/UX Enthusiast', 'IoT Tinkerer'];
+        let phraseIndex = 0, charIndex = 0, isDeleting = false;
+
+        function startTypewriter() { type(); }
+
+        function type() { 
+            const current = phrases[phraseIndex];
+            if (isDeleting) {
+                typewriter.textContent = current.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typewriter.textContent = current.substring(0, charIndex + 1);
+                charIndex++;
+            }
+            let speed = isDeleting ? 30 : 60;
+            if (!isDeleting && charIndex === current.length) {
+                speed = 2000;
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                phraseIndex = (phraseIndex + 1) % phrases.length;
+                speed = 400;
+            }
+            setTimeout(type, speed);
+        }
+
+        // DYNAMIC SUB-PAGE SPA ROUTING & WIPE TRANSITION
+        function switchView(targetView) {
+            const activeView = document.querySelector('.view-panel:not(.hidden)');
+            const targetElement = document.getElementById(`view-${targetView}`);
+            
+            // Do nothing if same view
+            if (activeView.id === `view-${targetView}`) return;
+
+            const curtain = document.getElementById('transition-curtain');
+            
+            // Curtain Slide-In Wipe
+            gsap.timeline()
+                .to(curtain, {
+                    left: "0%",
+                    duration: 0.6,
+                    ease: "power3.inOut"
+                })
+                .call(() => {
+                    // Instantly switch view panels behind curtain
+                    activeView.classList.add('hidden');
+                    targetElement.classList.remove('hidden');
+                    window.scrollTo(0, 0);
+
+                    // Highlight Active Nav link on desktop
+                    document.querySelectorAll('.nav-link').forEach(link => {
+                        if (link.dataset.view === targetView) {
+                            link.classList.add('text-white');
+                            link.classList.remove('text-gray-400');
+                        } else {
+                            link.classList.remove('text-white');
+                            link.classList.add('text-gray-400');
+                        }
+                    });
+
+                    // Highlight Active Nav link on mobile
+                    document.querySelectorAll('.mob-nav-link').forEach(link => {
+                        if (link.dataset.view === targetView) {
+                            link.classList.add('text-white');
+                            link.classList.remove('text-gray-400');
+                        } else {
+                            link.classList.remove('text-white');
+                            link.classList.add('text-gray-400');
+                        }
+                    });
+                })
+                // Curtain Slide-Out Wipe
+                .to(curtain, {
+                    left: "-100%",
+                    duration: 0.6,
+                    ease: "power3.inOut"
+                })
+                .call(() => { 
+                    // Reset curtain coordinates
+                    gsap.set(curtain, { left: "100%" });
+                    // Trigger animations unique to target view
+                    triggerSubViewAnimations(targetView);
+                });
+        }
+
+        // Subview customized animation controllers
+        function triggerSubViewAnimations(view) {
+            if (view === 'skills') {
+                gsap.utils.toArray('.skill-bar-anim').forEach(bar => {
+                    gsap.fromTo(bar, { width: '0%' }, {
+                        width: bar.dataset.width + '%',
+                        duration: 1.5,
+                        ease: "power3.out"
+                    });
+                });
+            } else if (view === 'home') {
+                triggerHomeEntrance();
+            }
+        }
+
+        // MOBILE HEADER NAVIGATION TOGGLE SYSTEM (Fixed Layering outside parent boundaries)
+        const mobileToggle = document.getElementById('mobile-menu-toggle');
+        const mobileOverlay = document.getElementById('mobile-menu-overlay');
+        let isMobileMenuOpen = false;
+
+        mobileToggle.addEventListener('click', () => {
+            isMobileMenuOpen = !isMobileMenuOpen;
+            if (isMobileMenuOpen) {
+                mobileOverlay.classList.remove('translate-x-full');
+                mobileToggle.innerHTML = '<i data-lucide="x" class="w-6 h-6"></i>';
+                lucide.createIcons();
+            } else {
+                mobileOverlay.classList.add('translate-x-full');
+                mobileToggle.innerHTML = '<i data-lucide="menu" class="w-6 h-6"></i>';
+                lucide.createIcons();
+            }
+        });
+
+        function mobileSwitchView(view) {
+            // Close menu overlay safely
+            isMobileMenuOpen = false;
+            mobileOverlay.classList.add('translate-x-full');
+            mobileToggle.innerHTML = '<i data-lucide="menu" class="w-6 h-6"></i>';
+            lucide.createIcons();
+            
+            // Swaps operational pipelines
+            switchView(view);
+        }
+
+        // ================= CONSOLE MECHANICS =================
+        const btnCli = document.getElementById('btn-cli');
+        const btnTel = document.getElementById('btn-tel');
+        const cliScreen = document.getElementById('cli-screen');
+        const telScreen = document.getElementById('tel-screen');
+        const cliInputContainer = document.getElementById('cli-input-container');
+
+        btnCli.addEventListener('click', () => { 
+            btnCli.classList.add('bg-neon-purple', 'text-white');
+            btnCli.classList.remove('text-gray-500');
+            btnTel.classList.remove('bg-neon-purple', 'text-white');
+            btnTel.classList.add('text-gray-500');
+
+            cliScreen.classList.remove('hidden');
+            telScreen.classList.add('hidden');
+            cliInputContainer.classList.remove('hidden');
+        });
+
+        btnTel.addEventListener('click', () => {
+            btnTel.classList.add('bg-neon-purple', 'text-white');
+            btnTel.classList.remove('text-gray-500');
+            btnCli.classList.remove('bg-neon-purple', 'text-white');
+            btnCli.classList.add('text-gray-500');
+
+            telScreen.classList.remove('hidden');
+            cliScreen.classList.add('hidden');
+            cliInputContainer.classList.add('hidden');
+            
+            runTelemetrySimulations();
+        });
+
+        function runTelemetrySimulations() {
+            const cpuVal = document.getElementById('tel-cpu-val');
+            const cpuBar = document.getElementById('tel-cpu-bar');
+            const ramVal = document.getElementById('tel-ram-val');
+            const ramBar = document.getElementById('tel-ram-bar');
+            const telLogs = document.getElementById('tel-logs');
+
+            const logMessages = [
+                "[OK] Port 443 receiving packets safely",
+                "[WARN] Deep sleep state threshold limit adjusted",
+                "[OK] Signal parser integrity matched at 94%",
+                "[SYSTEM] Ext2 filesystem blocks checked",
+                "[OK] Hardened Ubuntu system proxy routing normal"
+            ];
+
+            setInterval(() => {
+                if (!telScreen.classList.contains('hidden')) {
+                    const cpuLoad = Math.floor(Math.random() * 30) + 10;
+                    const ramLoad = Math.floor(Math.random() * 15) + 55;
+
+                    cpuVal.textContent = cpuLoad + '%';
+                    cpuBar.style.width = cpuLoad + '%';
+                    ramVal.textContent = ramLoad + '%';
+                    ramBar.style.width = ramLoad + '%';
+
+                    if (Math.random() > 0.6) { 
+                        const nextLog = logMessages[Math.floor(Math.random() * logMessages.length)];
+                        const logLine = document.createElement('div');
+                        logLine.textContent = nextLog;
+                        telLogs.appendChild(logLine);
+                        if (telLogs.children.length > 5) {
+                            telLogs.removeChild(telLogs.firstChild);
+                        }
+                    }
+                }
+            }, 1000); 
+        }
+
+        // CLI COMMAND PARSER
+        const cliBuffer = document.getElementById('cli-buffer');
+        const terminalInput = document.getElementById('terminal-input');
+
+        const cliCommands = {
+            help: "Available operations:\n  - about     : Display personal background dossier\n  - skills    : Output evaluated programming framework levels\n  - projects  : View catalog of active deployments\n  - clear     : Flush shell console output logs",
+            about: "Aarav Agrawal\n=========================\nAge: 15 (Class 10 Student)\nLocation: Prayagraj, India\nEnrolled at: Maharshi Patanjali Vidya Mandir\nSpecialization: Systems and UI/UX Design, IoT firmware, and Python script utilities.",
+            skills: "Programming Capabilities:\n  - HTML/CSS     [|||||||||||||||||||] 95%\n  - Python       [||||||||||||||||||] 90%\n  - JavaScript   [||||||||||||||||  ] 80%\n  - C++ (IoT)    [|||||||||||||||   ] 75%\n  - Linux System [||||||||||||||||  ] 80%",
+            projects: "Deployments Catalog:\n  1. cfnkurties.in - Oracle Cloud migration & responsive UI redesign.\n  2. ESP32_Smart_Clock - PlatformIO Wi-Fi physical weather tracker.\n  3. PS2_Linux_Project - Legacy system memory maps research."
+        };
+
+        terminalInput.addEventListener('keydown', function(e) { 
+            if (e.key === 'Enter') {
+                const inputVal = terminalInput.value.trim().toLowerCase();
+                terminalInput.value = '';
+
+                const userLine = document.createElement('div');
+                userLine.innerHTML = `<span class="text-neon-emerald font-sans">guest@aarav.dev:~$</span> ${inputVal}`;
+                cliBuffer.appendChild(userLine);
+
+                if (inputVal === '') {
+                    // Do nothing
+                } else if (inputVal === 'clear') {
+                    cliBuffer.innerHTML = '';
+                } else if (cliCommands[inputVal]) {
+                    const outputLine = document.createElement('pre');
+                    outputLine.className = "text-gray-400 whitespace-pre-wrap font-mono mt-1 mb-2";
+                    outputLine.textContent = cliCommands[inputVal];
+                    cliBuffer.appendChild(outputLine);
+                } else {
+                    const errorLine = document.createElement('div');
+                    errorLine.className = "text-red-500 mt-1 mb-2";
+                    errorLine.textContent = `shell error: command not recognized: "${inputVal}". Run "help" to view commands.`;
+                    cliBuffer.appendChild(errorLine);
+                }
+
+                cliScreen.scrollTop = cliScreen.scrollHeight;
+            }
+        });
+
+        // Contact routing
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const sub = document.getElementById('subject').value || 'System Connection Request';
+            const msg = document.getElementById('message').value;
+            window.location.href = `mailto:aarya121411@gmail.com?subject=${encodeURIComponent(sub)}&body=${encodeURIComponent('Sender: ' + name + '\nEmail: ' + email + '\n\n' + msg)}`;
+        });
+    </script>
+</body>
+</html>
