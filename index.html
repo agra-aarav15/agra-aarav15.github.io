@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aarav Agrawal — Software, built by hand</title>
+  <meta name="description" content="Aarav Agrawal — 15-year-old software builder in Prayagraj, India. Web front-ends, Python tools and firmware, written by hand." />
+  <meta property="og:title" content="Aarav Agrawal — Software, built by hand" />
+  <meta property="og:description" content="Web front-ends, Python tools and firmware — written by hand, no page builders." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='7' fill='none' stroke='%232B3FD6' stroke-width='4'/%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://api.fontshare.com/v2/css?f[]=clash-display@600,700&f[]=satoshi@400,500,700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Preloader -->
+  <div class="preloader" id="preloader">
+    <div class="pre-inner">
+      <p class="pre-eyebrow mono">POWERING ON</p>
+      <div class="pre-name-mask"><span class="pre-name">AARAV&nbsp;AGRAWAL</span></div>
+      <div class="pre-bar"><div class="pre-bar-fill" id="preBarFill"></div></div>
+      <p class="pre-count mono" id="preCount">00</p>
+    </div>
+  </div>
+
+  <!-- Scroll progress rail (PCB trace) -->
+  <div class="rail" aria-hidden="true">
+    <span class="rail-pad rail-pad--top"></span>
+    <div class="rail-track"><div class="rail-fill" id="railFill"></div></div>
+    <span class="rail-pad rail-pad--bottom"></span>
+  </div>
+
+  <!-- Grain -->
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- Ambient light (gives the glass something to refract) -->
+  <div class="ambient" aria-hidden="true">
+    <span class="blob blob--a"></span>
+    <span class="blob blob--b"></span>
+    <span class="blob blob--c"></span>
+  </div>
+
+  <!-- Nav -->
+  <header class="nav" id="nav">
+    <a class="nav-brand" href="#top" data-scroll>AARAV&nbsp;AGRAWAL</a>
+    <nav class="nav-links" aria-label="Sections">
+      <a href="#profile" data-scroll>Profile</a>
+      <a href="#work" data-scroll>Work</a>
+      <a href="#stack" data-scroll>Stack</a>
+      <a href="#contact" data-scroll>Contact</a>
+    </nav>
+    <p class="nav-clock mono"><span class="nav-clock-dot"></span>PRAYAGRAJ&nbsp;<span id="navClock">--:--:--</span>&nbsp;IST</p>
+  </header>
+
+  <main id="top">
+
+    <!-- ============ HERO ============ -->
+    <section class="hero">
+      <div class="orb orb--hero" aria-hidden="true"></div>
+      <div class="container">
+        <div class="hero-meta">
+          <p class="hero-eyebrow mono">AARAV AGRAWAL — SOFTWARE BUILDER</p>
+          <p class="hero-coords mono">25.4358° N&nbsp;&nbsp;81.8463° E</p>
+        </div>
+        <h1 class="hero-title">
+          <span class="ht-line"><span class="ht-inner">Software<span class="accent">,</span></span></span>
+          <span class="ht-line"><span class="ht-inner">built by</span></span>
+          <span class="ht-line"><span class="ht-inner">hand<span class="accent">.</span></span></span>
+        </h1>
+        <div class="hero-foot">
+          <p class="hero-sub">
+            Fifteen years old. Class&nbsp;10 at MPVM, Prayagraj. I&rsquo;m a software
+            builder — web front-ends, Python tools and firmware, all written by hand.
+            No page builders.
+          </p>
+          <div class="hero-cta">
+            <a class="btn magnetic" href="#work" data-scroll><span class="btn-label">See the work</span><span class="btn-arrow">↓</span></a>
+            <a class="btn btn--ghost magnetic" href="https://github.com/agra-aarav15" target="_blank" rel="noopener"><span class="btn-label">GitHub</span><span class="btn-arrow">↗</span></a>
+          </div>
+        </div>
+      </div>
+      <div class="scroll-cue" aria-hidden="true">
+        <span class="mono">SCROLL</span>
+        <span class="scroll-cue-line"><span class="scroll-cue-dot"></span></span>
+      </div>
+    </section>
+
+    <!-- ============ MARQUEE ============ -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span class="marquee-chunk mono">REACT<i></i>TAILWIND CSS<i></i>PYTHON<i></i>C · ESP-IDF<i></i>PLATFORMIO<i></i>ESP32<i></i>LINUX<i></i>MYSQL<i></i>ORACLE CLOUD<i></i>CLOUDFLARE TUNNELS<i></i></span>
+        <span class="marquee-chunk mono">REACT<i></i>TAILWIND CSS<i></i>PYTHON<i></i>C · ESP-IDF<i></i>PLATFORMIO<i></i>ESP32<i></i>LINUX<i></i>MYSQL<i></i>ORACLE CLOUD<i></i>CLOUDFLARE TUNNELS<i></i></span>
+      </div>
+    </div>
+
+    <!-- ============ PROFILE ============ -->
+    <section class="section" id="profile">
+      <div class="container">
+        <header class="sec-head">
+          <span class="node" aria-hidden="true"><span class="node-dot"></span><span class="node-line"></span></span>
+          <p class="eyebrow mono">PROFILE</p>
+        </header>
+
+        <p class="statement" id="statement">
+          Class 10 by day, shipping by night — balancing
+          <em class="accent-em">board exams</em> with <em class="accent-em">pull requests</em>,
+          and choosing hand-written code over drag-and-drop, every time.
+        </p>
+
+        <div class="profile-grid">
+          <div class="profile-copy">
+            <p class="reveal-p">
+              I build software, and I don&rsquo;t much care where it runs — browsers,
+              servers, or a six-dollar chip. On the web, that means responsive Tailwind
+              layouts and React front-ends with an obsessive eye for type and motion.
+              Lower down the stack, it means Python utilities and C firmware — most
+              recently <strong>AeroLink</strong>, a Wi-Fi range extender that serves
+              its own glass dashboard.
+            </p>
+            <ul class="facts mono">
+              <li class="fact"><span>AGE</span><span>15</span></li>
+              <li class="fact"><span>BASE</span><span>PRAYAGRAJ, INDIA</span></li>
+              <li class="fact"><span>SCHOOL</span><span>MPVM · CLASS 10 CBSE</span></li>
+              <li class="fact"><span>LOCAL TIME</span><span id="factClock">--:--:-- IST</span></li>
+            </ul>
+          </div>
+
+          <figure class="device glass" id="device">
+            <svg viewBox="0 0 420 320" fill="none" xmlns="http://www.w3.org/2000/svg" aria-labelledby="deviceTitle" role="img">
+              <title id="deviceTitle">Line drawing of AeroLink, an ESP32 Wi-Fi range extender, broadcasting its signal</title>
+              <!-- board -->
+              <rect class="draw" x="52" y="34" width="316" height="236" rx="14" stroke="currentColor" stroke-width="1.5"/>
+              <!-- mounting holes -->
+              <circle class="draw" cx="72" cy="54" r="6" stroke="currentColor" stroke-width="1.2"/>
+              <circle class="draw" cx="348" cy="54" r="6" stroke="currentColor" stroke-width="1.2"/>
+              <circle class="draw" cx="72" cy="250" r="6" stroke="currentColor" stroke-width="1.2"/>
+              <circle class="draw" cx="348" cy="250" r="6" stroke="currentColor" stroke-width="1.2"/>
+              <!-- pin headers left -->
+              <path class="draw" d="M52 92h-12M52 108h-12M52 124h-12M52 140h-12M52 156h-12M52 172h-12M52 188h-12M52 204h-12" stroke="currentColor" stroke-width="1.2"/>
+              <!-- pin headers right -->
+              <path class="draw" d="M368 92h12M368 108h12M368 124h12M368 140h12M368 156h12M368 172h12M368 188h12M368 204h12" stroke="currentColor" stroke-width="1.2"/>
+              <!-- OLED module -->
+              <rect class="draw" x="110" y="66" width="200" height="84" rx="6" stroke="currentColor" stroke-width="1.5"/>
+              <rect class="oled-screen" x="120" y="76" width="180" height="64" rx="3"/>
+              <text class="oled-ap" x="210" y="103" text-anchor="middle">AEROLINK</text>
+              <text class="oled-ip" x="210" y="126" text-anchor="middle">192.168.4.1</text>
+              <!-- ESP32 module -->
+              <rect class="draw" x="148" y="188" width="88" height="58" rx="4" stroke="currentColor" stroke-width="1.5"/>
+              <text class="chip-label" x="192" y="222" text-anchor="middle">ESP32</text>
+              <!-- antenna -->
+              <path class="draw" d="M248 200h14l6 8-12 8 12 8-12 8 6 8h-14" stroke="currentColor" stroke-width="1.2"/>
+              <!-- traces from chip to OLED -->
+              <path class="draw trace" d="M170 188v-16h-24v-22" stroke="currentColor" stroke-width="1.2"/>
+              <path class="draw trace" d="M214 188v-24h50v-14" stroke="currentColor" stroke-width="1.2"/>
+              <!-- vias -->
+              <circle class="via" cx="146" cy="150" r="3.5"/>
+              <circle class="via" cx="264" cy="150" r="3.5"/>
+              <!-- signal waves from the antenna -->
+              <path class="wave wave1" d="M284 210 a18 18 0 0 1 0 36"/>
+              <path class="wave wave2" d="M284 198 a30 30 0 0 1 0 60"/>
+              <path class="wave wave3" d="M284 186 a42 42 0 0 1 0 84"/>
+            </svg>
+            <figcaption class="mono">AEROLINK — ESP32 WI-FI EXTENDER. JOIN THE AP, OPEN 192.168.4.1.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ WORK ============ -->
+    <section class="section section--dark" id="work">
+      <div class="container">
+        <header class="sec-head">
+          <span class="node" aria-hidden="true"><span class="node-dot"></span><span class="node-line"></span></span>
+          <p class="eyebrow mono">SELECTED WORK</p>
+        </header>
+
+        <div class="work-intro">
+          <h2 class="sec-title">
+            <span class="st-line"><span class="st-inner">Builds that</span></span>
+            <span class="st-line"><span class="st-inner">shipped<span class="accent">.</span></span></span>
+          </h2>
+          <p class="work-range mono">2025 — NOW</p>
+        </div>
+
+        <div class="work-list">
+          <a class="work-row" href="https://cfnkurties.in" target="_blank" rel="noopener">
+            <span class="work-year mono"><span class="work-via"></span>2025</span>
+            <span class="work-main">
+              <span class="work-title">cfnkurties.in</span>
+              <span class="work-desc">
+                Full visual and infrastructure overhaul for a live e-commerce store — UI rebuilt
+                in React + Tailwind, hosting migrated to Oracle Cloud, Apache proxy and UFW
+                hardened, payloads slimmed for mobile.
+              </span>
+              <span class="work-tags mono">REACT · TAILWIND · OCI · UBUNTU · MYSQL</span>
+            </span>
+            <span class="work-arrow" aria-hidden="true">↗</span>
+          </a>
+
+          <a class="work-row" href="https://github.com/agra-aarav15/AeroLink" target="_blank" rel="noopener">
+            <span class="work-year mono"><span class="work-via"></span>2025</span>
+            <span class="work-main">
+              <span class="work-title">AeroLink</span>
+              <span class="work-desc">
+                An ESP32 Wi-Fi range extender that replaces a ₹5,000 box with a ₹500 chip —
+                written in C on ESP-IDF, managed from a frosted-glass web dashboard it
+                serves itself. Network scanner, firewall ACLs, port forwarding, DHCP
+                reservations, OTA updates, Home Assistant over MQTT. Open source, MIT.
+              </span>
+              <span class="work-tags mono">C · ESP-IDF · FREERTOS · MQTT · GITHUB ACTIONS</span>
+            </span>
+            <span class="work-arrow" aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ STACK ============ -->
+    <section class="section" id="stack">
+      <div class="orb orb--stack" aria-hidden="true"></div>
+      <div class="container">
+        <header class="sec-head">
+          <span class="node" aria-hidden="true"><span class="node-dot"></span><span class="node-line"></span></span>
+          <p class="eyebrow mono">STACK</p>
+        </header>
+
+        <p class="stack-note">No percentage bars — nobody is 95% of a language. Here&rsquo;s what I use, with proof.</p>
+
+        <div class="stack-grid">
+          <ul class="skills">
+            <li class="skill">
+              <span class="skill-head"><span class="skill-name">C on ESP-IDF</span><span class="skill-proof mono">→ AEROLINK</span></span>
+              <span class="skill-desc">My deepest water right now — an HTTP server, DHCP, ACLs and OTA updates running on a microcontroller. Still learning it every day.</span>
+              <span class="skill-line"></span>
+            </li>
+            <li class="skill">
+              <span class="skill-head"><span class="skill-name">HTML / CSS / JavaScript</span><span class="skill-proof mono">→ THIS SITE</span></span>
+              <span class="skill-desc">Hand-written, no framework, no builder. The page you&rsquo;re scrolling is the portfolio piece.</span>
+              <span class="skill-line"></span>
+            </li>
+            <li class="skill">
+              <span class="skill-head"><span class="skill-name">React + Tailwind</span><span class="skill-proof mono">→ CFNKURTIES.IN</span></span>
+              <span class="skill-desc">Rebuilt a live storefront&rsquo;s UI and kept it selling while I did it.</span>
+              <span class="skill-line"></span>
+            </li>
+            <li class="skill">
+              <span class="skill-head"><span class="skill-name">Python</span><span class="skill-proof mono">→ DAILY UTILITIES</span></span>
+              <span class="skill-desc">Glue scripts, automation, quick tools — the duct tape of everything above.</span>
+              <span class="skill-line"></span>
+            </li>
+          </ul>
+
+          <div class="toolset">
+            <p class="toolset-label mono">ALSO IN THE TOOLBOX</p>
+            <ul class="chips">
+              <li class="chip">FreeRTOS</li>
+              <li class="chip">PlatformIO</li>
+              <li class="chip">esptool</li>
+              <li class="chip">MQTT</li>
+              <li class="chip">GitHub Actions</li>
+              <li class="chip">Cloudflared</li>
+              <li class="chip">Linux</li>
+              <li class="chip">MySQL</li>
+              <li class="chip">Oracle Cloud</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <footer class="section section--contact" id="contact">
+      <div class="orb orb--contact" aria-hidden="true"></div>
+      <div class="container">
+        <header class="sec-head">
+          <span class="node" aria-hidden="true"><span class="node-dot"></span><span class="node-line"></span></span>
+          <p class="eyebrow mono">CONTACT</p>
+        </header>
+
+        <h2 class="contact-title">
+          <span class="st-line"><span class="st-inner">Let&rsquo;s build</span></span>
+          <span class="st-line"><span class="st-inner">something<span class="accent">.</span></span></span>
+        </h2>
+
+        <div class="contact-row">
+          <a class="btn btn--big magnetic" href="mailto:aarya121411@gmail.com"><span class="btn-label">aarya121411@gmail.com</span><span class="btn-arrow">↗</span></a>
+          <div class="contact-socials">
+            <a class="social-link magnetic" href="https://github.com/agra-aarav15" target="_blank" rel="noopener">GitHub<span class="mono">↗</span></a>
+            <a class="social-link magnetic" href="https://www.linkedin.com/in/aarav-agrawal-86a3553bb/" target="_blank" rel="noopener">LinkedIn<span class="mono">↗</span></a>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p class="mono">© 2026 AARAV AGRAWAL</p>
+          <p class="mono">PRAYAGRAJ, INDIA — <span id="footClock">--:--:--</span> IST</p>
+          <p class="mono footer-note">DESIGNED &amp; HAND-CODED. NO PAGE BUILDERS.</p>
+          <button class="back-top mono" id="backTop" type="button">BACK TO TOP ↑</button>
+        </div>
+      </div>
+    </footer>
+
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
