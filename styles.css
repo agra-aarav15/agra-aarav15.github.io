@@ -54,7 +54,7 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-::selection {
+:selection {
   background: var(--blue);
   color: var(--porcelain);
 }
@@ -446,7 +446,6 @@ footer {
   will-change: transform;
 }
 
-/* letters created by app.js for the fine-grained hero reveal */
 .char {
   display: inline-block;
   will-change: transform;
@@ -473,95 +472,126 @@ footer {
   flex-wrap: wrap;
 }
 
-/* ---------- Buttons ---------- */
+/* ============================================================
+   BUTTONS — APPLE HYPER-GLASS OVERHAUL
+   ============================================================ */
+
 .btn {
   position: relative;
   display: inline-flex;
   align-items: center;
   gap: 12px;
-  padding: 15px 26px;
-  border: 1px solid var(--ink);
+  padding: 15px 28px;
   border-radius: 999px;
-  background: var(--ink);
-  color: var(--porcelain);
+  
+  /* Core Glassmorphism Engine */
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.32), rgba(255, 255, 255, 0.12));
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(24px) saturate(190%);
+  -webkit-backdrop-filter: blur(24px) saturate(190%);
+  
+  /* Typography */
+  color: var(--ink);
   font-weight: 500;
   font-size: 0.95rem;
+  letter-spacing: -0.01em;
+  
+  /* Micro Specular Light Insets (The Apple Bevel Effect) */
+  box-shadow: 
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.6),
+    inset 0 -1px 1px 0 rgba(0, 0, 0, 0.04),
+    0 1px 2px 0 rgba(23, 24, 28, 0.04),
+    0 12px 32px -12px rgba(23, 24, 28, 0.12);
+    
   overflow: hidden;
-  transition: color 0.4s cubic-bezier(0.65, 0, 0.35, 1);
   isolation: isolate;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16),
-    0 16px 36px -18px rgba(23, 24, 28, 0.5);
+  
+  /* Transitions (Excluding transforms to keep GSAP magnetic physics silky smooth) */
+  transition: 
+    background 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+    border-color 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+    box-shadow 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+    color 0.4s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-.btn::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: var(--blue);
-  transform: translateY(101%);
-  transition: transform 0.45s cubic-bezier(0.65, 0, 0.35, 1);
-  z-index: -1;
-  border-radius: inherit;
+/* Glass Interactive Hover State */
+.btn:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.48), rgba(255, 255, 255, 0.22));
+  border-color: rgba(255, 255, 255, 0.65);
+  box-shadow: 
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.75),
+    inset 0 -1px 1px 0 rgba(0, 0, 0, 0.04),
+    0 2px 4px 0 rgba(23, 24, 28, 0.04),
+    0 20px 40px -14px var(--blue-dim); /* Pulls environmental light from blue accent */
 }
 
-.btn:hover::before {
-  transform: translateY(0);
+.btn:active {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.08));
 }
 
-/* glass sheen that sweeps across on hover */
+/* Reflective Sheet Light Sweep */
 .btn::after {
   content: "";
   position: absolute;
-  top: -20%;
-  bottom: -20%;
-  left: -75%;
-  width: 55%;
+  top: -50%;
+  bottom: -50%;
+  left: -110%;
+  width: 60%;
   background: linear-gradient(
-    105deg,
-    transparent 20%,
-    rgba(255, 255, 255, 0.32) 50%,
-    transparent 80%
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.45) 50%,
+    transparent 100%
   );
-  transform: skewX(-20deg);
-  transition: left 0.7s cubic-bezier(0.65, 0, 0.35, 1);
+  transform: skewX(-25deg);
+  transition: left 0.75s cubic-bezier(0.25, 1, 0.5, 1);
   z-index: -1;
   pointer-events: none;
 }
 
 .btn:hover::after {
-  left: 125%;
+  left: 160%;
 }
 
+/* Adaptive Dark Context (For #work dark section) */
+.section--dark .btn {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.03));
+  border-color: rgba(255, 255, 255, 0.16);
+  color: var(--porcelain);
+  box-shadow: 
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.22),
+    inset 0 -1px 0 0 rgba(0, 0, 0, 0.3),
+    0 12px 32px -12px rgba(0, 0, 0, 0.35);
+}
+
+.section--dark .btn:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.06));
+  border-color: rgba(255, 255, 255, 0.28);
+  box-shadow: 
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.32),
+    inset 0 -1px 0 0 rgba(0, 0, 0, 0.3),
+    0 20px 40px -14px rgba(43, 63, 214, 0.35);
+}
+
+/* Secondary Ghost Variant Adaptation */
 .btn--ghost {
-  background: rgba(255, 255, 255, 0.4);
-  color: var(--ink);
-  border-color: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7),
-    0 14px 34px -20px rgba(23, 24, 28, 0.35);
+  background: transparent;
+  border-color: rgba(23, 24, 28, 0.15);
+  box-shadow: none;
 }
 
 .btn--ghost:hover {
-  color: var(--porcelain);
+  color: var(--ink);
 }
 
-.btn--big {
-  padding: 20px 34px;
-  font-size: clamp(1rem, 2.2vw, 1.25rem);
+.section--dark .btn--ghost {
+  background: transparent;
+  border-color: rgba(244, 244, 241, 0.18);
+  box-shadow: none;
 }
 
-.btn-arrow {
-  display: inline-block;
-  transition: transform 0.35s cubic-bezier(0.65, 0, 0.35, 1);
-}
-
-.btn:hover .btn-arrow {
-  transform: translate(3px, -3px);
-}
-
-.btn[href="#work"]:hover .btn-arrow {
-  transform: translateY(4px);
+.section--dark .btn--ghost:hover {
+  color: #fff;
 }
 
 /* ---------- Scroll cue ---------- */
