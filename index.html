@@ -4,14 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Aarav Agrawal — Software, built by hand</title>
-<meta name="description" content="Aarav Agrawal is a 15-year-old software builder in Prayagraj, India. Web front-ends, Python tools and firmware, written by hand.">
+<meta name="description" content="Aarav Agrawal is a 15-year-old software builder in Prayagraj, India — web apps, AI tools, firmware and a personal cloud, written by hand. No page builders.">
 <meta name="theme-color" content="#000000">
 <meta name="color-scheme" content="dark light">
 <link rel="canonical" href="https://agra-aarav15.github.io/">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://agra-aarav15.github.io/">
 <meta property="og:title" content="Aarav Agrawal — Software, built by hand">
-<meta property="og:description" content="Web front-ends, Python tools and firmware, written by hand. No page builders.">
+<meta property="og:description" content="Web apps, AI tools, firmware and a personal cloud — written by hand. No page builders.">
 <meta name="twitter:card" content="summary">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%23000'/%3E%3Cpath d='M18 47 32 16l14 31M24 37h16' fill='none' stroke='%23fff' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -83,9 +83,9 @@ main{position:relative;z-index:1}
   -webkit-mask-image:radial-gradient(125% 95% at 50% 38%,#000 32%,transparent 90%);
   mask-image:radial-gradient(125% 95% at 50% 38%,#000 32%,transparent 90%)}
 .orb{position:absolute;border-radius:50%;background:radial-gradient(circle,var(--orb),transparent 62%);will-change:transform}
-.o1{width:70vmax;height:70vmax;left:-24vmax;top:-30vmax;animation:d1 30s ease-in-out infinite alternate}
-.o2{width:56vmax;height:56vmax;right:-22vmax;top:18vh;animation:d2 36s ease-in-out infinite alternate}
-.o3{width:64vmax;height:64vmax;left:20vw;bottom:-44vmax;animation:d3 42s ease-in-out infinite alternate}
+.o1{width:60vmax;height:60vmax;left:-24vmax;top:-30vmax;animation:d1 30s ease-in-out infinite alternate}
+.o2{width:48vmax;height:48vmax;right:-22vmax;top:18vh;animation:d2 36s ease-in-out infinite alternate}
+.o3{width:54vmax;height:54vmax;left:20vw;bottom:-44vmax;animation:d3 42s ease-in-out infinite alternate}
 @keyframes d1{to{transform:translate3d(18vmax,12vmax,0) scale(1.12)}}
 @keyframes d2{to{transform:translate3d(-14vmax,-10vmax,0) scale(.9)}}
 @keyframes d3{to{transform:translate3d(-16vmax,-8vmax,0) scale(1.1)}}
@@ -110,7 +110,7 @@ main{position:relative;z-index:1}
    ===================================================================== */
 .glass{position:relative;isolation:isolate;border-radius:var(--r,28px);
   background:linear-gradient(150deg,var(--glass-a),var(--glass-b) 70%);
-  -webkit-backdrop-filter:blur(24px) saturate(160%);backdrop-filter:blur(24px) saturate(160%);
+  -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
   box-shadow:inset 0 1px 0 var(--glass-hi),inset 0 0 0 1px var(--line),var(--shadow);
   transition:transform .35s var(--ease),box-shadow .5s}
 .glass::before,.glass::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .45s}
@@ -163,7 +163,7 @@ main{position:relative;z-index:1}
    NAV
    ===================================================================== */
 .nav{position:fixed;top:max(14px,env(safe-area-inset-top));left:0;right:0;z-index:50;display:flex;justify-content:center;pointer-events:none;padding:0 14px}
-.nav__pill{pointer-events:auto;display:flex;align-items:center;gap:6px;padding:6px;--r:999px;background-color:var(--nav-tint)}
+.nav__pill{pointer-events:auto;display:flex;align-items:center;gap:6px;padding:6px;--r:999px;background-color:var(--nav-tint);-webkit-backdrop-filter:blur(16px) saturate(140%);backdrop-filter:blur(16px) saturate(140%)}
 .nav__logo{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:var(--fg);color:var(--bg);font-weight:700;letter-spacing:-.05em;transition:transform .5s var(--ease)}
 .nav__links{position:relative}
 .nav__links ul{display:flex}
@@ -205,7 +205,7 @@ main{position:relative;z-index:1}
 .btn:hover svg{transform:translate(2px,-2px)}
 .btn--solid{background:var(--fg);color:var(--bg)}
 .btn--solid:hover,.btn--solid:focus-visible{color:var(--fg);box-shadow:0 0 0 1px var(--fg)}
-.btn--glass{--fill:var(--fg);color:var(--fg);background:linear-gradient(150deg,var(--glass-a),var(--glass-b));-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);box-shadow:inset 0 1px 0 var(--glass-hi),inset 0 0 0 1px var(--line-strong)}
+.btn--glass{--fill:var(--fg);color:var(--fg);background:linear-gradient(150deg,var(--glass-a),var(--glass-b));-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);box-shadow:inset 0 1px 0 var(--glass-hi),inset 0 0 0 1px var(--line-strong)}
 .btn--glass:hover,.btn--glass:focus-visible{color:var(--bg)}
 .btn--lg{padding:1.15em 1.9em;font-size:clamp(1rem,1.6vw,1.25rem)}
 .btn--down:hover svg{transform:translateY(3px)}
@@ -244,8 +244,7 @@ main{position:relative;z-index:1}
 .sphere{position:absolute;z-index:1;top:clamp(84px,13vh,140px);right:max(var(--pad),2vw);width:clamp(210px,50vmin,540px);aspect-ratio:1;pointer-events:none;will-change:transform,opacity}
 .sphere::before{content:"";position:absolute;inset:3%;border-radius:50%;
   background:radial-gradient(circle at 32% 24%,var(--glass-a),var(--glass-b) 55%,transparent 72%);
-  box-shadow:inset 0 1px 0 var(--glass-hi),inset 0 0 0 1px var(--line);
-  -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+  box-shadow:inset 0 1px 0 var(--glass-hi),inset 0 0 0 1px var(--line)}
 .sphere::after{content:"";position:absolute;left:20%;top:11%;width:30%;height:15%;border-radius:50%;transform:rotate(-28deg);
   background:radial-gradient(closest-side,var(--glass-hi),transparent);opacity:.55;filter:blur(6px)}
 .sphere canvas{position:absolute;inset:0;width:100%;height:100%}
@@ -287,32 +286,10 @@ h2{font-size:clamp(2.7rem,7.2vw,6.4rem);font-weight:300;line-height:.98;letter-s
 .link svg{width:1em;height:1em;transition:transform .5s var(--ease)}
 .link:hover svg{transform:translate(3px,-3px)}
 
-.viz{position:relative;width:min(100%,380px);height:auto;color:var(--fg);overflow:visible}
-.ring{transform-box:fill-box;transform-origin:center;animation:ping 5.2s cubic-bezier(.2,.55,.3,1) infinite;opacity:0}
-.ring:nth-child(2){animation-delay:1.3s}.ring:nth-child(3){animation-delay:2.6s}.ring:nth-child(4){animation-delay:3.9s}
-@keyframes ping{0%{transform:scale(.55);opacity:0}12%{opacity:.8}100%{transform:scale(3.3);opacity:0}}
-.chipcore{transform-box:fill-box;transform-origin:center;animation:breathe 3.4s ease-in-out infinite}
-@keyframes breathe{50%{transform:scale(1.045)}}
 
-.mock{position:relative;width:min(92%,400px);border-radius:18px;overflow:hidden;background:linear-gradient(160deg,var(--glass-a),var(--glass-b));box-shadow:inset 0 0 0 1px var(--line-strong),0 36px 70px -34px rgba(0,0,0,.7);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
-.mock__bar{display:flex;align-items:center;gap:6px;padding:11px 14px;border-bottom:1px solid var(--line)}
-.mock__bar i{width:8px;height:8px;border-radius:50%;background:var(--line-strong)}
-.mock__bar span{margin-left:10px;flex:1;padding:4px 12px;border-radius:999px;background:var(--glass-a);font-size:.74rem;color:var(--fg-2)}
-.mock__body{position:relative;display:grid;gap:10px;padding:14px}
 .sk{position:relative;overflow:hidden;border-radius:12px;background:var(--glass-a)}
 .sk::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,transparent 30%,var(--shimmer) 50%,transparent 70%);transform:translateX(-100%);animation:shimmer 2.4s infinite}
 @keyframes shimmer{to{transform:translateX(100%)}}
-.mock__hero{height:104px}
-.mock__row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-.mock__tile{aspect-ratio:1}
-.mock__tile:nth-child(1){animation:pick 6s infinite}
-.mock__tile:nth-child(2){animation:pick 6s 2s infinite}
-.mock__tile:nth-child(3){animation:pick 6s 4s infinite}
-@keyframes pick{0%,30%{box-shadow:inset 0 0 0 1.5px var(--fg)}38%,100%{box-shadow:inset 0 0 0 1.5px transparent}}
-.mock__line{height:12px;border-radius:6px}
-.mock__line:last-child{width:62%}
-.mock__cursor{position:absolute;left:18%;top:64%;width:20px;height:20px;color:var(--fg);filter:drop-shadow(0 2px 4px rgba(0,0,0,.5));animation:wander 6s var(--ease-io) infinite}
-@keyframes wander{0%,30%{left:18%}36%,63%{left:50%}69%,97%{left:82%}100%{left:18%}}
 
 /* PROJECTS */
 .toolbar{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px 24px}
@@ -320,7 +297,7 @@ h2{font-size:clamp(2.7rem,7.2vw,6.4rem);font-weight:300;line-height:.98;letter-s
 .sync{display:inline-flex;align-items:center;gap:10px;padding:6px 6px 6px 16px;border-radius:999px;font-size:.88rem;color:var(--fg-2);box-shadow:inset 0 0 0 1px var(--line);max-width:100%}
 .sync span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .sync__dot{width:7px;height:7px;border-radius:50%;background:var(--fg);animation:blink 2.4s ease-in-out infinite}
-.sync[data-state="snapshot"] .sync__dot,.sync[data-state="stale"] .sync__dot{animation:none;background:transparent;box-shadow:inset 0 0 0 1.5px var(--fg-3)}
+.sync[data-state="snapshot"] .sync__dot,.sync[data-state="stale"] .sync__dot,.sync[data-state="rate"] .sync__dot{animation:none;background:transparent;box-shadow:inset 0 0 0 1.5px var(--fg-3)}
 @keyframes blink{50%{opacity:.25}}
 .sync__btn{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;color:var(--fg);transition:background-color .3s}
 .sync__btn:hover{background:var(--glass-a)}
@@ -388,6 +365,228 @@ h2{font-size:clamp(2.7rem,7.2vw,6.4rem);font-weight:300;line-height:.98;letter-s
 .contact__links{display:flex;flex-wrap:wrap;gap:12px;margin-top:12px}
 .foot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px 28px;margin-top:clamp(72px,12vw,150px);padding:28px 0 max(28px,env(safe-area-inset-bottom));color:var(--fg-2);font-size:.9rem;box-shadow:0 -1px 0 var(--line)}
 .foot a{color:var(--fg)}
+
+/* =====================================================================
+   ADDED — nav clock + palette chip
+   ===================================================================== */
+.nav__clock{display:flex;align-items:center;gap:8px;padding:0 8px 0 12px;font-size:.84rem;color:var(--fg-2);font-variant-numeric:tabular-nums;white-space:nowrap;letter-spacing:.01em}
+.nav__clock i{width:5px;height:5px;border-radius:50%;background:var(--fg);animation:blink 2.4s ease-in-out infinite}
+.nav__k{width:auto;height:40px;display:flex;align-items:center;justify-content:center;gap:8px;padding:0 13px;border-radius:999px}
+.nav__k svg{position:static;width:15px;height:15px;flex:none}
+.nav__k kbd{font:inherit;font-size:.76rem;color:var(--fg-2);padding:2px 7px;border-radius:7px;box-shadow:inset 0 0 0 1px var(--line-strong);transition:color .3s}
+.nav__k:hover kbd{color:var(--fg)}
+@media (max-width:900px){.nav__clock{display:none}}
+@media (max-width:760px){.nav__k kbd{display:none}.nav__k{width:40px;padding:0}}
+
+/* =====================================================================
+   ADDED — marquee band
+   ===================================================================== */
+.band{position:relative;overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:17px 0}
+.band__track{display:flex;width:max-content;animation:band 52s linear infinite}
+.band:hover .band__track{animation-play-state:paused}
+.band__track span{display:inline-flex;align-items:center;font-size:clamp(.95rem,1.4vw,1.15rem);font-weight:450;letter-spacing:-.01em;color:var(--fg-2);white-space:nowrap;padding:0 1.9em 0 0}
+.band__track span::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--fg-3);margin-right:1.9em;flex:none}
+@keyframes band{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion: reduce){
+  .band__track,.roller__track,.orb,.live__dot::after,.pcard__led{animation:none}
+  .sk::after{animation:none}
+}
+
+/* =====================================================================
+   ADDED — photo frames (features, archive, profile)
+   ===================================================================== */
+.shot{position:relative;width:min(94%,430px);border-radius:18px;overflow:hidden;background:linear-gradient(160deg,var(--glass-a),var(--glass-b));box-shadow:inset 0 0 0 1px var(--line-strong),0 36px 70px -34px rgba(0,0,0,.7)}
+.shot__bar{display:flex;align-items:center;gap:6px;padding:11px 14px;border-bottom:1px solid var(--line)}
+.shot__bar i{width:8px;height:8px;border-radius:50%;background:var(--line-strong)}
+.shot__bar span{margin-left:10px;flex:1;min-width:0;padding:4px 12px;border-radius:999px;background:var(--glass-a);font-size:.74rem;color:var(--fg-2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.shot__img{position:relative;display:block;aspect-ratio:4/3.15;overflow:hidden}
+.art{position:absolute;inset:0;display:block;background:radial-gradient(120% 130% at 16% 10%,var(--glass-a),transparent 60%),linear-gradient(160deg,var(--glass-a),var(--glass-b));color:var(--fg);transition:transform 1.4s var(--ease)}
+.art svg{width:100%;height:100%;display:block}
+.feature:hover .shot__img .art{transform:scale(1.055)}
+.shot__img img{position:absolute;inset:0;z-index:1;width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.06) brightness(.93);transition:transform 1.4s var(--ease),filter .8s}
+.feature:hover .shot__img img{transform:scale(1.075);filter:grayscale(1) contrast(1.1) brightness(1)}
+.shot__img .art{z-index:0}
+.shot__img::after{content:"";position:absolute;inset:0;z-index:2;background:linear-gradient(180deg,transparent 58%,rgba(0,0,0,.34));pointer-events:none}
+:root[data-theme="light"] .shot__img::after{background:linear-gradient(180deg,transparent 58%,rgba(255,255,255,.28))}
+.feature__acts{display:flex;align-items:center;gap:clamp(16px,3vw,30px);flex-wrap:wrap}
+
+/* archive strip */
+.more{margin-top:clamp(56px,9vw,110px)}
+.more__head{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px 24px;margin-bottom:22px}
+.more__head h3{font-size:clamp(1.5rem,2.6vw,2.2rem);font-weight:350;letter-spacing:-.035em}
+.more__grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.mini{--r:24px;display:flex;flex-direction:column;overflow:hidden;text-align:left;padding:0}
+.mini__img{position:relative;display:block;aspect-ratio:4/2.9;overflow:hidden}
+.mini__img img{position:absolute;inset:0;z-index:1;width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.05) brightness(.88);transition:transform 1.2s var(--ease),filter .7s}
+.mini:hover .mini__img img{transform:scale(1.07);filter:grayscale(1) contrast(1.1) brightness(1)}
+.mini:hover .mini__img .art{transform:scale(1.065)}
+.mini__img .art{z-index:0}
+.mini__img::after{content:"";position:absolute;inset:0;z-index:2;background:linear-gradient(180deg,rgba(0,0,0,.02),rgba(0,0,0,.35));pointer-events:none}
+.mini__tag{position:absolute;left:13px;top:13px;z-index:3;padding:.32em .85em;border-radius:999px;font-size:.73rem;font-weight:600;letter-spacing:.02em;background:rgba(0,0,0,.42);color:#fff;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);box-shadow:inset 0 0 0 1px rgba(255,255,255,.22)}
+.mini__body{display:grid;gap:6px;padding:16px 18px 19px}
+.mini__name{font-size:1.12rem;font-weight:550;letter-spacing:-.02em}
+.mini__line{font-size:.87rem;color:var(--fg-2)}
+.mini__case{margin-top:5px;display:inline-flex;align-items:center;gap:.45em;width:max-content;font-size:.85rem;font-weight:550;padding-bottom:2px;background:linear-gradient(currentColor,currentColor) 0 100%/100% 1px no-repeat;transition:background-size .45s var(--ease)}
+.mini__case:hover{background-size:0 1px;background-position:100% 100%}
+.mini__case svg{width:1em;height:1em;transition:transform .45s var(--ease)}
+.mini__case:hover svg{transform:translateX(3px)}
+
+/* profile photo */
+.profile__card{grid-column:1/-1;--r:30px;position:relative;overflow:hidden;margin-top:clamp(10px,2vw,22px);padding:clamp(22px,3vw,34px);display:grid;gap:clamp(16px,2.4vw,24px)}
+.pcard__ghost{position:absolute;right:clamp(-10px,0vw,6px);bottom:-.26em;font-size:clamp(6.4rem,17vw,13rem);font-weight:700;letter-spacing:-.08em;line-height:.8;color:transparent;background:linear-gradient(160deg,var(--fg),transparent 80%);-webkit-background-clip:text;background-clip:text;opacity:.075;pointer-events:none;user-select:none}
+.pcard__who{position:relative;display:flex;align-items:center;gap:14px}
+.pcard__who img{width:52px;height:52px;flex:none;border-radius:50%;object-fit:cover;filter:grayscale(1) contrast(1.08);box-shadow:0 0 0 1px var(--line-strong)}
+.pcard__id{display:grid;gap:2px;min-width:0}
+.pcard__id b{font-weight:600;letter-spacing:-.01em;font-size:1.06rem}
+.pcard__id span{font-size:.86rem;color:var(--fg-2)}
+.pcard__led{margin-left:auto;flex:none;width:9px;height:9px;border-radius:50%;background:var(--fg);box-shadow:0 0 0 4px var(--glass-a);animation:blink 2.6s ease infinite}
+.pcard__rows{position:relative;display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:0 28px}
+.pcard__rows li{display:grid;gap:4px;padding:12px 0;box-shadow:0 1px 0 var(--line)}
+.pcard__rows li span{font-size:.75rem;letter-spacing:.09em;text-transform:uppercase;color:var(--fg-3)}
+.pcard__rows li b{font-weight:550;letter-spacing:-.01em;font-size:.98rem}
+.pcard__chips{position:relative;display:flex;flex-wrap:wrap;gap:8px}
+.pcard__chips span{padding:.4em 1.05em;border-radius:999px;font-size:.8rem;color:var(--fg-2);box-shadow:inset 0 0 0 1px var(--line-strong)}
+.pcard__foot{position:relative;font-size:.95rem}
+
+/* repo card case chip */
+.repo__case{position:relative;z-index:2;display:inline-flex;align-items:center;gap:.4em;padding:.42em .95em;border-radius:999px;font-size:.81rem;font-weight:550;color:var(--fg);box-shadow:inset 0 0 0 1px var(--line-strong);background:var(--glass-a);transition:background-color .35s,color .35s,box-shadow .35s}
+.repo__case:hover{background:var(--fg);color:var(--bg);box-shadow:none}
+.repo__case svg{width:1em;height:1em}
+.repo__meta .repo__case{margin-right:4px}
+
+/* =====================================================================
+   ADDED — GitHub activity + language mix band
+   ===================================================================== */
+.gx{display:grid;grid-template-columns:1.05fr .95fr;gap:16px;margin-top:16px}
+.gx__panel{--r:26px;padding:clamp(20px,2.4vw,28px);display:grid;gap:14px;align-content:start}
+.gx__h{display:flex;align-items:center;justify-content:space-between;gap:14px}
+.gx__h h3{font-size:1.06rem;font-weight:600;letter-spacing:-.015em}
+.gx__h span{font-size:.82rem;color:var(--fg-3)}
+.gx__list{display:grid;gap:0}
+.gx__row{display:flex;align-items:center;gap:12px;padding:9.5px 0;box-shadow:0 1px 0 var(--line);font-size:.92rem;min-width:0}
+.gx__row:last-child{box-shadow:none}
+.gx__row i{width:7px;height:7px;border-radius:50%;background:var(--fg);flex:none}
+.gx__row a{font-weight:550;letter-spacing:-.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.gx__row a:hover{text-decoration:underline;text-underline-offset:3px}
+.gx__row em{font-style:normal;color:var(--fg-2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}
+.gx__row time{margin-left:auto;color:var(--fg-3);font-size:.84rem;white-space:nowrap;padding-left:10px}
+.gx__bars{display:grid;gap:12px}
+.gx__bar{display:grid;grid-template-columns:minmax(86px,auto) 1fr auto;gap:12px;align-items:center;font-size:.9rem}
+.gx__bar b{font-weight:550;letter-spacing:-.01em}
+.gx__bar .t{height:6px;border-radius:4px;background:var(--glass-a);overflow:hidden}
+.gx__bar .t i{display:block;height:100%;border-radius:inherit;background:var(--fg);opacity:var(--o,1);transform-origin:0 50%;transform:scaleX(0);transition:transform 1.1s var(--ease)}
+.gx.in .gx__bar .t i{transform:scaleX(var(--w,0))}
+.gx__bar>span:last-child{color:var(--fg-3);font-size:.83rem;font-variant-numeric:tabular-nums}
+
+/* =====================================================================
+   ADDED — case study modal
+   ===================================================================== */
+html.is-lock{overflow:hidden}
+.modal{position:fixed;inset:0;z-index:160;display:grid;place-items:center;padding:clamp(10px,3vw,40px);visibility:hidden;pointer-events:none}
+.modal.is-open{visibility:visible;pointer-events:auto}
+.modal__back{position:absolute;inset:0;background:rgba(0,0,0,.62);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);opacity:0;transition:opacity .4s}
+:root[data-theme="light"] .modal__back{background:rgba(255,255,255,.6)}
+.modal.is-open .modal__back{opacity:1}
+.modal__panel{position:relative;width:min(940px,100%);max-height:min(88vh,920px);--r:30px;display:flex;flex-direction:column;overflow:hidden;opacity:0;transform:translateY(26px) scale(.985);transition:opacity .5s var(--ease),transform .6s var(--ease)}
+.modal.is-open .modal__panel{opacity:1;transform:none}
+.modal__x{position:absolute;right:13px;top:13px;z-index:5;display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:rgba(0,0,0,.4);color:#fff;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);box-shadow:inset 0 0 0 1px rgba(255,255,255,.25);transition:transform .5s var(--ease),background-color .3s}
+.modal__x:hover{transform:rotate(90deg);background:rgba(0,0,0,.62)}
+.modal__x svg{width:16px;height:16px}
+.modal__scroll{overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin}
+.case__hero{position:relative;aspect-ratio:16/6.2;overflow:hidden;background:var(--glass-a)}
+.case__hero img{position:absolute;inset:0;z-index:1;width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.06) brightness(.9)}
+.case__hero .art{z-index:0}
+.case__hero::after{content:"";position:absolute;inset:0;z-index:2;background:linear-gradient(180deg,rgba(0,0,0,.06) 40%,rgba(0,0,0,.64))}
+.case__head{position:relative;z-index:2;margin-top:clamp(-92px,-9vw,-58px);padding:0 clamp(20px,3.4vw,44px);color:#fff}
+.case__title{font-size:clamp(1.9rem,4.6vw,3rem);font-weight:350;letter-spacing:-.04em;line-height:1.02}
+.case__tag{margin-top:8px;font-size:clamp(.98rem,1.4vw,1.12rem);color:rgba(255,255,255,.82);letter-spacing:-.01em}
+.case__meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.case__meta span{padding:.34em .85em;border-radius:999px;font-size:.77rem;font-weight:550;background:rgba(255,255,255,.14);color:#fff;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);box-shadow:inset 0 0 0 1px rgba(255,255,255,.22)}
+.case__head--flat{margin-top:0;padding:clamp(24px,4vw,44px) clamp(20px,3.4vw,44px) 0;color:var(--fg)}
+.case__head--flat .case__tag{color:var(--fg-2)}
+.case__head--flat .case__meta span{background:var(--glass-a);color:var(--fg);box-shadow:inset 0 0 0 1px var(--line);-webkit-backdrop-filter:none;backdrop-filter:none}
+.case__body{padding:clamp(22px,3.4vw,44px);display:grid;gap:clamp(20px,3vw,32px)}
+.case__tabs{display:flex;gap:6px;border-bottom:1px solid var(--line);margin-top:2px}
+.case__tab{position:relative;padding:.62em 1.05em;font-size:.92rem;font-weight:550;color:var(--fg-2);transition:color .3s}
+.case__tab:hover{color:var(--fg)}
+.case__tab[aria-selected="true"]{color:var(--fg)}
+.case__tab[aria-selected="true"]::after{content:"";position:absolute;left:14%;right:14%;bottom:-1px;height:2px;background:var(--fg)}
+.case__grid{display:grid;grid-template-columns:1.12fr .88fr;gap:clamp(24px,4vw,54px);align-items:start}
+.case__col{display:grid;gap:clamp(22px,3vw,32px)}
+.case__story{display:grid;gap:1em;color:var(--fg-2);max-width:60ch}
+.case__story p{margin:0}
+.case__story strong{color:var(--fg)}
+.case__relhead{display:flex;align-items:baseline;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:10px}
+.case__relhead h4{margin:0;font-size:1.04rem;font-weight:600;letter-spacing:-.015em}
+.case__relhead span,a.case__all{font-size:.84rem;color:var(--fg-3)}
+a.case__all{color:var(--fg-2)}
+a.case__all:hover{color:var(--fg)}
+.case__hl{display:grid;gap:0}
+.case__hl li{display:flex;gap:12px;padding:11px 0;box-shadow:0 1px 0 var(--line);font-size:.94rem;align-items:flex-start}
+.case__hl li:last-child{box-shadow:none}
+.case__hl svg{width:15px;height:15px;flex:none;margin-top:.3em;opacity:.85}
+.case__spec{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:0}
+.case__spec div{padding:13px 16px;border-radius:16px;background:var(--glass-a);box-shadow:inset 0 0 0 1px var(--line);min-width:0}
+.case__spec dt{font-size:.72rem;letter-spacing:.07em;text-transform:uppercase;color:var(--fg-3);margin-bottom:4px}
+.case__spec dd{margin:0;font-weight:550;letter-spacing:-.01em;font-size:.94rem;overflow-wrap:anywhere}
+.case__stack{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.case__stack li{padding:.38em .9em;border-radius:999px;font-size:.83rem;color:var(--fg-2);box-shadow:inset 0 0 0 1px var(--line)}
+.case__rel{display:grid;gap:10px}
+.case__relrow{display:flex;align-items:center;gap:14px;padding:12px 14px 12px 16px;border-radius:16px;background:var(--glass-a);box-shadow:inset 0 0 0 1px var(--line);min-width:0}
+.case__relrow>svg{width:18px;height:18px;flex:none;opacity:.85}
+.case__relrow div{min-width:0;display:grid;line-height:1.35}
+.case__relrow b{font-weight:550;font-size:.93rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.case__relrow span{font-size:.8rem;color:var(--fg-3)}
+.case__relrow a{margin-left:auto;flex:none;display:grid;place-items:center;width:34px;height:34px;border-radius:50%;box-shadow:inset 0 0 0 1px var(--line-strong);transition:background-color .35s,color .35s,transform .5s var(--ease)}
+.case__relrow a:hover{background:var(--fg);color:var(--bg);transform:translateY(-2px)}
+.case__relrow a svg{width:14px;height:14px;opacity:1}
+.case__clone{display:flex;align-items:center;gap:10px;padding:11px 11px 11px 16px;border-radius:16px;background:var(--glass-a);box-shadow:inset 0 0 0 1px var(--line);font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.85rem;min-width:0}
+.case__clone code{flex:1;min-width:0;overflow-x:auto;white-space:nowrap;color:var(--fg-2);scrollbar-width:none}
+.case__clone button{flex:none;padding:.5em 1.05em;border-radius:999px;font-size:.8rem;font-weight:600;background:var(--fg);color:var(--bg);transition:transform .4s var(--ease)}
+.case__clone button:hover{transform:translateY(-1px)}
+.case__note{font-size:.82rem;color:var(--fg-3)}
+.case__cta{display:flex;flex-wrap:wrap;gap:12px;padding-top:clamp(18px,3vw,26px);border-top:1px solid var(--line)}
+
+/* =====================================================================
+   ADDED — command palette
+   ===================================================================== */
+.palette{position:fixed;inset:0;z-index:170;display:grid;place-items:start center;padding:clamp(14px,9vh,110px) clamp(12px,3vw,40px) clamp(12px,3vw,40px);visibility:hidden;pointer-events:none}
+.palette.is-open{visibility:visible;pointer-events:auto}
+.palette__back{position:absolute;inset:0;background:rgba(0,0,0,.55);-webkit-backdrop-filter:blur(9px);backdrop-filter:blur(9px);opacity:0;transition:opacity .35s}
+:root[data-theme="light"] .palette__back{background:rgba(255,255,255,.5)}
+.palette.is-open .palette__back{opacity:1}
+.palette__panel{position:relative;width:min(620px,100%);--r:26px;display:flex;flex-direction:column;max-height:min(72vh,620px);overflow:hidden;opacity:0;transform:translateY(-14px) scale(.99);transition:opacity .4s var(--ease),transform .5s var(--ease)}
+.palette.is-open .palette__panel{opacity:1;transform:none}
+.palette__in{display:flex;align-items:center;gap:12px;padding:16px 18px;border-bottom:1px solid var(--line)}
+.palette__in svg{width:17px;height:17px;flex:none;opacity:.6}
+.palette__in input{flex:1;min-width:0;background:none;border:0;outline:none;font:inherit;font-size:1.03rem;color:var(--fg)}
+.palette__in input::placeholder{color:var(--fg-3)}
+.palette__esc{flex:none;font-size:.74rem;color:var(--fg-3);padding:3px 8px;border-radius:7px;box-shadow:inset 0 0 0 1px var(--line-strong)}
+.palette__list{overflow-y:auto;padding:8px;margin:0;display:grid;gap:2px;scrollbar-width:thin}
+.palette__list li{display:block}
+.palette__list li button{width:100%;display:flex;align-items:center;gap:13px;padding:10px 13px;border-radius:14px;text-align:left;transition:background-color .2s,box-shadow .2s}
+.palette__list li button[aria-selected="true"]{background:var(--glass-a);box-shadow:inset 0 0 0 1px var(--line)}
+.palette__list .ic{display:grid;place-items:center;width:32px;height:32px;flex:none;border-radius:10px;background:var(--glass-a);box-shadow:inset 0 0 0 1px var(--line)}
+.palette__list .ic svg{width:15px;height:15px}
+.palette__list .tx{display:grid;min-width:0;line-height:1.3}
+.palette__list .tx b{font-weight:550;font-size:.95rem;letter-spacing:-.01em;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.palette__list .tx span{font-size:.8rem;color:var(--fg-3);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.palette__list .kind{margin-left:auto;flex:none;font-size:.71rem;letter-spacing:.06em;text-transform:uppercase;color:var(--fg-3)}
+.palette__empty{padding:28px 16px;text-align:center;color:var(--fg-3);font-size:.92rem}
+.palette__foot{display:flex;gap:18px;align-items:center;padding:10px 18px;border-top:1px solid var(--line);font-size:.78rem;color:var(--fg-3);flex-wrap:wrap}
+.palette__foot kbd{font:inherit;padding:2px 7px;border-radius:6px;box-shadow:inset 0 0 0 1px var(--line-strong);margin-right:5px}
+
+/* =====================================================================
+   ADDED — toasts
+   ===================================================================== */
+.toasts{position:fixed;left:50%;bottom:max(22px,env(safe-area-inset-bottom));transform:translateX(-50%);z-index:180;display:grid;gap:8px;justify-items:center;pointer-events:none;width:max-content;max-width:min(92vw,460px)}
+.toast{--r:999px;display:flex;align-items:center;gap:10px;padding:11px 20px;font-size:.9rem;font-weight:500;border-radius:999px;opacity:0;transform:translateY(12px) scale(.97);transition:opacity .35s var(--ease),transform .45s var(--ease)}
+.toast.in{opacity:1;transform:none}
+.toast svg{width:15px;height:15px;flex:none}
+
+@media (max-width:980px){.gx{grid-template-columns:1fr}.more__grid{grid-template-columns:repeat(2,minmax(0,1fr))}.case__grid{grid-template-columns:1fr}}
+@media (max-width:760px){.case__hero{aspect-ratio:16/9}.case__spec{grid-template-columns:1fr 1fr}}
+@media (max-width:640px){.more__grid{grid-template-columns:1fr}.case__spec{grid-template-columns:1fr}.palette{padding-top:12vh}}
 
 /* =====================================================================
    RESPONSIVE
@@ -472,6 +671,11 @@ h2{font-size:clamp(2.7rem,7.2vw,6.4rem);font-weight:300;line-height:.98;letter-s
       </ul>
       <span class="nav__ind" id="navInd" aria-hidden="true"></span>
     </div>
+    <span class="nav__clock" id="navClock" title="Time in Prayagraj, India (IST)"><i aria-hidden="true"></i><span id="clockText">--:--</span></span>
+    <button class="nav__btn nav__k" id="paletteBtn" type="button" aria-label="Open command palette" aria-haspopup="dialog" title="Command palette">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="6.4"/><path d="m20 20-3.4-3.4"/></svg>
+      <kbd id="paletteKbd">⌘K</kbd>
+    </button>
     <button class="nav__btn" id="themeBtn" type="button" aria-label="Switch to light theme">
       <svg class="i-sun" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.2M12 19.2v2.2M2.6 12h2.2M19.2 12h2.2M5.4 5.4 7 7M17 17l1.6 1.6M18.6 5.4 17 7M7 17l-1.6 1.6"/></svg>
       <svg class="i-moon" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5 8.5 8.5 0 1 0 20.5 14.2Z"/></svg>
@@ -522,6 +726,14 @@ h2{font-size:clamp(2.7rem,7.2vw,6.4rem);font-weight:300;line-height:.98;letter-s
   </div>
 </section>
 
+<!-- ============================ BAND ============================ -->
+<div class="band" aria-hidden="true">
+  <div class="band__track">
+    <span>cfnkurties.in</span><span>AeroLink</span><span>ClipBlitz</span><span>MYRAA</span><span>MittiCloud</span><span>MittiGrid</span><span>MittiMotion</span><span>LeadPilot</span><span>LeadForge</span><span>no page builders, ever</span>
+    <span>cfnkurties.in</span><span>AeroLink</span><span>ClipBlitz</span><span>MYRAA</span><span>MittiCloud</span><span>MittiGrid</span><span>MittiMotion</span><span>LeadPilot</span><span>LeadForge</span><span>no page builders, ever</span>
+  </div>
+</div>
+
 <!-- ============================ PROFILE ============================ -->
 <section class="section profile" id="profile" aria-labelledby="profile-h">
   <div class="wrap">
@@ -539,6 +751,25 @@ h2{font-size:clamp(2.7rem,7.2vw,6.4rem);font-weight:300;line-height:.98;letter-s
         <li class="stat glass fx" data-tilt="6" style="--d:.16s"><b id="statStars" data-count="" data-target="0">0</b><span>GitHub stars</span></li>
         <li class="stat glass fx" data-tilt="6" style="--d:.24s"><b id="statLangs" data-count="" data-target="0">0</b><span>Languages used</span></li>
       </ul>
+      <aside class="profile__card glass fx" data-tilt="1.4" style="--d:.1s">
+        <span class="pcard__ghost" aria-hidden="true">AA</span>
+        <div class="pcard__who">
+          <img id="profAvatar" src="https://avatars.githubusercontent.com/u/254219160?s=144&amp;v=4" alt="Aarav Agrawal on GitHub" width="52" height="52" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">
+          <div class="pcard__id">
+            <b>Aarav Agrawal</b>
+            <span>@agra-aarav15 · on GitHub since <i id="profSince">2025</i></span>
+          </div>
+          <i class="pcard__led" aria-hidden="true"></i>
+        </div>
+        <ul class="pcard__rows">
+          <li><span>Base</span><b>Prayagraj, India — 25.43° N, 81.84° E</b></li>
+          <li><span>Ships in</span><b>C · Python · JavaScript · TypeScript</b></li>
+          <li><span>Live from GitHub</span><b id="profStats">Pulling repos, stars and languages…</b></li>
+        </ul>
+        <div class="pcard__chips"><span>Hireable</span><span>Open source</span><span>Boards + PRs</span><span>No drag-and-drop</span></div>
+        <a class="link pcard__foot" href="https://github.com/agra-aarav15" target="_blank" rel="noopener"><span>github.com/agra-aarav15</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+      </aside>
     </div>
   </div>
 </section>
@@ -548,62 +779,170 @@ h2{font-size:clamp(2.7rem,7.2vw,6.4rem);font-weight:300;line-height:.98;letter-s
   <div class="wrap">
     <header class="sec-head">
       <h2 data-split>Builds that shipped.</h2>
-      <p class="fx">A live store and an open-source firmware project, 2025 to now.</p>
+      <p class="fx">A live store, an open-source Wi-Fi extender, an AI clipping studio, a 3D companion and a cloud in a drawer — 2025 to now.</p>
     </header>
 
     <article class="feature glass fx" data-tilt="2.2">
       <div class="feature__body">
         <div>
-          <div class="feature__meta"><i></i><span>2025, live</span></div>
+          <div class="feature__meta"><i></i><span>2025 · live store</span></div>
           <h3>cfnkurties.in</h3>
-          <p>Full visual and infrastructure overhaul for a live e-commerce store. The UI was rebuilt in React and Tailwind, hosting moved to Oracle Cloud, the Apache proxy and UFW were hardened, and payloads were slimmed down for mobile.</p>
+          <p>Full visual and infrastructure overhaul for a live e-commerce store. Rebuilt in React and Tailwind, moved to Oracle Cloud, hardened Apache and UFW, and slimmed payloads for mobile.</p>
           <ul class="tags"><li>React</li><li>Tailwind</li><li>OCI</li><li>Ubuntu</li><li>MySQL</li></ul>
         </div>
-        <a class="link" href="https://cfnkurties.in" target="_blank" rel="noopener"><span>Visit the store</span>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
-      </div>
-      <div class="feature__visual" aria-hidden="true">
-        <div class="mock">
-          <div class="mock__bar"><i></i><i></i><i></i><span>cfnkurties.in</span></div>
-          <div class="mock__body">
-            <div class="mock__hero sk"></div>
-            <div class="mock__row"><div class="mock__tile sk"></div><div class="mock__tile sk"></div><div class="mock__tile sk"></div></div>
-            <div class="mock__line sk"></div><div class="mock__line sk"></div>
-            <svg class="mock__cursor" viewBox="0 0 24 24" fill="currentColor"><path d="M4 2.5 20 11l-7 2.2L10.2 20 4 2.5Z" stroke="var(--bg)" stroke-width="1.4" stroke-linejoin="round"/></svg>
-          </div>
+        <div class="feature__acts">
+          <a class="link" href="https://cfnkurties.in" target="_blank" rel="noopener"><span>Visit the store</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+          <button class="link" type="button" data-case="cfnkurties"><span>Case study</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
         </div>
+      </div>
+      <div class="feature__visual">
+        <figure class="shot">
+          <div class="shot__bar" aria-hidden="true"><i></i><i></i><i></i><span>cfnkurties.in</span></div>
+          <span class="shot__img"><span class="art" data-art="store" aria-hidden="true"></span><img src="images/store.jpg" alt="Monochrome photograph from the cfnkurties.in case study." loading="lazy" onerror="this.remove()"></span>
+        </figure>
       </div>
     </article>
 
     <article class="feature feature--flip glass fx" data-tilt="2.2">
       <div class="feature__body">
         <div>
-          <div class="feature__meta"><i></i><span>2025, open source, MIT</span></div>
+          <div class="feature__meta"><i></i><span>2026 · firmware · MIT</span></div>
           <h3>AeroLink</h3>
-          <p>An ESP32 Wi-Fi range extender that replaces a ₹5,000 box with a ₹500 chip. Written in C on ESP-IDF and managed from a frosted-glass web dashboard it serves itself: network scanner, firewall ACLs, port forwarding, DHCP reservations, OTA updates, and Home Assistant over MQTT.</p>
-          <ul class="tags"><li>C</li><li>ESP-IDF</li><li>FreeRTOS</li><li>MQTT</li><li>GitHub Actions</li></ul>
+          <p>An ESP32 Wi-Fi range extender that replaces a ₹5,000 box with a ₹500 chip. Written in C on ESP-IDF, it serves its own frosted-glass dashboard: network scanner, firewall ACLs, port forwarding, DHCP reservations, OTA updates and Home Assistant over MQTT.</p>
+          <ul class="tags"><li>C</li><li>ESP-IDF</li><li>FreeRTOS</li><li>MQTT</li><li>PlatformIO</li></ul>
         </div>
-        <a class="link" href="https://github.com/agra-aarav15/AeroLink" target="_blank" rel="noopener"><span>View on GitHub</span>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+        <div class="feature__acts">
+          <a class="link" href="https://github.com/agra-aarav15/Aerolink/releases/latest" target="_blank" rel="noopener"><span>Open the firmware</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+          <button class="link" type="button" data-case="aerolink"><span>Case study</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+        </div>
       </div>
-      <div class="feature__visual" aria-hidden="true">
-        <svg class="viz" viewBox="0 0 400 400" fill="none">
-          <g stroke="currentColor" stroke-width="1">
-            <circle class="ring" cx="200" cy="200" r="64"/>
-            <circle class="ring" cx="200" cy="200" r="64"/>
-            <circle class="ring" cx="200" cy="200" r="64"/>
-            <circle class="ring" cx="200" cy="200" r="64"/>
-          </g>
-          <g class="chipcore" stroke="currentColor" stroke-width="1.3" stroke-linecap="round">
-            <path d="M176 146v14M192 146v14M208 146v14M224 146v14M176 240v14M192 240v14M208 240v14M224 240v14M146 176h14M146 192h14M146 208h14M146 224h14M240 176h14M240 192h14M240 208h14M240 224h14"/>
-            <rect x="160" y="160" width="80" height="80" rx="16" style="fill:var(--bg)"/>
-            <rect x="160" y="160" width="80" height="80" rx="16" style="fill:var(--glass-a)"/>
-            <text x="200" y="205" text-anchor="middle" font-size="15" font-weight="600" fill="currentColor" stroke="none" font-family="inherit">ESP32</text>
-          </g>
-          <text x="200" y="356" text-anchor="middle" font-size="14" fill="currentColor" opacity=".6" font-family="inherit">192.168.4.1</text>
-        </svg>
+      <div class="feature__visual">
+        <figure class="shot">
+          <div class="shot__bar" aria-hidden="true"><i></i><i></i><i></i><span>192.168.4.1</span></div>
+          <span class="shot__img"><span class="art" data-art="radio" aria-hidden="true"></span><img src="images/radio.jpg" alt="Monochrome photograph from the AeroLink case study." loading="lazy" onerror="this.remove()"></span>
+        </figure>
       </div>
     </article>
+
+    <article class="feature glass fx" data-tilt="2.2">
+      <div class="feature__body">
+        <div>
+          <div class="feature__meta"><i></i><span>2026 · studio · v4.2.0</span></div>
+          <h3>ClipBlitz</h3>
+          <p>Your own OpusClip, self-hosted. One long video in, the clips that matter out — dual engines, honest scores, laughter detection, 9:16 blur-pad framing, animated captions and YouTube auto-post.</p>
+          <ul class="tags"><li>Python</li><li>ffmpeg</li><li>Groq</li><li>Gemini</li><li>MCP</li></ul>
+        </div>
+        <div class="feature__acts">
+          <a class="link" href="https://github.com/agra-aarav15/clipblitz-ai-shorts/releases/latest" target="_blank" rel="noopener"><span>Download the studio</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+          <button class="link" type="button" data-case="clipblitz-ai-shorts"><span>Case study</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+        </div>
+      </div>
+      <div class="feature__visual">
+        <figure class="shot">
+          <div class="shot__bar" aria-hidden="true"><i></i><i></i><i></i><span>ClipBlitz Studio · v4.2.0</span></div>
+          <span class="shot__img"><span class="art" data-art="video" aria-hidden="true"></span><img src="images/video.jpg" alt="Monochrome photograph from the ClipBlitz case study." loading="lazy" onerror="this.remove()"></span>
+        </figure>
+      </div>
+    </article>
+
+    <article class="feature feature--flip glass fx" data-tilt="2.2">
+      <div class="feature__body">
+        <div>
+          <div class="feature__meta"><i></i><span>2026 · companion · MIT</span></div>
+          <h3>MYRAA</h3>
+          <p>A 3D AI companion who listens, remembers, speaks, and helps you code. Native mouse and keyboard, Playwright automation, 58+ PC tools and episodic memory — on Windows, Android, macOS and Linux.</p>
+          <ul class="tags"><li>JavaScript</li><li>Electron</li><li>Playwright</li><li>Three.js</li><li>VRM</li></ul>
+        </div>
+        <div class="feature__acts">
+          <a class="link" href="https://github.com/agra-aarav15/MYRAA/releases/latest" target="_blank" rel="noopener"><span>Get MYRAA</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+          <button class="link" type="button" data-case="myraa"><span>Case study</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+        </div>
+      </div>
+      <div class="feature__visual">
+        <figure class="shot">
+          <div class="shot__bar" aria-hidden="true"><i></i><i></i><i></i><span>MYRAA</span></div>
+          <span class="shot__img"><span class="art" data-art="companion" aria-hidden="true"></span><img src="images/companion.jpg" alt="Monochrome photograph from the MYRAA case study." loading="lazy" onerror="this.remove()"></span>
+        </figure>
+      </div>
+    </article>
+
+    <article class="feature glass fx" data-tilt="2.2">
+      <div class="feature__body">
+        <div>
+          <div class="feature__meta"><i></i><span>2026 · cloud · AGPL</span></div>
+          <h3>MittiCloud</h3>
+          <p>Turn an old Android phone into a free personal cloud — photo vault, file server, website hosting, live Node apps and a real SSH door. No subscriptions. mitti means soil: your cloud grows at home.</p>
+          <ul class="tags"><li>Node.js</li><li>Express</li><li>Android</li><li>SQLite</li><li>Cloudflare</li></ul>
+        </div>
+        <div class="feature__acts">
+          <a class="link" href="https://github.com/agra-aarav15/mitticloud/releases/latest" target="_blank" rel="noopener"><span>Install the APK</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+          <button class="link" type="button" data-case="mitticloud"><span>Case study</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+        </div>
+      </div>
+      <div class="feature__visual">
+        <figure class="shot">
+          <div class="shot__bar" aria-hidden="true"><i></i><i></i><i></i><span>mitti — your cloud at home</span></div>
+          <span class="shot__img"><span class="art" data-art="phone" aria-hidden="true"></span><img src="images/phone.jpg" alt="Monochrome photograph from the MittiCloud case study." loading="lazy" onerror="this.remove()"></span>
+        </figure>
+      </div>
+    </article>
+
+    <div class="more">
+      <div class="more__head">
+        <h3>More in the archive</h3>
+        <p class="hint">Four more builds — each opens its own case study.</p>
+      </div>
+      <div class="more__grid">
+        <article class="mini glass fx" data-tilt="4">
+          <span class="mini__img"><span class="mini__tag">Systems · Compute</span><span class="art" data-art="mesh" aria-hidden="true"></span><img src="images/mesh.jpg" alt="Monochrome photograph from the MittiGrid case study." loading="lazy" onerror="this.remove()"></span>
+          <div class="mini__body">
+            <span class="mini__name">MittiGrid</span>
+            <p class="mini__line">Every device you own, one brain — pooled CPUs over LAN or Tailscale, honest tokens/sec.</p>
+            <button class="mini__case" type="button" data-case="mittigrid"><span>Case study</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+          </div>
+        </article>
+        <article class="mini glass fx" data-tilt="4" style="--d:.08s">
+          <span class="mini__img"><span class="mini__tag">AI · Web</span><span class="art" data-art="video" aria-hidden="true"></span><img src="images/video.jpg" alt="Monochrome photograph from the MittiMotion case study." loading="lazy" onerror="this.remove()"></span>
+          <div class="mini__body">
+            <span class="mini__name">MittiMotion</span>
+            <p class="mini__line">A Filmora-style video editor in a browser tab — prompt-driven edits, zero servers.</p>
+            <button class="mini__case" type="button" data-case="mittimotion"><span>Case study</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+          </div>
+        </article>
+        <article class="mini glass fx" data-tilt="4" style="--d:.16s">
+          <span class="mini__img"><span class="mini__tag">AI · Sales</span><span class="art" data-art="sales" aria-hidden="true"></span><img src="images/sales.jpg" alt="Monochrome photograph from the LeadPilot case study." loading="lazy" onerror="this.remove()"></span>
+          <div class="mini__body">
+            <span class="mini__name">LeadPilot</span>
+            <p class="mini__line">A WhatsApp sales rep that answers in seconds, scores every lead 0–100 and never drops one.</p>
+            <button class="mini__case" type="button" data-case="leadpilot-whatsapp-ai"><span>Case study</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+          </div>
+        </article>
+        <article class="mini glass fx" data-tilt="4" style="--d:.24s">
+          <span class="mini__img"><span class="mini__tag">AI · Product</span><span class="art" data-art="hero" aria-hidden="true"></span><img src="images/hero.jpg" alt="Monochrome photograph from the LeadForge case study." loading="lazy" onerror="this.remove()"></span>
+          <div class="mini__body">
+            <span class="mini__name">LeadForge</span>
+            <p class="mini__line">Hunt, reach, close — a lead radar, outreach writer and DealLock closer in one workspace.</p>
+            <button class="mini__case" type="button" data-case="leadforge-ox"><span>Case study</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+          </div>
+        </article>
+      </div>
+    </div>
+
+
   </div>
 </section>
 
@@ -629,6 +968,16 @@ h2{font-size:clamp(2.7rem,7.2vw,6.4rem);font-weight:300;line-height:.98;letter-s
       <div class="repo repo--sk glass"><div class="sk" style="width:38px;height:38px;border-radius:12px"></div><div class="sk" style="width:60%;height:22px"></div><div class="sk" style="width:90%"></div><div class="sk" style="width:60%"></div></div>
       <div class="repo repo--sk glass"><div class="sk" style="width:38px;height:38px;border-radius:12px"></div><div class="sk" style="width:60%;height:22px"></div><div class="sk" style="width:90%"></div><div class="sk" style="width:60%"></div></div>
     </div>
+    <div class="gx fx" id="gx">
+      <div class="gx__panel glass">
+        <div class="gx__h"><h3>Latest pushes</h3><span id="gxWhen">live from GitHub</span></div>
+        <div class="gx__list" id="gxActivity"></div>
+      </div>
+      <div class="gx__panel glass">
+        <div class="gx__h"><h3>Language mix</h3><span id="gxMixNote">live from GitHub</span></div>
+        <div class="gx__bars" id="gxMix"></div>
+      </div>
+    </div>
     <div class="grid__more fx">
       <a class="btn btn--glass" href="https://github.com/agra-aarav15?tab=repositories" target="_blank" rel="noopener" data-magnet><span>All repositories on GitHub</span>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
@@ -647,22 +996,27 @@ h2{font-size:clamp(2.7rem,7.2vw,6.4rem);font-weight:300;line-height:.98;letter-s
       <button class="panel glass fx" type="button" aria-expanded="false" style="--d:0s">
         <span class="panel__ghost" aria-hidden="true">C</span>
         <span class="panel__v">C on ESP-IDF</span>
-        <span class="panel__in"><span class="panel__t">C on ESP-IDF</span><span class="panel__p">My deepest water right now — an HTTP server, DHCP, ACLs and OTA updates running on a microcontroller. Still learning it every day.</span><span class="panel__ref">Seen in AeroLink</span></span>
+        <span class="panel__in"><span class="panel__t">C on ESP-IDF</span><span class="panel__p">An HTTP server, DHCP, firewall rules and OTA updates running on a microcontroller — my deepest water, and still learning it every day.</span><span class="panel__ref">Seen in AeroLink</span></span>
       </button>
       <button class="panel glass fx" type="button" aria-expanded="false" style="--d:.08s">
-        <span class="panel__ghost" aria-hidden="true">JS</span>
-        <span class="panel__v">HTML, CSS and JavaScript</span>
-        <span class="panel__in"><span class="panel__t">HTML, CSS and JavaScript</span><span class="panel__p">Hand-written, no framework, no builder. The page you’re scrolling is the portfolio piece.</span><span class="panel__ref">Seen in this site</span></span>
-      </button>
-      <button class="panel glass fx" type="button" aria-expanded="false" style="--d:.16s">
-        <span class="panel__ghost" aria-hidden="true">Re</span>
-        <span class="panel__v">React and Tailwind</span>
-        <span class="panel__in"><span class="panel__t">React and Tailwind</span><span class="panel__p">Rebuilt a live storefront’s UI and kept it selling while I did it.</span><span class="panel__ref">Seen in cfnkurties.in</span></span>
-      </button>
-      <button class="panel glass fx" type="button" aria-expanded="false" style="--d:.24s">
         <span class="panel__ghost" aria-hidden="true">Py</span>
         <span class="panel__v">Python</span>
-        <span class="panel__in"><span class="panel__t">Python</span><span class="panel__p">Glue scripts, automation, quick tools — the duct tape of everything above.</span><span class="panel__ref">Seen in daily utilities</span></span>
+        <span class="panel__in"><span class="panel__t">Python</span><span class="panel__p">Story-first AI editing with ffmpeg underneath: ClipBlitz turns long videos into vertical shorts, then scores them honestly.</span><span class="panel__ref">Seen in ClipBlitz</span></span>
+      </button>
+      <button class="panel glass fx" type="button" aria-expanded="false" style="--d:.16s">
+        <span class="panel__ghost" aria-hidden="true">No</span>
+        <span class="panel__v">Node.js, self-hosted</span>
+        <span class="panel__in"><span class="panel__t">Node.js, self-hosted</span><span class="panel__p">A personal cloud that runs on a phone in a drawer, and a grid that pools every idle CPU in the house. Servers you can hold.</span><span class="panel__ref">Seen in MittiCloud and MittiGrid</span></span>
+      </button>
+      <button class="panel glass fx" type="button" aria-expanded="false" style="--d:.24s">
+        <span class="panel__ghost" aria-hidden="true">Re</span>
+        <span class="panel__v">React and Tailwind</span>
+        <span class="panel__in"><span class="panel__t">React and Tailwind</span><span class="panel__p">Rebuilt a live storefront’s UI and kept it selling the whole time.</span><span class="panel__ref">Seen in cfnkurties.in</span></span>
+      </button>
+      <button class="panel glass fx" type="button" aria-expanded="false" style="--d:.32s">
+        <span class="panel__ghost" aria-hidden="true">AI</span>
+        <span class="panel__v">AI plumbing</span>
+        <span class="panel__in"><span class="panel__t">AI plumbing</span><span class="panel__p">Groq, Gemini, MCP and failover chains — wiring models into tools that answer leads, cut video and drive a desktop companion.</span><span class="panel__ref">Seen in LeadPilot and MYRAA</span></span>
       </button>
     </div>
 
@@ -675,6 +1029,8 @@ h2{font-size:clamp(2.7rem,7.2vw,6.4rem);font-weight:300;line-height:.98;letter-s
         <span class="pill glass">FreeRTOS</span><span class="pill glass">PlatformIO</span><span class="pill glass">esptool</span><span class="pill glass">MQTT</span>
         <span class="pill glass">Home Assistant</span><span class="pill glass">GitHub Actions</span><span class="pill glass">Cloudflared</span><span class="pill glass">Linux</span>
         <span class="pill glass">Ubuntu</span><span class="pill glass">Apache</span><span class="pill glass">UFW</span><span class="pill glass">MySQL</span><span class="pill glass">Oracle Cloud</span>
+        <span class="pill glass">Node.js</span><span class="pill glass">n8n</span><span class="pill glass">llama.cpp</span><span class="pill glass">Playwright</span><span class="pill glass">ffmpeg</span>
+        <span class="pill glass">Termux</span><span class="pill glass">Gemini</span><span class="pill glass">Groq</span>
       </div>
     </div>
   </div>
@@ -709,6 +1065,33 @@ h2{font-size:clamp(2.7rem,7.2vw,6.4rem);font-weight:300;line-height:.98;letter-s
 
 </main>
 
+<!-- ============================ CASE STUDY ============================ -->
+<div class="modal" id="modal" aria-hidden="true">
+  <div class="modal__back" data-close></div>
+  <div class="modal__panel glass" role="dialog" aria-modal="true" aria-label="Case study">
+    <button class="modal__x" type="button" data-close aria-label="Close case study">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+    </button>
+    <div class="modal__scroll" id="modalBody"></div>
+  </div>
+</div>
+
+<!-- ============================ COMMAND PALETTE ============================ -->
+<div class="palette" id="palette" aria-hidden="true">
+  <div class="palette__back" data-close></div>
+  <div class="palette__panel glass" role="dialog" aria-modal="true" aria-label="Command palette">
+    <div class="palette__in">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="6.4"/><path d="m20 20-3.4-3.4"/></svg>
+      <input id="paletteInput" type="text" placeholder="Jump to a project, section or link…" autocomplete="off" spellcheck="false" aria-label="Search commands">
+      <span class="palette__esc">esc</span>
+    </div>
+    <ul class="palette__list" id="paletteList" role="listbox" aria-label="Results"></ul>
+    <div class="palette__foot"><span><kbd>↑</kbd><kbd>↓</kbd> browse</span><span><kbd>↵</kbd> open</span><span><kbd>esc</kbd> close</span></div>
+  </div>
+</div>
+
+<div class="toasts" id="toasts" aria-live="polite"></div>
+
 <script>
 (() => {
 'use strict';
@@ -718,26 +1101,170 @@ h2{font-size:clamp(2.7rem,7.2vw,6.4rem);font-weight:300;line-height:.98;letter-s
    ===================================================================== */
 const CONFIG = {
   user: 'agra-aarav15',                       // GitHub username the projects are pulled from
-  hide: ['agra-aarav15.github.io', '.github'],// repo names to leave out (case-insensitive)
+  hide: ['.github'],                          // repo names to leave out (case-insensitive)
   showForks: false,                            // set true to list forked repos too
-  cacheMinutes: 10,                            // how long a visitor's browser reuses the last answer
+  revalidateSeconds: 60,                       // shortest gap between two background GitHub checks
+  autoRefreshMinutes: 5,                       // the page re-checks GitHub on this interval while open
   newBadgeDays: 45                             // repos created within this many days get a "New" tag
 };
+/* Tuned-down canvases on modest machines — fewer dots, lower caps, same look. */
+const LOWPOWER = (navigator.hardwareConcurrency || 8) <= 4 || (navigator.deviceMemory || 8) <= 4;
 
 /* Used only when GitHub's own description for a repo is empty. */
 const OVERRIDES = {
   'aerolink': { desc: 'ESP32 Wi-Fi range extender in C on ESP-IDF. Serves its own glass dashboard with a network scanner, firewall ACLs, OTA updates and MQTT.' },
-  'myraa':    { desc: 'A personal 3D AI companion and autonomous PC control engine. It listens, remembers, speaks, and drives your computer. Windows, Android, macOS and Linux.' }
+  'myraa':    { desc: 'A personal 3D AI companion and autonomous PC control engine. It listens, remembers, speaks, and drives your computer. Windows, Android, macOS and Linux.' },
+  'agra-aarav15.github.io': { desc: 'The original hand-written portfolio — where this story started, kept online as the before photo while this archive pulls everything live from GitHub.' }
 };
 
 /* Offline copy. Shown only if GitHub can't be reached AND the visitor has no cached copy. */
 const SNAPSHOT = [
-  { name:'MYRAA', lang:'JavaScript', stars:0, forks:1, desc:'' },
-  { name:'leadforge-ox', lang:'TypeScript', stars:0, forks:0, desc:'LeadForge ox-alpha build. AI lead radar (Maps, Search, Crawl), multi-channel outreach and the DealLock closer CRM.' },
-  { name:'leadpilot-whatsapp-ai', lang:'JavaScript', stars:0, forks:0, desc:'WhatsApp AI sales rep. Answers leads in seconds, scores them 0-100, escalates hot leads. Official Cloud API, QR mode, n8n workflow pack and a drag and drop CRM dashboard.' },
-  { name:'clipblitz-ai-shorts', lang:'Python', stars:2, forks:0, desc:'AI shorts factory. YouTube link in, top-3 viral clips out. Laughter detection, blur-pad 9:16, animated captions, YouTube auto-post.' },
-  { name:'Aerolink', lang:'C', stars:0, forks:0, desc:'' }
-].map(r => ({ ...r, url:`https://github.com/${CONFIG.user}/${r.name}`, pushed:null, created:null, homepage:'', fork:false }));
+  { name:'mitticloud', lang:'JavaScript', stars:0, forks:0, desc:'Turn an old Android phone into a free personal cloud — photo backup with dedupe, website hosting, background AI agent, lock, health checks and a 65-test suite. AGPL-3.0' },
+  { name:'clipblitz-ai-shorts', lang:'Python', stars:2, forks:0, desc:'AI Shorts Factory. YouTube link in, top-3 viral clips out — stories, cuts, judge, honest scores. Laughter detection, 9:16 blur-pad, animated captions.' },
+  { name:'MYRAA', lang:'JavaScript', stars:0, forks:1, desc:'Autonomous 3D AI desktop companion and PC control engine. Expressive kinematics, native input simulation, browser automation and developer tool execution.' },
+  { name:'Aerolink', lang:'C', stars:0, forks:0, desc:'The most advanced open-source Wi-Fi extender with a glassmorphism dashboard. ESP32 firmware built with ESP-IDF.' },
+  { name:'mittigrid', lang:'JavaScript', stars:0, forks:0, desc:'Every device you own, one brain — pool the CPUs of all devices on your LAN / Tailscale into one grid. Proof of concept. AGPL-3.0' },
+  { name:'leadpilot-whatsapp-ai', lang:'JavaScript', stars:0, forks:0, desc:'WhatsApp AI sales rep — answers leads in seconds, scores them 0-100, escalates hot leads. Cloud API, QR mode, n8n workflow pack and a drag and drop CRM.' },
+  { name:'leadforge-ox', lang:'TypeScript', stars:0, forks:0, desc:'LeadForge ox-alpha build — AI lead radar (Maps / Search / Crawl), multi-channel outreach and the DealLock closer CRM.' },
+  { name:'mittimotion', lang:'JavaScript', stars:0, forks:0, desc:'Free AI video editor in your browser — Filmora-style timeline where Gemini edits YOUR video from a prompt. Zero servers.' },
+  { name:'agra-aarav15.github.io', lang:'HTML', stars:0, forks:0, desc:'The original hand-written portfolio — live store and firmware projects, pulled together on GitHub Pages. The first home of this site.', homepage:'https://agra-aarav15.github.io' }
+].map(r => ({ ...r, url:`https://github.com/${CONFIG.user}/${r.name}`, pushed:null, created:null, homepage:r.homepage || '', fork:false }));
+
+/* Offline activity, used when the events API can't be reached. */
+const FALLBACK_EVENTS = [
+  { type:'PushEvent', repo:'mitticloud', at:'2026-10-17T14:17:00Z', commits:3 },
+  { type:'PushEvent', repo:'mitticloud', at:'2026-10-16T17:44:35Z', commits:2 },
+  { type:'PushEvent', repo:'mitticloud', at:'2026-10-16T09:38:46Z', commits:1 },
+  { type:'PushEvent', repo:'mittimotion', at:'2026-10-03T08:12:50Z', commits:2 },
+  { type:'PushEvent', repo:'clipblitz-ai-shorts', at:'2026-10-02T10:04:53Z', commits:4 },
+  { type:'PushEvent', repo:'Aerolink', at:'2026-10-01T12:19:16Z', commits:1 }
+];
+
+/* =====================================================================
+   CASE STUDIES — merged from the archive catalog, shown in the modal
+   ===================================================================== */
+const CASES = {
+  'cfnkurties': {
+    id:'cfnkurties', title:'cfnkurties.in', tagline:'A live storefront, rebuilt by hand.', year:'2025',
+    categories:['Web','Product'], license:null, repo:null, noDownload:true,
+    liveUrl:'https://cfnkurties.in', liveLabel:'Visit the store', art:'store', image:'images/store.jpg',
+    story:[
+      'cfnkurties.in is a working storefront, not a mockup. The whole visual layer was rebuilt in React and Tailwind, with the hosting moved to Oracle Cloud and the delivery path hardened: an Apache proxy in front, UFW locked down, and payloads trimmed for slower mobile connections.',
+      'It is the project that best explains the working style — design and infrastructure treated as one job. The store had to stay live while it changed underneath, so the rollout was careful, measurable and boring in the best way.'
+    ],
+    highlights:['Live production e-commerce storefront','Rebuilt in React and Tailwind','Moved to Oracle Cloud hosting','Apache reverse proxy configured','UFW firewall hardening','Mobile payload optimisation'],
+    stack:['React','Tailwind CSS','Oracle Cloud','Apache','UFW','Linux']
+  },
+  'mitticloud': {
+    id:'mitticloud', title:'MittiCloud', tagline:'Your drawer-phone is a cloud now.', year:'2026',
+    categories:['Tools','Web'], license:'AGPL-3.0', repo:'mitticloud', art:'phone', image:'images/phone.jpg',
+    story:[
+      'MittiCloud began with a simple question: why rent a cloud when there is a perfectly good phone in the drawer? It turns that phone into a real personal cloud — a photo vault with deduplication, a file server, static site and live Node app hosting, and an actual SSH door for plain SSH clients.',
+      'The whole system runs on Node 20, ships as a one-tap Android APK, and installs on a VPS with a single line. The unglamorous parts are treated as features: a persistent notification keeps the server awake, health checks keep it honest, and a 65-test suite checks the plumbing.'
+    ],
+    highlights:['One-tap Android APK, or a single-line VPS installer','Photo backup with duplicate detection','Hosts static sites and live Node apps','Real SSH access for standard clients','Cloud Mode, wake lock and health checks','65-test suite guarding the whole stack'],
+    stack:['Node.js','JavaScript','Next.js','Termux','Android','SSH'],
+    release:{ tag:'v0.20.1', name:'MittiCloud v0.20.1', published:'2026-10-17T13:23:22Z', assets:[
+      { name:'MittiCloud-v0.20.1.apk', size:86214203, url:'https://github.com/agra-aarav15/mitticloud/releases/download/v0.20.1/MittiCloud-v0.20.1.apk' }
+    ]}
+  },
+  'clipblitz-ai-shorts': {
+    id:'clipblitz-ai-shorts', title:'ClipBlitz', tagline:'Long video in. The clips that matter out.', year:'2026',
+    categories:['AI','Tools'], license:null, repo:'clipblitz-ai-shorts', art:'video', image:'images/video.jpg',
+    story:[
+      'Most auto-clippers slice a long video every thirty seconds and hope. ClipBlitz runs a story pass first, segmenting the episode into self-contained setups, build-ups and payoffs. A drafting pass then finds the tightest cut inside each story, favouring laughter and vocal energy, and snaps edits to sentence boundaries so nothing starts mid-word.',
+      'An independent judge reads the final transcript and issues a pass or fail, which feeds a traceable score built from real ratings rather than invented confidence. On top of the cuts sit auto-captions, 9:16 blur-pad framing, a copyright-claim risk report and an optional route to publish on YouTube. It runs locally, with no watermark and no monthly fee.'
+    ],
+    highlights:['Story-first segmentation, then drafting','Independent LLM judge with pass / fail verdicts','Traceable clip scores from real ratings','Laughter detection and energy-aware cuts','Animated captions and 9:16 blur-pad framing','One-click Windows release with bundled ffmpeg','Phone remote + MCP plugin for agent-driven editing'],
+    stack:['Python','LLM tooling','FFmpeg','MCP','YouTube API'],
+    release:{ tag:'v4.2.0', name:'ClipBlitz Studio 4.2.0', published:'2026-10-02T10:04:45Z', assets:[
+      { name:'ClipBlitzStudio-4.2.0-windows.zip', size:150177042, url:'https://github.com/agra-aarav15/clipblitz-ai-shorts/releases/download/v4.2.0/ClipBlitzStudio-4.2.0-windows.zip' },
+      { name:'ClipBlitzStudio.apk', size:34680, url:'https://github.com/agra-aarav15/clipblitz-ai-shorts/releases/download/v4.2.0/ClipBlitzStudio.apk' },
+      { name:'checksums.txt', size:186, url:'https://github.com/agra-aarav15/clipblitz-ai-shorts/releases/download/v4.2.0/checksums.txt' }
+    ]}
+  },
+  'myraa': {
+    id:'myraa', title:'MYRAA', tagline:'A 3D companion with hands on your PC.', year:'2026',
+    categories:['AI','Product'], license:'MIT', repo:'MYRAA', art:'companion', image:'images/companion.jpg',
+    story:[
+      'MYRAA is an attempt to make a desktop companion feel like a presence rather than a chat box. A distributed triple-daemon architecture connects expressive 3D kinematics to real computer control: mouse and keyboard simulation, Playwright browser automation, and developer tool execution.',
+      'It is packaged for real people, not just developers: a Windows installer, a portable executable, a universal package and an Android APK. Under the surface she maintains memory and conversation state, then translates intent into supervised actions on the machine she lives on.'
+    ],
+    highlights:['Expressive 3D companion with motion','Native mouse + keyboard control','Playwright browser automation','58+ PC, IDE and developer tools','Distributed triple-daemon architecture','Episodic memory across sessions','Ships for Windows, Android, macOS and Linux'],
+    stack:['JavaScript','Three.js','Playwright','Electron','Android'],
+    release:{ tag:'v1.5.0-all-phases', name:'MYRAA v1.5.0', published:'2026-08-30T14:23:50Z', assets:[
+      { name:'MYRAA-Setup-1.0.0.exe', size:117100000, url:'https://github.com/agra-aarav15/MYRAA/releases/download/v1.5.0-all-phases/MYRAA-Setup-1.0.0.exe' },
+      { name:'MYRAA-Portable-1.0.0.exe', size:116900000, url:'https://github.com/agra-aarav15/MYRAA/releases/download/v1.5.0-all-phases/MYRAA-Portable-1.0.0.exe' },
+      { name:'MYRAA.apk', size:2700000, url:'https://github.com/agra-aarav15/MYRAA/releases/download/v1.5.0-all-phases/MYRAA.apk' },
+      { name:'MYRAA-v1.0.0-Windows-Universal-Portable.zip', size:165700000, url:'https://github.com/agra-aarav15/MYRAA/releases/download/v1.5.0-all-phases/MYRAA-v1.0.0-Windows-Universal-Portable.zip' }
+    ]}
+  },
+  'aerolink': {
+    id:'aerolink', title:'AeroLink', tagline:'A $6 Wi-Fi extender with a glass dashboard.', year:'2026',
+    categories:['Hardware','Tools'], license:'MIT', repo:'Aerolink', art:'radio', image:'images/radio.jpg',
+    story:[
+      'AeroLink is firmware for the ESP32 family that turns a six-dollar board into a capable Wi-Fi range extender. It is written in C on ESP-IDF and managed entirely from a pure-black, frosted-glass dashboard that the board serves itself — no cloud account, no companion app.',
+      'The control room covers the things you actually need from a network box: a Wi-Fi scanner, firewall access rules, port forwarding, DHCP reservations and over-the-air updates. It speaks MQTT to Home Assistant with auto-discovery, and supports a wired Ethernet uplink on WT32-ETH01 for a more permanent install.'
+    ],
+    highlights:['Native ESP32, S2 and S3 support','Self-hosted glassmorphism dashboard','Firewall ACLs and port forwarding','DHCP reservations and OTA updates','Home Assistant over MQTT','Ethernet uplink on WT32-ETH01','Flash packages for every board'],
+    stack:['C','ESP-IDF','FreeRTOS','ESP32','MQTT','PlatformIO'],
+    release:{ tag:'build-21', name:'AeroLink Firmware — Build #21', published:'2026-10-01T12:21:39Z', assets:[
+      { name:'aerolink-esp32-flash.zip', size:917675, url:'https://github.com/agra-aarav15/Aerolink/releases/download/build-21/aerolink-esp32-flash.zip' },
+      { name:'aerolink-esp32.bin', size:1385312, url:'https://github.com/agra-aarav15/Aerolink/releases/download/build-21/aerolink-esp32.bin' }
+    ]}
+  },
+  'mittigrid': {
+    id:'mittigrid', title:'MittiGrid', tagline:'Every device you own, one brain.', year:'2026',
+    categories:['AI','Hardware','Tools'], license:'AGPL-3.0', repo:'mittigrid', art:'mesh', image:'images/mesh.jpg',
+    story:[
+      'Every home is hiding a datacenter in plain sight: phones in drawers, laptops that sleep, the old PC by the TV. MittiGrid connects those machines over a LAN or Tailscale mesh and pools their compute so several small devices can carry one large job.',
+      'A coordinator generates a llama.cpp tensor-split command from the live pool, while agents join from PCs and Android phones through a one-shot Termux onboarding script. Grid Chat proves it end to end with a real Gemma model, real answers, and tokens-per-second taken directly from the server’s own timings — never invented.'
+    ],
+    highlights:['Pools compute across LAN or Tailscale','Real llama.cpp + Gemma 3n inference','One-shot Android / Termux onboarding','Live device split per job','Tokens/sec from real server timings','Monochrome dashboard and grid chat'],
+    stack:['JavaScript','Node.js','llama.cpp','Tailscale','Termux','Gemma']
+  },
+  'mittimotion': {
+    id:'mittimotion', title:'MittiMotion', tagline:'A video editor that lives in your browser.', year:'2026',
+    categories:['AI','Web','Tools'], license:'AGPL-3.0', repo:'mittimotion', art:'video', image:'images/video.jpg',
+    story:[
+      'MittiMotion is a Filmora-style timeline in a browser tab: tracks, timestamps, a playhead and a live preview, all running locally with no server in the middle. Import a clip, describe the edit, and Gemini returns a plan of cuts, reordering and text overlays with exact timings that fills the timeline automatically.',
+      'The free path is deliberately useful without a key — two built-in edit styles create a punchy short or a clean reel out of the box. Manual editing always works: drag clips, trim edges, split at the playhead, tune type and shapes. The honest limits are documented too: inline video requests are capped and exports are silent WebM for now.'
+    ],
+    highlights:['Real multi-track timeline in the browser','Prompt-driven edits with Gemini','Two built-in styles, no key needed','Manual trim, split, drag and text tools','Zero servers — your media stays local','Project JSON for editable timelines'],
+    stack:['JavaScript','React','Vite','Gemini API','Canvas']
+  },
+  'leadpilot-whatsapp-ai': {
+    id:'leadpilot-whatsapp-ai', title:'LeadPilot', tagline:'A WhatsApp sales rep that never sleeps.', year:'2026',
+    categories:['AI','Product'], license:null, repo:'leadpilot-whatsapp-ai', art:'sales', image:'images/sales.jpg',
+    story:[
+      'LeadPilot answers every WhatsApp lead in under five seconds, extracts intent, budget and urgency, scores the lead from 0 to 100, and promotes the hot ones. It runs on the official WhatsApp Business Cloud API, a QR-scan mode for instant demos, or an n8n workflow pack.',
+      'The interesting engineering is in not dropping a lead: a 30-second timeout, retries with backoff, a repair pass for reasoning models and a graceful fallback reply. Groq is the primary brain with Gemini as failover, while idempotent message handling makes webhook retries harmless. A drag-and-drop kanban dashboard keeps the human loop in charge.'
+    ],
+    highlights:['AI replies in the lead’s own language','0–100 scoring with auto-promotion at 60','Groq primary + Gemini failover','Meta Cloud API, QR mode and n8n','Drag-and-drop sales kanban','Fallback reply when AI is unavailable'],
+    stack:['JavaScript','Node.js','WhatsApp Cloud API','n8n','Groq','Gemini']
+  },
+  'leadforge-ox': {
+    id:'leadforge-ox', title:'LeadForge', tagline:'Hunt, reach, close — in one workspace.', year:'2026',
+    categories:['AI','Product','Web'], license:null, repo:'leadforge-ox', art:'hero', image:'images/hero.jpg',
+    story:[
+      'LeadForge is a five-tab pipeline built around real work rather than demo data. Radar hunts from sources that need no keys — an OpenStreetMap business directory, web search, deep website crawls — and pulls out contacts. Every lead is scored 0–99, with one-click enrichment and a site audit that estimates where revenue is leaking.',
+      'Outreach turns that research into personalised day 1 / 3 / 7 sequences in English or Hinglish for email, WhatsApp and Instagram. DealLock reads the reply, spots the objection and drafts the next message; when the answer is yes, a digital contract comes out with confetti.'
+    ],
+    highlights:['Four lead sources, no API keys required','0–99 conversion scoring + enrichment','Site audit with revenue-leak estimate','English and Hinglish outreach sequences','DealLock negotiation copilot','Kanban pipeline with closed-value totals'],
+    stack:['TypeScript','Next.js','OpenStreetMap','DuckDuckGo','Gemini']
+  },
+  'agra-aarav15.github.io': {
+    id:'agra-aarav15.github.io', title:'The first home', tagline:'The original hand-written portfolio. Still standing.', year:'2026',
+    categories:['Web'], license:null, repo:'agra-aarav15.github.io',
+    liveUrl:'https://agra-aarav15.github.io', liveLabel:'Visit the original',
+    story:[
+      'The first portfolio was written by hand and pushed to GitHub Pages: a small, honest home for the projects that existed then. It listed a live store, an open-source firmware project and a promise to keep shipping.',
+      'That page is still live, and its content is the seed for this archive — which reads the public GitHub feed directly, so every repository, including the next one, has a place to live without a rewrite.'
+    ],
+    highlights:['Hand-written HTML on GitHub Pages','The content seed for this archive','Still live at agra-aarav15.github.io','Kept online as a historical version'],
+    stack:['HTML','CSS','JavaScript','GitHub Pages']
+  }
+};
 
 /* =====================================================================
    HELPERS
@@ -762,7 +1289,15 @@ const readDot = () => { dotRGB = getComputedStyle(root).getPropertyValue('--dot'
 const ICON = {
   arrow: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>',
   star:  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="m12 3.5 2.6 5.4 5.9.8-4.3 4.1 1 5.9L12 17l-5.2 2.7 1-5.9-4.3-4.1 5.9-.8z"/></svg>',
-  fork:  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="6" cy="5" r="2.2"/><circle cx="18" cy="5" r="2.2"/><circle cx="12" cy="19" r="2.2"/><path d="M6 7.2v1.3c0 1.7 1.3 3 3 3h6c1.7 0 3-1.3 3-3V7.2M12 11.5v5.3"/></svg>'
+  fork:  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="6" cy="5" r="2.2"/><circle cx="18" cy="5" r="2.2"/><circle cx="12" cy="19" r="2.2"/><path d="M6 7.2v1.3c0 1.7 1.3 3 3 3h6c1.7 0 3-1.3 3-3V7.2M12 11.5v5.3"/></svg>',
+  chev:  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>',
+  check: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6.5 9.5 17 4 11.5"/></svg>',
+  down:  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>',
+  hash:  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M9.5 4 7.5 20M16.5 4l-2 16M5.5 9h13.5M5 15h13.5"/></svg>',
+  box:   '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8.5 12 4l8 4.5v7L12 20l-8-4.5z"/><path d="M4 8.5 12 13l8-4.5M12 13v7"/></svg>',
+  mail:  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6.5h16v11H4z"/><path d="m4 7.5 8 5.5 8-5.5"/></svg>',
+  sun:   '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.2M19.2 12h2.2M12 19.2v2.2M2.6 12h2.2M5.4 5.4 7 7M17 17l1.6 1.6M18.6 5.4 17 7M7 17l-1.6 1.6"/></svg>',
+  refresh:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.6-5.9M20 4v5h-5"/></svg>'
 };
 
 function ago(iso){
@@ -805,7 +1340,126 @@ function themeInit(){
 /* =====================================================================
    GITHUB SYNC — live fetch, 10 min cache, offline snapshot as a last resort
    ===================================================================== */
-const API = `https://api.github.com/users/${CONFIG.user}/repos?per_page=100&sort=pushed&direction=desc`;
+const API_REPOS  = `https://api.github.com/users/${CONFIG.user}/repos?per_page=100&sort=pushed&direction=desc`;
+const API_EVENTS = `https://api.github.com/users/${CONFIG.user}/events/public?per_page=12`;
+const API_ME     = `https://api.github.com/users/${CONFIG.user}`;
+const K_REPOS = `gh-repos:${CONFIG.user}`, K_EVENTS = `gh-events:${CONFIG.user}`, K_PROF = `gh-prof:${CONFIG.user}`;
+const REVALIDATE_MS = CONFIG.revalidateSeconds * 1000;
+let rateBlockedUntil = 0, rateTimer = 0;
+const revalidated = { repos: 0, events: 0 };
+
+function cacheGet(key){ try { return JSON.parse(store.get(key) || 'null'); } catch { return null; } }
+function cacheSet(key, v){ try { store.set(key, JSON.stringify(v)); } catch {} }
+
+/* One GitHub call. ETags make repeat checks free — GitHub doesn't count a 304 against the limit. */
+async function ghJSON(url, key){
+  const hit = cacheGet(key);
+  const headers = { Accept: 'application/vnd.github+json' };
+  if (hit && hit.etag) headers['If-None-Match'] = hit.etag;
+  const ctl = new AbortController(), to = setTimeout(() => ctl.abort(), 9000);
+  let res;
+  try { res = await fetch(url, { headers, signal: ctl.signal }); }
+  finally { clearTimeout(to); }
+  if (res.status === 304 && hit){ cacheSet(key, { t: Date.now(), etag: hit.etag, data: hit.data }); return hit.data; }
+  if (!res.ok){
+    const limited = (res.status === 403 || res.status === 429) && res.headers.get('x-ratelimit-remaining') === '0';
+    if (limited){
+      rateBlockedUntil = Math.max(rateBlockedUntil, (+res.headers.get('x-ratelimit-reset') || 0) * 1000 || Date.now() + 900000);
+      const e = new Error('rate limited'); e.rate = true; throw e;
+    }
+    throw new Error('HTTP ' + res.status);
+  }
+  const data = await res.json();
+  cacheSet(key, { t: Date.now(), etag: res.headers.get('etag'), data });
+  return data;
+}
+
+const repoSig = list => list.map(r => [r.name, r.pushed, r.stars, r.forks, r.lang, (r.desc || '').slice(0, 90)].join('|')).join('\n');
+const normEvents = raw => raw.map(ev => ({
+  type: ev.type, repo: (ev.repo && ev.repo.name) || '', at: ev.created_at,
+  commits: ev.payload && ev.payload.commits ? ev.payload.commits.length : 0
+})).filter(ev => ev.repo && !ev.repo.endsWith('/.github') && ev.repo.startsWith(CONFIG.user + '/'));
+
+function rateText(){
+  if (!rateBlockedUntil || Date.now() > rateBlockedUntil) return 'GitHub’s hourly limit is used up — syncing again when it resets';
+  const t = new Intl.DateTimeFormat('en-IN', { timeZone: 'Asia/Kolkata', hour: '2-digit', minute: '2-digit', hour12: false }).format(new Date(rateBlockedUntil));
+  return `GitHub’s hourly limit is used up — auto-sync resumes ${t} IST`;
+}
+function scheduleRateRetry(){
+  clearTimeout(rateTimer);
+  const ms = rateBlockedUntil - Date.now();
+  if (ms > 0 && ms < 45 * 60000)
+    rateTimer = setTimeout(() => { refreshRepos({ force: true, quiet: true }); refreshEvents({ quiet: true }); }, ms + 3000);
+}
+
+/* Always show the last known answer first, then check GitHub and re-render when something changed. */
+async function refreshRepos({ force = false, quiet = false } = {}){
+  if (!force && Date.now() < rateBlockedUntil){ updateSync({ source: 'rate' }); scheduleRateRetry(); return false; }
+  if (!force && Date.now() - revalidated.repos < REVALIDATE_MS) return false;
+  revalidated.repos = Date.now();
+  try {
+    const repos = (await ghJSON(API_REPOS, K_REPOS)).map(normalize);
+    const sig = repoSig(repos), at = Date.now();
+    if (!current || sig !== lastRepoSig){ current = { repos, source: 'live', at }; render(current); }
+    else { current.source = 'live'; current.at = at; updateSync(current); }
+    return true;
+  } catch (e){
+    if (e.rate){
+      updateSync({ source: 'rate' }); scheduleRateRetry();
+      if (!quiet) toast('GitHub is rate-limiting this network — the page will refresh itself when the limit resets');
+    } else if (current){
+      updateSync({ source: current.source === 'snapshot' ? 'snapshot' : 'stale', at: current.at });
+    }
+    return false;
+  }
+}
+
+async function refreshEvents({ quiet = false } = {}){
+  if (Date.now() < rateBlockedUntil) return;
+  if (Date.now() - revalidated.events < REVALIDATE_MS) return;
+  revalidated.events = Date.now();
+  try { renderActivity(normEvents(await ghJSON(API_EVENTS, K_EVENTS)), 'live'); }
+  catch (e){
+    if (!quiet && e && e.rate) scheduleRateRetry();
+    const hit = cacheGet(K_EVENTS);
+    if (hit && hit.data) renderActivity(normEvents(hit.data), hit.data.length ? 'cache' : 'live');
+  }
+}
+
+async function refreshProfile(){
+  if (Date.now() < rateBlockedUntil) return;
+  try {
+    const p = await ghJSON(API_ME, K_PROF);
+    const av = $('#profAvatar');
+    if (av && p.avatar_url) av.src = p.avatar_url + (p.avatar_url.includes('?') ? '&' : '?') + 's=144';
+    const since = $('#profSince');
+    if (since && p.created_at) since.textContent = new Date(p.created_at).getFullYear();
+    applyStats(p);
+  } catch {}
+}
+
+function applyStats(p){
+  const el = $('#profStats'); if (!el) return;
+  const list = current ? visibleRepos(current.repos) : null;
+  const repos = list ? list.length : (p && p.public_repos) || 0;
+  const bits = [`${repos} public repo${repos === 1 ? '' : 's'}`];
+  if (list) bits.push(`${list.reduce((a, r) => a + r.stars, 0)} stars`);
+  if (p && typeof p.followers === 'number') bits.push(`${p.followers} followers`);
+  el.textContent = bits.join(' · ');
+}
+
+async function bootRepos(){
+  const hit = cacheGet(K_REPOS);
+  if (hit && hit.data){ current = { repos: hit.data.map(normalize), source: 'cache', at: hit.t }; render(current); }
+  await refreshRepos();
+  if (!current){ current = { repos: SNAPSHOT, source: Date.now() < rateBlockedUntil ? 'rate' : 'snapshot', at: null }; render(current); }
+}
+async function bootActivity(){
+  const hit = cacheGet(K_EVENTS);
+  if (hit && hit.data && hit.data.length) renderActivity(normEvents(hit.data), 'cache');
+  await refreshEvents({ quiet: true });
+  if (!$('#gxActivity').children.length) renderActivity(FALLBACK_EVENTS, 'snapshot');
+}
 const cleanDesc = s => String(s || '')
   .replace(/[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}\u{FE0F}\u{200D}]/gu, '')
   .replace(/(^|\s):[a-z0-9_+-]+:(?=\s|$)/gi, ' ')
@@ -825,25 +1479,7 @@ function normalize(r){
 }
 for (const r of SNAPSHOT){ r.desc = cleanDesc(r.desc) || (OVERRIDES[r.name.toLowerCase()] || {}).desc || 'No description yet.'; }
 
-async function loadRepos({ force = false } = {}){
-  const key = `gh-repos:${CONFIG.user}`;
-  let cached = null;
-  try { cached = JSON.parse(store.get(key) || 'null'); } catch {}
-  if (!force && cached && Date.now() - cached.t < CONFIG.cacheMinutes * 60000)
-    return { repos: cached.repos, source: 'cache', at: cached.t };
-  try {
-    const ctl = new AbortController(), to = setTimeout(() => ctl.abort(), 8000);
-    const res = await fetch(API, { headers: { Accept: 'application/vnd.github+json' }, signal: ctl.signal });
-    clearTimeout(to);
-    if (!res.ok) throw new Error('HTTP ' + res.status);
-    const repos = (await res.json()).map(normalize);
-    store.set(key, JSON.stringify({ t: Date.now(), repos }));
-    return { repos, source: 'live', at: Date.now() };
-  } catch {
-    if (cached) return { repos: cached.repos, source: 'stale', at: cached.t };
-    return { repos: SNAPSHOT, source: 'snapshot', at: null };
-  }
-}
+/* The old cache-first loader is gone — refreshRepos() keeps the page live with ETags. */
 
 const visibleRepos = repos => repos
   .filter(r => (CONFIG.showForks || !r.fork) && !CONFIG.hide.map(h => h.toLowerCase()).includes(r.name.toLowerCase()))
@@ -852,8 +1488,108 @@ const visibleRepos = repos => repos
 const LANG_ABBR = { Python:'Py', JavaScript:'JS', TypeScript:'TS', C:'C', 'C++':'C++', 'C#':'C#', CSS:'CSS', HTML:'HTML', Shell:'Sh', Java:'Jv', Go:'Go', Rust:'Rs', Kotlin:'Kt', Swift:'Sw', PHP:'PHP', Dart:'Dt', Lua:'Lua', Ruby:'Rb', SCSS:'SCSS', Vue:'Vue', Svelte:'Sv', 'Jupyter Notebook':'Nb', Batchfile:'Bat', PowerShell:'PS' };
 const abbr = l => l ? (LANG_ABBR[l] || l.slice(0, 2)) : '—';
 
+/* =====================================================================
+   GENERATED ART — tiny SVG covers, so the page ships no photographs
+   ===================================================================== */
+const ART_KIND = {
+  store:'store', cfnkurties:'store',
+  radio:'signal', aerolink:'signal',
+  video:'timeline', clipblitz:'timeline', mittimotion:'timeline',
+  companion:'orbit', myraa:'orbit',
+  phone:'cloud', mitticloud:'cloud',
+  mesh:'network', mittigrid:'network',
+  sales:'bars', leadpilot:'bars',
+  hero:'radar', leadforge:'radar'
+};
+function art(seed){
+  const kind = ART_KIND[String(seed || '').toLowerCase()] || 'network';
+  const st = o => `fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="${o}"`;
+  const fl = o => `fill="currentColor" fill-opacity="${o}"`;
+  let m = '';
+  if (kind === 'store'){
+    m = `<rect x="46" y="34" width="328" height="232" rx="16" ${st('.26')}/>
+      <line x1="46" y1="68" x2="374" y2="68" ${st('.2')}/>
+      <circle cx="66" cy="51" r="4" ${fl('.4')}/><circle cx="82" cy="51" r="4" ${fl('.26')}/><circle cx="98" cy="51" r="4" ${fl('.18')}/>
+      <rect x="66" y="88" width="130" height="86" rx="10" ${st('.3')}/>
+      <path d="M66 132h130M96 174h70" ${st('.22')}/>
+      <rect x="212" y="88" width="142" height="40" rx="10" ${st('.2')}/>
+      <rect x="212" y="134" width="142" height="40" rx="10" ${st('.16')}/>
+      <rect x="66" y="196" width="88" height="52" rx="9" ${st('.18')}/>
+      <rect x="164" y="196" width="88" height="52" rx="9" ${st('.18')}/>
+      <rect x="262" y="196" width="92" height="52" rx="9" ${st('.14')}/>
+      <circle cx="332" cy="222" r="14" ${st('.3')}/>`;
+  } else if (kind === 'signal'){
+    m = `<path d="M210 236v-58" ${st('.3')}/>
+      <path d="M196 190h28" ${st('.3')}/>
+      <path d="M132 132c22-24 56-38 78-38s56 14 78 38" ${st('.22')}/>
+      <path d="M156 158c14-16 34-26 54-26s40 10 54 26" ${st('.3')}/>
+      <path d="M180 184c8-9 18-15 30-15s22 6 30 15" ${st('.38')}/>
+      <circle cx="210" cy="196" r="5" ${fl('.6')}/>
+      <rect x="120" y="212" width="180" height="42" rx="12" ${st('.24')}/>
+      <path d="M144 233h18M182 233h18M220 233h18M258 233h18" ${st('.3')}/>
+      <path d="M84 96c8-30 60-56 126-56s118 26 126 56" ${st('.12')}/>`;
+  } else if (kind === 'timeline'){
+    m = `<rect x="46" y="52" width="328" height="150" rx="14" ${st('.24')}/>
+      <line x1="46" y1="84" x2="374" y2="84" ${st('.2')}/>
+      <rect x="62" y="100" width="56" height="86" rx="8" ${st('.3')}/>
+      <rect x="130" y="100" width="56" height="86" rx="8" ${st('.2')}/>
+      <rect x="198" y="100" width="56" height="86" rx="8" ${st('.3')}/>
+      <rect x="266" y="100" width="56" height="86" rx="8" ${st('.2')}/>
+      <rect x="334" y="100" width="28" height="86" rx="8" ${st('.14')}/>
+      <line x1="196" y1="90" x2="196" y2="178" ${st('.5')}/>
+      <circle cx="196" cy="90" r="4" ${fl('.5')}/>
+      <path d="M70 224v-20M104 224v-34M138 224v-24M172 224v-40M206 224v-28M240 224v-44M274 224v-22M308 224v-36M342 224v-26" ${st('.28')}/>`;
+  } else if (kind === 'orbit'){
+    m = `<circle cx="210" cy="150" r="74" ${st('.3')}/>
+      <ellipse cx="210" cy="150" rx="118" ry="34" ${st('.2')} transform="rotate(-18 210 150)"/>
+      <ellipse cx="210" cy="150" rx="118" ry="34" ${st('.12')} transform="rotate(24 210 150)"/>
+      <circle cx="210" cy="150" r="6" ${fl('.55')}/>
+      <circle cx="316" cy="122" r="4" ${fl('.4')}/>
+      <circle cx="96" cy="186" r="3" ${fl('.3')}/>
+      <path d="M148 96a74 74 0 0 1 62-18" ${st('.42')}/>
+      <circle cx="210" cy="150" r="98" ${st('.08')}/>`;
+  } else if (kind === 'cloud'){
+    m = `<rect x="128" y="58" width="164" height="46" rx="10" ${st('.26')}/>
+      <rect x="128" y="114" width="164" height="46" rx="10" ${st('.2')}/>
+      <rect x="128" y="170" width="164" height="46" rx="10" ${st('.26')}/>
+      <circle cx="150" cy="81" r="3" ${fl('.5')}/><circle cx="150" cy="137" r="3" ${fl('.35')}/><circle cx="150" cy="193" r="3" ${fl('.5')}/>
+      <path d="M172 81h64M172 137h84M172 193h56" ${st('.18')}/>
+      <path d="M210 58V34m-64 178v26" ${st('.2')}/>
+      <circle cx="86" cy="240" r="4" ${fl('.26')}/><circle cx="210" cy="252" r="4" ${fl('.26')}/><circle cx="334" cy="240" r="4" ${fl('.26')}/>`;
+  } else if (kind === 'network'){
+    const nd = [[92,86],[210,58],[328,92],[64,168],[168,150],[252,154],[356,170],[120,240],[238,238],[318,246]];
+    const ed = [[0,1],[1,2],[0,4],[1,4],[1,5],[2,5],[3,4],[4,5],[4,7],[5,8],[2,6],[5,6],[3,7],[6,9],[8,9],[7,8],[4,8],[5,7]];
+    m = ed.map(([a, b]) => `<path d="M${nd[a][0]} ${nd[a][1]}L${nd[b][0]} ${nd[b][1]}" ${st('.14')}/>`).join('')
+      + nd.map(([x, y], i) => `<circle cx="${x}" cy="${y}" r="${i % 3 ? 3.4 : 5}" ${i % 4 ? st('.5') : fl('.5')}/>`).join('');
+  } else if (kind === 'bars'){
+    m = `<path d="M84 214v-44M120 214v-72M156 214v-56M192 214v-88M228 214v-64M264 214v-96M300 214v-52M336 214v-78" ${st('.3')}/>
+      <rect x="64" y="52" width="150" height="44" rx="12" ${st('.34')}/>
+      <path d="M92 74h84" ${st('.22')}/>
+      <rect x="204" y="106" width="150" height="44" rx="12" ${st('.26')}/>
+      <path d="M232 128h84" ${st('.18')}/>
+      <path d="M214 158l6 14 14 6-14 6-6 14-6-14-14-6 14-6z" ${fl('.4')}/>`;
+  } else {
+    m = `<circle cx="210" cy="150" r="52" ${st('.2')}/>
+      <circle cx="210" cy="150" r="92" ${st('.16')}/>
+      <circle cx="210" cy="150" r="132" ${st('.1')}/>
+      <path d="M210 150 282 74a100 100 0 0 0-72-32z" ${fl('.06')}/>
+      <line x1="210" y1="150" x2="310" y2="62" ${st('.4')}/>
+      <circle cx="210" cy="150" r="3" ${fl('.5')}/>
+      <circle cx="262" cy="108" r="4" ${fl('.38')}/><circle cx="160" cy="196" r="3" ${fl('.3')}/><circle cx="236" cy="212" r="3" ${fl('.24')}/>`;
+  }
+  return `<svg viewBox="0 0 420 300" preserveAspectRatio="xMidYMid slice" role="img" aria-hidden="true">${m}</svg>`;
+}
+function paintArt(scope){
+  (scope || document).querySelectorAll('.art[data-art]').forEach(el => {
+    if (el.dataset.painted) return;
+    el.dataset.painted = '1';
+    el.innerHTML = art(el.dataset.art);
+  });
+}
+
 function cardHTML(r, i){
   const isNew = r.created && (Date.now() - Date.parse(r.created)) / 864e5 <= CONFIG.newBadgeDays;
+  const cs = CASES[String(r.name).toLowerCase()];
   const meta = [];
   if (r.stars) meta.push(`<span class="m">${ICON.star}${r.stars}</span>`);
   if (r.forks) meta.push(`<span class="m">${ICON.fork}${r.forks}</span>`);
@@ -866,11 +1602,11 @@ function cardHTML(r, i){
     </div>
     <h3 class="repo__name"><a class="repo__link" href="${esc(r.url)}" target="_blank" rel="noopener">${esc(r.name)}</a></h3>
     <p class="repo__desc">${esc(r.desc)}</p>
-    <div class="repo__meta">${meta.join('')}<span class="repo__go" aria-hidden="true">${ICON.arrow}</span></div>
+    <div class="repo__meta">${meta.join('')}${cs ? `<button class="repo__case" type="button" data-case="${esc(cs.id)}">Case study ${ICON.chev}</button>` : ''}<span class="repo__go" aria-hidden="true">${ICON.arrow}</span></div>
   </article>`;
 }
 
-let current = null, reveal = null, observeReveal = () => {}, sweepReveal = () => {};
+let current = null, lastRepoSig = '', reveal = null, observeReveal = () => {}, sweepReveal = () => {};
 const grid = $('#repoGrid'), filtersEl = $('#filters');
 
 function buildFilters(list){
@@ -928,34 +1664,43 @@ function setStat(id, v){
 function updateSync(res){
   if (!res) return;
   $('#sync').dataset.state = res.source;
-  const rel = res.at ? ago(new Date(res.at).toISOString()) : '';
+  const at = res.at || (current && current.at);
+  const rel = at ? ago(new Date(at).toISOString()) : '';
   $('#syncText').textContent =
-      res.source === 'live' || res.source === 'cache' ? `Synced with GitHub ${rel}`
-    : res.source === 'stale' ? `GitHub didn’t respond, showing the copy from ${rel}`
-    : 'GitHub didn’t respond, showing a saved copy';
+      res.source === 'live' ? `Synced with GitHub ${rel}`
+    : res.source === 'cache' ? `Synced with GitHub ${rel} · checking for updates`
+    : res.source === 'rate' ? rateText()
+    : res.source === 'stale' ? `GitHub didn’t answer — showing the copy from ${rel}`
+    : res.source === 'snapshot' ? 'Waiting for GitHub — showing the saved copy'
+    : `Synced with GitHub ${rel}`;
 }
 
 function render(res){
   current = res;
   const list = visibleRepos(res.repos);
-  buildFilters(list); buildGrid(list);
+  const sig = repoSig(list);
+  if (sig !== lastRepoSig){ buildFilters(list); buildGrid(list); lastRepoSig = sig; }
   setStat('statRepos', list.length);
   setStat('statStars', list.reduce((a, r) => a + r.stars, 0));
   setStat('statLangs', new Set(list.map(r => r.lang).filter(Boolean)).size);
   const top = list.find(r => r.pushed);
   $('#liveLine').textContent = top ? `Latest push to ${top.name}, ${ago(top.pushed)}` : `${list.length} projects on GitHub`;
+  renderMix(list);
+  applyStats();
   updateSync(res);
 }
 
 $('#refresh').addEventListener('click', async e => {
   const btn = e.currentTarget; if (btn.classList.contains('is-spin')) return;
   btn.classList.add('is-spin'); $('#syncText').textContent = 'Syncing with GitHub';
-  const [res] = await Promise.all([loadRepos({ force: true }), sleep(800)]);
-  btn.classList.remove('is-spin'); render(res);
+  const [ok] = await Promise.all([refreshRepos({ force: true }), refreshEvents({ quiet: true }), refreshProfile(), sleep(800)]);
+  btn.classList.remove('is-spin');
+  if (!ok && Date.now() < rateBlockedUntil) toast('Still rate-limited — auto-retry is already set');
 });
 setInterval(() => {
   updateSync(current);
   $$('[data-time]').forEach(el => { el.textContent = 'Updated ' + ago(el.dataset.time); });
+  $$('[data-ago]').forEach(el => { el.textContent = ago(el.dataset.ago); });
 }, 30000);
 
 /* =====================================================================
@@ -997,7 +1742,8 @@ function runLoader(dataPromise){
       shown += (goal - shown) * (all ? .14 : .06);
       if (all && shown > 99.5) shown = 100;
       paint(shown);
-      if (shown < 100) requestAnimationFrame(tick); else finish();
+      if (shown < 100){ if (document.hidden) setTimeout(() => tick(performance.now()), 120); else requestAnimationFrame(tick); }
+      else finish();
     })(t0);
   });
 }
@@ -1068,16 +1814,22 @@ function cursor(){
   if (!finePointer || reduced) return;
   const dot = $('.cur--dot'), ring = $('.cur--ring');
   root.classList.add('has-cursor');
-  let x = -100, y = -100, rx = -100, ry = -100, shown = false;
+  let x = -100, y = -100, rx = -100, ry = -100, shown = false, raf = 0;
+  const loop = () => {
+    raf = 0;
+    rx += (x - rx) * .17; ry += (y - ry) * .17;
+    ring.style.transform = `translate3d(${rx.toFixed(1)}px,${ry.toFixed(1)}px,0)`;
+    if (Math.abs(x - rx) + Math.abs(y - ry) > .3) raf = requestAnimationFrame(loop);
+  };
   addEventListener('pointermove', e => {
     x = e.clientX; y = e.clientY;
     if (!shown){ shown = true; rx = x; ry = y; dot.style.opacity = ring.style.opacity = 1; }
     dot.style.transform = `translate3d(${x}px,${y}px,0)`;
     const t = e.target instanceof Element && e.target.closest('a,button,.repo,.panel,.chip');
     ring.classList.toggle('is-link', !!t);
+    if (!raf) raf = requestAnimationFrame(loop);
   }, { passive: true });
   root.addEventListener('mouseleave', () => { shown = false; dot.style.opacity = ring.style.opacity = 0; });
-  (function loop(){ rx += (x - rx) * .17; ry += (y - ry) * .17; ring.style.transform = `translate3d(${rx.toFixed(1)}px,${ry.toFixed(1)}px,0)`; requestAnimationFrame(loop); })();
 }
 
 /* =====================================================================
@@ -1094,32 +1846,48 @@ function reactiveType(){
         line.appendChild(s); letters.push({ el: s, i: n++, inf: 0, key: '' });
       });
     });
-    return { rootEl, letters, vis: false };
+    return { rootEl, letters, vis: false, rects: null };
   });
-  if (reduced){ groups.forEach(g => g.letters.forEach(l => { l.el.style.fontVariationSettings = "'wght' 380,'wdth' 100"; })); return; }
+  const setBase = l => { if (l.key !== 'base'){ l.key = 'base'; l.inf = 0; l.el.style.fontVariationSettings = "'wght' 340,'wdth' 100"; } };
+  if (reduced || !finePointer){ groups.forEach(g => g.letters.forEach(setBase)); return; }
   const vio = new IntersectionObserver(es => es.forEach(en => { const g = groups.find(g => g.rootEl === en.target); if (g) g.vis = en.isIntersecting; }));
   groups.forEach(g => vio.observe(g.rootEl));
-  let px = -9999, py = -9999;
-  addEventListener('pointermove', e => { px = e.clientX; py = e.clientY; }, { passive: true });
+  let px = -9999, py = -9999, raf = 0, dirty = true, lastMove = -1e9;
+  const kick = () => { if (!raf && !document.hidden && groups.some(g => g.vis)) raf = requestAnimationFrame(loop); };
+  addEventListener('pointermove', e => { px = e.clientX; py = e.clientY; lastMove = performance.now(); dirty = true; kick(); }, { passive: true });
   root.addEventListener('mouseleave', () => { px = py = -9999; });
+  addEventListener('scroll', () => { dirty = true; }, { passive: true });
+  addEventListener('resize', () => { dirty = true; });
+  if (document.fonts) document.fonts.ready.then(() => { dirty = true; });
   const t0 = performance.now();
-  (function loop(now){
-    const t = (now - t0) / 1000;
-    if (!document.hidden) for (const g of groups){
+  function loop(now){
+    raf = 0;
+    const t = (now - t0) / 1000, idle = performance.now() - lastMove > 1200;
+    let busy = false;
+    for (const g of groups){
       if (!g.vis) continue;
-      const rects = g.letters.map(l => l.el.getBoundingClientRect());
+      if (dirty || !g.rects) g.rects = g.letters.map(l => l.el.getBoundingClientRect());
       g.letters.forEach((l, k) => {
-        const r = rects[k], d = Math.hypot(r.left + r.width / 2 - px, r.top + r.height / 2 - py);
-        l.inf += (Math.max(0, 1 - d / 270) - l.inf) * .13;
+        const r = g.rects[k], d = Math.hypot(r.left + r.width / 2 - px, r.top + r.height / 2 - py);
+        const target = Math.max(0, 1 - d / 270);
+        l.inf += (target - l.inf) * .13;
+        if (idle){
+          if (l.inf < .02){ setBase(l); return; }
+          busy = true;
+          return;
+        }
+        busy = true;
         const e = l.inf * l.inf * (3 - 2 * l.inf);
         const wave = (Math.sin(t * 1.15 + l.i * .62) + 1) / 2;
-        const w = Math.round(lerp(300 + wave * 120, 820, e)), wd = Math.round(100 - e * 24);
+        const w = Math.round(lerp(310 + wave * 110, 820, e)), wd = Math.round(100 - e * 24);
         const key = w + '|' + wd;
         if (l.key !== key){ l.key = key; l.el.style.fontVariationSettings = `'wght' ${w},'wdth' ${wd}`; }
       });
     }
-    requestAnimationFrame(loop);
-  })(performance.now());
+    dirty = false;
+    if (busy) raf = requestAnimationFrame(loop);
+  }
+  kick();
 }
 
 /* =====================================================================
@@ -1129,11 +1897,13 @@ function field(){
   const cv = $('#field'), ctx = cv.getContext('2d');
   let W, H, dpr, gap, dots = [];
   const mouse = { x: -9999, y: -9999 }, ripples = [];
+  const B = 8, bx = [], by = [], br = [];
+  for (let i = 0; i < B; i++){ bx.push([]); by.push([]); br.push([]); }
   function build(){
-    dpr = Math.min(devicePixelRatio || 1, 2); W = innerWidth; H = innerHeight;
+    dpr = Math.min(devicePixelRatio || 1, LOWPOWER ? 1 : 1.5); W = innerWidth; H = innerHeight;
     cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    gap = W < 700 ? 28 : 36;
+    gap = W < 700 ? (LOWPOWER ? 34 : 30) : (LOWPOWER ? 46 : 40);
     const cols = Math.ceil(W / gap) + 2, rows = Math.ceil(H / gap) + 3;
     dots = [];
     for (let r = 0; r < rows; r++) for (let c = 0; c < cols; c++) dots.push({ hx: c * gap, hy: r * gap, dx: 0, dy: 0, vx: 0, vy: 0 });
@@ -1144,12 +1914,12 @@ function field(){
     root.addEventListener('mouseleave', () => { mouse.x = mouse.y = -9999; });
     addEventListener('pointerdown', e => { ripples.push({ x: e.clientX, y: e.clientY, t: performance.now() }); if (ripples.length > 4) ripples.shift(); }, { passive: true });
   }
-  const R = 150;
+  const R = 150, FRAME_MS = LOWPOWER ? 42 : 33;
   function frame(now){
     ctx.clearRect(0, 0, W, H);
     const oy = -((scrollY * .2) % gap) - gap, time = now / 1000;
     for (let i = ripples.length - 1; i >= 0; i--) if (now - ripples[i].t > 2000) ripples.splice(i, 1);
-    ctx.fillStyle = `rgb(${dotRGB})`;
+    for (let i = 0; i < B; i++){ bx[i].length = 0; by[i].length = 0; br[i].length = 0; }
     for (const d of dots){
       const wx = d.hx, wy = d.hy + oy;
       let tx = 0, ty = 0, boost = 0;
@@ -1162,13 +1932,26 @@ function field(){
       d.vx += (tx - d.dx) * .12; d.vy += (ty - d.dy) * .12; d.vx *= .78; d.vy *= .78; d.dx += d.vx; d.dy += d.vy;
       const prox = Math.pow(clamp(1 - md / (R * 1.35), 0, 1), 2);
       const wave = Math.sin(time * .8 + (wx + wy) * .011) * .5 + .5;
-      ctx.globalAlpha = clamp(.16 + wave * .06 + prox * .7 + boost * .5, 0, 1);
-      ctx.beginPath(); ctx.arc(wx + d.dx, wy + d.dy, .9 + prox * 1.7 + boost * 1.6, 0, 6.2832); ctx.fill();
+      const alpha = clamp(.16 + wave * .06 + prox * .7 + boost * .5, 0, 1);
+      const b = Math.min(B - 1, (alpha * (B - 1) + .5) | 0);
+      bx[b].push(wx + d.dx); by[b].push(wy + d.dy); br[b].push(.9 + prox * 1.7 + boost * 1.6);
+    }
+    ctx.fillStyle = `rgb(${dotRGB})`;
+    for (let b = 0; b < B; b++){
+      const n = bx[b].length; if (!n) continue;
+      ctx.globalAlpha = Math.max(.05, b / (B - 1));
+      ctx.beginPath();
+      for (let i = 0; i < n; i++){ const x = bx[b][i], y = by[b][i], r = br[b][i]; ctx.moveTo(x + r, y); ctx.arc(x, y, r, 0, 6.2832); }
+      ctx.fill();
     }
     ctx.globalAlpha = 1;
   }
   if (reduced){ frame(0); addEventListener('resize', () => frame(0)); return; }
-  (function loop(now){ if (!document.hidden) frame(now); requestAnimationFrame(loop); })(performance.now());
+  let last = -1e9;
+  (function loop(now){
+    if (!document.hidden && now - last >= FRAME_MS){ last = now; frame(now); }
+    requestAnimationFrame(loop);
+  })(performance.now());
 }
 
 /* =====================================================================
@@ -1176,10 +1959,12 @@ function field(){
    ===================================================================== */
 function sphere(){
   const cv = $('#sphere'), ctx = cv.getContext('2d');
-  const N = 540, pts = [], ga = Math.PI * (3 - Math.sqrt(5));
+  const N = LOWPOWER ? 240 : 340, pts = [], ga = Math.PI * (3 - Math.sqrt(5));
   for (let i = 0; i < N; i++){ const y = 1 - (i / (N - 1)) * 2, r = Math.sqrt(1 - y * y), th = ga * i; pts.push([Math.cos(th) * r, y, Math.sin(th) * r]); }
   let S = 0, dpr = 1, rotY = 0, rotX = -.32, tX = 0, tY = 0, spin = 0, lastScroll = scrollY, sat = 0, vis = true;
-  function size(){ dpr = Math.min(devicePixelRatio || 1, 2); S = cv.clientWidth; cv.width = cv.height = Math.round(S * dpr); ctx.setTransform(dpr, 0, 0, dpr, 0, 0); }
+  const B = 8, bx = [], by = [], br = [];
+  for (let i = 0; i < B; i++){ bx.push([]); by.push([]); br.push([]); }
+  function size(){ dpr = Math.min(devicePixelRatio || 1, LOWPOWER ? 1 : 1.5); S = cv.clientWidth; cv.width = cv.height = Math.round(S * dpr); ctx.setTransform(dpr, 0, 0, dpr, 0, 0); }
   size(); addEventListener('resize', size);
   new IntersectionObserver(es => { vis = es[0].isIntersecting; }).observe(cv);
   if (!reduced) addEventListener('pointermove', e => { tY = (e.clientX / innerWidth - .5) * 1.1; tX = (e.clientY / innerHeight - .5) * .6; }, { passive: true });
@@ -1189,14 +1974,22 @@ function sphere(){
     if (!reduced) rotY += .0024 + spin;
     const ry = rotY + tY, rx = rotX + tX;
     const cY = Math.cos(ry), sY = Math.sin(ry), cX = Math.cos(rx), sX = Math.sin(rx);
-    const R = S * .39, c = S / 2;
-    ctx.fillStyle = `rgb(${dotRGB})`;
+    const R = S * .39, c = S / 2, sz = S / 480 + .4;
+    for (let i = 0; i < B; i++){ bx[i].length = 0; by[i].length = 0; br[i].length = 0; }
     for (const p of pts){
       const x1 = p[0] * cY + p[2] * sY, z1 = -p[0] * sY + p[2] * cY;
       const y2 = p[1] * cX - z1 * sX, z2 = p[1] * sX + z1 * cX;
       const k = 1 / (1 - z2 * .26), depth = (z2 + 1) / 2;
-      ctx.globalAlpha = .1 + depth * .8;
-      ctx.beginPath(); ctx.arc(c + x1 * R * k, c + y2 * R * k, (.55 + depth * 1.45) * (S / 480 + .4), 0, 6.2832); ctx.fill();
+      const b = Math.min(B - 1, (depth * (B - 1) + .5) | 0);
+      bx[b].push(c + x1 * R * k); by[b].push(c + y2 * R * k); br[b].push((.55 + depth * 1.45) * sz);
+    }
+    ctx.fillStyle = `rgb(${dotRGB})`;
+    for (let b = 0; b < B; b++){
+      const n = bx[b].length; if (!n) continue;
+      ctx.globalAlpha = .1 + (b / (B - 1)) * .8;
+      ctx.beginPath();
+      for (let i = 0; i < n; i++){ const x = bx[b][i], y = by[b][i], r = br[b][i]; ctx.moveTo(x + r, y); ctx.arc(x, y, r, 0, 6.2832); }
+      ctx.fill();
     }
     ctx.globalAlpha = .22; ctx.strokeStyle = `rgb(${dotRGB})`; ctx.lineWidth = 1;
     ctx.beginPath(); ctx.ellipse(c, c, R * 1.22, R * .36, -.32, 0, 6.2832); ctx.stroke();
@@ -1219,6 +2012,7 @@ function scrollInit(){
   st.innerHTML = text.split(' ').map(w => `<span class="w" aria-hidden="true">${esc(w)}</span>`).join(' ');
   const words = $$('.w', st);
 
+  let heroBlur = -1;
   function onScroll(){
     sweepReveal();
     const y = scrollY, vh = innerHeight, max = root.scrollHeight - vh;
@@ -1226,7 +2020,8 @@ function scrollInit(){
     if (!reduced && y < vh * 1.2){
       const k = clamp(y / (vh * .75), 0, 1);
       heroWrap.style.opacity = Math.max(0, 1 - k * 1.05).toFixed(3);
-      heroWrap.style.filter = k > .02 ? `blur(${(k * 12).toFixed(1)}px)` : '';
+      const bl = k > .04 ? Math.round(k * 12) : 0;
+      if (bl !== heroBlur){ heroBlur = bl; heroWrap.style.filter = bl ? `blur(${bl}px)` : ''; }
       heroWrap.style.transform = `translate3d(0,${(y * .14).toFixed(1)}px,0)`;
       sphereWrap.style.transform = `translate3d(0,${(y * .3).toFixed(1)}px,0) scale(${(1 - k * .12).toFixed(3)})`;
       sphereWrap.style.opacity = Math.max(0, 1 - k * 1.05).toFixed(3);
@@ -1236,8 +2031,12 @@ function scrollInit(){
       const p = clamp((vh * .82 - r.top) / (r.height + vh * .3), 0, 1);
       words.forEach((w, i) => {
         const t = clamp(p * words.length * 1.18 - i, 0, 1);
-        w.style.opacity = (.16 + .84 * t).toFixed(3);
-        w.style.filter = t < 1 ? `blur(${((1 - t) * 2.6).toFixed(1)}px)` : '';
+        const tq = Math.round(t * 12) / 12;
+        if (w._t !== tq){
+          w._t = tq;
+          w.style.opacity = (.16 + .84 * tq).toFixed(2);
+          w.style.filter = tq < 1 ? `blur(${((1 - tq) * 2.6).toFixed(1)}px)` : '';
+        }
       });
     }
   }
@@ -1346,21 +2145,309 @@ function pills(){
 function contact(){
   const btn = $('#copyEmail'), label = $('#copyLabel'); let timer;
   btn.addEventListener('click', async () => {
-    const email = btn.dataset.email;
-    try { await navigator.clipboard.writeText(email); }
-    catch {
-      const ta = document.createElement('textarea'); ta.value = email; ta.style.cssText = 'position:fixed;opacity:0';
-      document.body.appendChild(ta); ta.select(); try { document.execCommand('copy'); } catch {} ta.remove();
-    }
-    label.textContent = 'Copied'; clearTimeout(timer); timer = setTimeout(() => { label.textContent = 'Copy email'; }, 1800);
+    await copyText(btn.dataset.email);
+    label.textContent = 'Copied'; toast('Email copied to clipboard');
+    clearTimeout(timer); timer = setTimeout(() => { label.textContent = 'Copy email'; }, 1800);
   });
   $('#year').textContent = new Date().getFullYear();
 }
 
 /* =====================================================================
+   TOASTS & CLIPBOARD
+   ===================================================================== */
+function toast(msg){
+  const box = $('#toasts');
+  const el = document.createElement('div');
+  el.className = 'toast glass';
+  el.innerHTML = `${ICON.check}<span>${esc(msg)}</span>`;
+  box.appendChild(el);
+  requestAnimationFrame(() => el.classList.add('in'));
+  setTimeout(() => { el.classList.remove('in'); setTimeout(() => el.remove(), 480); }, 2400);
+}
+async function copyText(text){
+  try { await navigator.clipboard.writeText(text); return true; }
+  catch {
+    const ta = document.createElement('textarea'); ta.value = text; ta.style.cssText = 'position:fixed;opacity:0';
+    document.body.appendChild(ta); ta.select(); let ok = false; try { ok = document.execCommand('copy'); } catch {} ta.remove();
+    return ok;
+  }
+}
+
+/* =====================================================================
+   CLOCK — Prayagraj time, always
+   ===================================================================== */
+function clock(){
+  const k = $('#paletteKbd');
+  if (k && !/mac|iphone|ipad/i.test(navigator.platform || navigator.userAgent)) k.textContent = 'Ctrl K';
+  const el = $('#clockText'); if (!el) return;
+  const fmt = new Intl.DateTimeFormat('en-IN', { timeZone:'Asia/Kolkata', hour:'2-digit', minute:'2-digit', hour12:false });
+  const tick = () => { el.textContent = fmt.format(new Date()) + ' IST'; };
+  tick(); setInterval(tick, 15000);
+}
+
+/* =====================================================================
+   FORMATTERS
+   ===================================================================== */
+function fmtBytes(n){
+  if (n == null) return '';
+  if (n >= 1073741824) return (n / 1073741824).toFixed(1) + ' GB';
+  if (n >= 1048576) return (n / 1048576).toFixed(1) + ' MB';
+  if (n >= 1024) return Math.round(n / 1024) + ' KB';
+  return n + ' B';
+}
+function fmtDate(iso){
+  if (!iso) return '';
+  const d = new Date(iso); if (Number.isNaN(d.getTime())) return '';
+  return d.toLocaleDateString('en-IN', { day:'numeric', month:'short', year:'numeric' });
+}
+
+/* =====================================================================
+   CASE STUDY MODAL
+   ===================================================================== */
+let openCaseId = null, lastFocus = null;
+const modalEl = $('#modal'), modalBody = $('#modalBody');
+
+async function fetchRelease(repo){
+  const key = `gh-rel:${repo}`;
+  try { const c = JSON.parse(store.get(key) || 'null'); if (c && Date.now() - c.t < 600000) return c.rel; } catch {}
+  try {
+    const ctl = new AbortController(), to = setTimeout(() => ctl.abort(), 8000);
+    const res = await fetch(`https://api.github.com/repos/${CONFIG.user}/${repo}/releases/latest`, { headers:{ Accept:'application/vnd.github+json' }, signal:ctl.signal });
+    clearTimeout(to);
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    const j = await res.json();
+    const rel = { tag:j.tag_name, name:j.name || j.tag_name, published:j.published_at, assets:(j.assets || []).map(a => ({ name:a.name, size:a.size, url:a.browser_download_url })) };
+    store.set(key, JSON.stringify({ t:Date.now(), rel }));
+    return rel;
+  } catch { return null; }
+}
+
+function caseLinks(c){
+  const bits = [];
+  if (c.repo) bits.push(`<a class="btn btn--glass" href="https://github.com/${CONFIG.user}/${c.repo}" target="_blank" rel="noopener"><span>View on GitHub</span>${ICON.arrow}</a>`);
+  if (c.liveUrl) bits.push(`<a class="btn btn--glass" href="${esc(c.liveUrl)}" target="_blank" rel="noopener"><span>${esc(c.liveLabel || 'Open live site')}</span>${ICON.arrow}</a>`);
+  if (c.release && c.release.assets && c.release.assets.length){
+    const main = c.release.assets.find(a => !/\.txt$/i.test(a.name)) || c.release.assets[0];
+    bits.push(`<a class="btn btn--solid" href="${esc(main.url)}" target="_blank" rel="noopener"><span>Download latest</span>${ICON.down}</a>`);
+  }
+  return bits.join('');
+}
+
+function renderCases(){
+  const c = CASES[openCaseId]; if (!c) return;
+  const hasDl = !!(c.repo && c.release && c.release.assets && c.release.assets.length);
+  const live = current && current.repos ? current.repos.find(r => r.name.toLowerCase() === String(c.repo || '\u0000').toLowerCase()) : null;
+  const lang = live ? live.lang : null;
+  const meta = `<div class="case__meta"><span>${esc(c.year)}</span>${c.categories.map(x => `<span>${esc(x)}</span>`).join('')}${c.license ? `<span>${esc(c.license)}</span>` : ''}</div>`;
+  const head = (c.art || c.image)
+    ? `<div class="case__hero">${c.art ? `<span class="art" aria-hidden="true">${art(c.art)}</span>` : ''}${c.image ? `<img src="${esc(c.image)}" alt="" loading="lazy" onerror="this.remove()">` : ''}</div>
+       <header class="case__head">
+         <h3 class="case__title">${esc(c.title)}</h3>
+         <p class="case__tag">${esc(c.tagline)}</p>
+         ${meta}
+       </header>`
+    : `<header class="case__head case__head--flat">
+         <h3 class="case__title">${esc(c.title)}</h3>
+         <p class="case__tag">${esc(c.tagline)}</p>
+         ${meta}
+       </header>`;
+  const overview = `
+    <div id="caseTab-overview" class="case__grid" role="tabpanel">
+      <div class="case__story">${c.story.map(p => `<p>${esc(p)}</p>`).join('')}</div>
+      <div class="case__col">
+        <section><div class="case__relhead"><h4>Highlights</h4></div><ul class="case__hl">${c.highlights.map(h => `<li>${ICON.check}<span>${esc(h)}</span></li>`).join('')}</ul></section>
+        <section>
+          <div class="case__relhead"><h4>Spec sheet</h4></div>
+          <dl class="case__spec">
+            <div><dt>Year</dt><dd>${esc(c.year)}</dd></div>
+            ${lang ? `<div><dt>Language</dt><dd>${esc(lang)}</dd></div>` : ''}
+            <div><dt>License</dt><dd>${esc(c.license || '—')}</dd></div>
+            <div><dt>Kind</dt><dd>${esc(c.categories.join(' · '))}</dd></div>
+          </dl>
+          <ul class="case__stack">${c.stack.map(s => `<li>${esc(s)}</li>`).join('')}</ul>
+        </section>
+      </div>
+    </div>`;
+  const rel = c.release;
+  const clone = c.repo ? `git clone https://github.com/${CONFIG.user}/${c.repo}.git` : '';
+  const downloads = hasDl ? `
+    <div id="caseTab-downloads" class="case__rel" role="tabpanel" hidden>
+      <div class="case__relhead"><h4>${esc(rel.name || rel.tag)}</h4><span>${rel.published ? 'Published ' + fmtDate(rel.published) : ''}</span></div>
+      ${rel.assets.map(a => `
+        <div class="case__relrow">${ICON.box}<div><b>${esc(a.name)}</b><span>${fmtBytes(a.size)}</span></div>
+          <a href="${esc(a.url)}" target="_blank" rel="noopener" aria-label="Download ${esc(a.name)}">${ICON.down}</a></div>`).join('')}
+      <p class="case__note">Assets come straight from GitHub Releases — the list refreshes itself when a release changes.</p>
+      ${clone ? `<div class="case__clone"><code>${esc(clone)}</code><button type="button" data-copy="${esc(clone)}">Copy</button></div>` : ''}
+      ${c.repo ? `<div><a class="case__all" href="https://github.com/${CONFIG.user}/${c.repo}/releases" target="_blank" rel="noopener">All releases on GitHub</a></div>` : ''}
+    </div>` : '';
+  const tabs = `<div class="case__tabs" role="tablist">
+      <button class="case__tab" type="button" role="tab" aria-selected="true" data-tab="overview">Overview</button>
+      ${hasDl ? '<button class="case__tab" type="button" role="tab" aria-selected="false" data-tab="downloads">Downloads</button>' : ''}
+    </div>`;
+  const links = caseLinks(c);
+  modalBody.innerHTML = `${head}<div class="case__body">${tabs}${overview}${downloads}${links ? `<div class="case__cta">${links}</div>` : ''}</div>`;
+  modalBody.scrollTop = 0;
+}
+
+function switchTab(name){
+  $$('.case__tab', modalBody).forEach(t => t.setAttribute('aria-selected', String(t.dataset.tab === name)));
+  const ov = $('#caseTab-overview', modalBody), dl = $('#caseTab-downloads', modalBody);
+  if (ov) ov.hidden = name !== 'overview';
+  if (dl) dl.hidden = name !== 'downloads';
+}
+
+function openCase(id){
+  const c = CASES[id]; if (!c) return;
+  if (!modalEl.classList.contains('is-open')) lastFocus = document.activeElement;
+  openCaseId = id;
+  renderCases();
+  modalEl.classList.add('is-open'); modalEl.setAttribute('aria-hidden', 'false');
+  root.classList.add('is-lock');
+  const x = $('.modal__x', modalEl); if (x) x.focus({ preventScroll:true });
+  if (c.repo && !c.noDownload){
+    fetchRelease(c.repo).then(rel => {
+      if (!rel || openCaseId !== id) return;
+      const changed = !c.release || c.release.tag !== rel.tag;
+      c.release = rel;
+      if (changed && openCaseId === id) renderCases();
+    });
+  }
+}
+function closeCase(){
+  if (!openCaseId) return;
+  openCaseId = null;
+  modalEl.classList.remove('is-open'); modalEl.setAttribute('aria-hidden', 'true');
+  root.classList.remove('is-lock');
+  if (lastFocus && lastFocus.focus) lastFocus.focus({ preventScroll:true });
+  lastFocus = null;
+}
+function caseStudies(){
+  document.addEventListener('click', e => {
+    const opener = e.target.closest('[data-case]');
+    if (opener){ e.preventDefault(); openCase(opener.dataset.case); return; }
+    if (e.target.closest('#modal [data-close]')){ closeCase(); return; }
+    const cp = e.target.closest('#modal [data-copy]');
+    if (cp){ copyText(cp.dataset.copy).then(ok => toast(ok ? 'Clone command copied' : 'Copy failed')); return; }
+    const tab = e.target.closest('.case__tab');
+    if (tab) switchTab(tab.dataset.tab);
+  });
+  addEventListener('keydown', e => {
+    if (e.key === 'Escape' && openCaseId && !$('#palette').classList.contains('is-open')) closeCase();
+  });
+}
+
+/* =====================================================================
+   ACTIVITY + LANGUAGE MIX
+   ===================================================================== */
+const EV_TEXT = { PushEvent:'pushed', CreateEvent:'created', IssuesEvent:'touched issues in', PullRequestEvent:'worked on', WatchEvent:'starred', ForkEvent:'forked', ReleaseEvent:'released', DeleteEvent:'cleaned up' };
+function eventVerb(ev){
+  if (ev.type === 'PushEvent' && ev.commits) return `pushed ${ev.commits} commit${ev.commits > 1 ? 's' : ''} to`;
+  return (EV_TEXT[ev.type] || 'worked on') + ' ';
+}
+function renderActivity(list, source){
+  const box = $('#gxActivity'); if (!box) return;
+  box.innerHTML = list.slice(0, 6).map(ev => {
+    const name = String(ev.repo).split('/').pop();
+    return `<div class="gx__row"><i aria-hidden="true"></i><a href="https://github.com/${esc(ev.repo)}" target="_blank" rel="noopener">${esc(name)}</a><em>${esc(eventVerb(ev))}</em><time data-ago="${esc(ev.at)}">${ago(ev.at)}</time></div>`;
+  }).join('') || '<div class="gx__row"><em>No public activity yet.</em></div>';
+  const when = $('#gxWhen');
+  if (when) when.textContent = (source === 'live' || source === 'cache') ? 'live from GitHub' : 'saved copy';
+}
+/* activity now flows through refreshEvents() in the GitHub sync block — no cache-first loader here */
+function renderMix(list){
+  const box = $('#gxMix'); if (!box) return;
+  const counts = new Map();
+  list.forEach(r => { const k = r.lang || 'Other'; counts.set(k, (counts.get(k) || 0) + 1); });
+  const rows = [...counts].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0])).slice(0, 7);
+  const max = rows.length ? rows[0][1] : 1;
+  box.innerHTML = rows.map(([l, c], i) =>
+    `<div class="gx__bar" style="--w:${(c / max).toFixed(3)};--o:${Math.max(.45, .95 - i * .1).toFixed(2)}"><b>${esc(l)}</b><span class="t"><i></i></span><span>${c} repo${c === 1 ? '' : 's'}</span></div>`
+  ).join('') || '<div class="gx__bar"><b>Waiting for GitHub…</b><span class="t"><i></i></span><span>0</span></div>';
+  const note = $('#gxMixNote');
+  if (note) note.textContent = `${list.length} repositor${list.length === 1 ? 'y' : 'ies'} · by primary language`;
+}
+
+/* =====================================================================
+   COMMAND PALETTE — ⌘K / Ctrl K
+   ===================================================================== */
+const paletteEl = $('#palette'), paletteInput = $('#paletteInput'), paletteList = $('#paletteList');
+let paletteOpen = false, paletteSel = 0, paletteResults = [];
+function paletteItems(){
+  const items = [];
+  [['profile','Profile','Who I am'],['work','Work','Builds that shipped'],['projects','Projects','Live from GitHub'],['stack','Stack','What I build with'],['contact','Contact','Say hello']]
+    .forEach(([id, t, s]) => items.push({ kind:'Section', icon:ICON.hash, title:t, sub:s, run:() => { location.hash = '#' + id; } }));
+  Object.values(CASES).forEach(c => items.push({ kind:'Case study', icon:ICON.box, title:c.title, sub:c.tagline, run:() => openCase(c.id) }));
+  [
+    ['GitHub profile', 'github.com/agra-aarav15', 'https://github.com/agra-aarav15'],
+    ['LinkedIn', 'aarav-agrawal-86a3553bb', 'https://www.linkedin.com/in/aarav-agrawal-86a3553bb/'],
+    ['cfnkurties.in', 'The live store', 'https://cfnkurties.in'],
+    ['ClipBlitz studio', 'Download v4.2.0 for Windows', 'https://github.com/agra-aarav15/clipblitz-ai-shorts/releases/latest'],
+    ['MittiCloud APK', 'Install the latest Android build', 'https://github.com/agra-aarav15/mitticloud/releases/latest'],
+    ['AeroLink firmware', 'Flash packages for every board', 'https://github.com/agra-aarav15/Aerolink/releases/latest'],
+    ['MYRAA builds', 'Windows installer, portable and Android', 'https://github.com/agra-aarav15/MYRAA/releases/latest']
+  ].forEach(([t, s, url]) => items.push({ kind:'Link', icon:ICON.arrow, title:t, sub:s, run:() => window.open(url, '_blank', 'noopener') }));
+  items.push({ kind:'Action', icon:ICON.mail, title:'Copy email', sub:'aarya121411@gmail.com', run:() => copyText('aarya121411@gmail.com').then(ok => toast(ok ? 'Email copied to clipboard' : 'Copy failed')) });
+  items.push({ kind:'Action', icon:ICON.sun, title:'Toggle theme', sub:'Switch between black and white', run:() => $('#themeBtn').click() });
+  items.push({ kind:'Action', icon:ICON.refresh, title:'Refresh GitHub data', sub:'Force a fresh pull from the API', run:() => $('#refresh').click() });
+  items.push({ kind:'Action', icon:ICON.check, title:'Back to top', sub:'Return to the hero', run:() => { location.hash = '#top'; } });
+  return items;
+}
+const PALETTE_ITEMS = paletteItems();
+function renderPalette(){
+  const q = paletteInput.value.trim().toLowerCase();
+  paletteResults = PALETTE_ITEMS.filter(it => !q || (it.title + ' ' + it.sub + ' ' + it.kind).toLowerCase().includes(q));
+  if (paletteSel >= paletteResults.length) paletteSel = 0;
+  if (!paletteResults.length){
+    paletteList.innerHTML = `<li class="palette__empty">Nothing matches “${esc(q)}”</li>`;
+    return;
+  }
+  paletteList.innerHTML = paletteResults.map((it, i) => `
+    <li role="option" aria-selected="${i === paletteSel}"><button type="button" data-i="${i}" aria-selected="${i === paletteSel}">
+      <span class="ic">${it.icon}</span><span class="tx"><b>${esc(it.title)}</b><span>${esc(it.sub)}</span></span><span class="kind">${esc(it.kind)}</span>
+    </button></li>`).join('');
+  const sel = paletteList.querySelector('button[aria-selected="true"]');
+  if (sel && sel.scrollIntoView) sel.scrollIntoView({ block:'nearest' });
+}
+function openPalette(){
+  paletteOpen = true;
+  paletteEl.classList.add('is-open'); paletteEl.setAttribute('aria-hidden', 'false');
+  paletteInput.value = ''; paletteSel = 0; renderPalette();
+  setTimeout(() => paletteInput.focus(), 60);
+}
+function closePalette(){
+  paletteOpen = false;
+  paletteEl.classList.remove('is-open'); paletteEl.setAttribute('aria-hidden', 'true');
+}
+function paletteRun(i){
+  const it = paletteResults[i]; if (!it) return;
+  closePalette(); it.run();
+}
+function palette(){
+  $('#paletteBtn').addEventListener('click', () => paletteOpen ? closePalette() : openPalette());
+  paletteEl.addEventListener('click', e => {
+    if (e.target.closest('[data-close]')){ closePalette(); return; }
+    const b = e.target.closest('button[data-i]');
+    if (b) paletteRun(+b.dataset.i);
+  });
+  paletteInput.addEventListener('input', () => { paletteSel = 0; renderPalette(); });
+  addEventListener('keydown', e => {
+    const meta = e.metaKey || e.ctrlKey;
+    if (meta && (e.key === 'k' || e.key === 'K')){ e.preventDefault(); paletteOpen ? closePalette() : openPalette(); return; }
+    if (!paletteOpen) return;
+    if (e.key === 'Escape'){ closePalette(); return; }
+    if (e.key === 'ArrowDown' || e.key === 'ArrowUp'){
+      e.preventDefault();
+      if (paletteResults.length){ paletteSel = (paletteSel + (e.key === 'ArrowDown' ? 1 : -1) + paletteResults.length) % paletteResults.length; renderPalette(); }
+      return;
+    }
+    if (e.key === 'Enter'){ e.preventDefault(); paletteRun(paletteSel); }
+  });
+}
+
+/* =====================================================================
    BOOT
    ===================================================================== */
-themeInit(); readDot();
+themeInit(); readDot(); paintArt();
 revealInit();
 scrollInit();
 menuInit();
@@ -1373,9 +2460,15 @@ reactiveType();
 field();
 sphere();
 pills();
+clock();
+palette();
+caseStudies();
 
-const dataPromise = loadRepos().then(render).catch(err => console.error('GitHub sync failed to render', err));
+const dataPromise = Promise.allSettled([ bootRepos(), bootActivity(), refreshProfile() ]);
 runLoader(dataPromise);
+/* keep it live while the page stays open, and re-check when the visitor comes back to the tab */
+setInterval(() => { if (!document.hidden){ refreshRepos(); refreshEvents(); } }, CONFIG.autoRefreshMinutes * 60000);
+document.addEventListener('visibilitychange', () => { if (!document.hidden){ refreshRepos(); refreshEvents(); } });
 setTimeout(() => { root.classList.add('is-ready'); $('.name').classList.add('in'); root.classList.remove('is-loading'); }, 12000); // safety net
 })();
 </script>
