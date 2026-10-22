@@ -65,6 +65,14 @@ ul{padding:0;list-style:none}
 a{color:inherit;text-decoration:none}
 button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
 svg{display:block}
+/* hard-locked interactions: no tap flash, no blue selection, no callouts, no double-tap zoom */
+html{-webkit-tap-highlight-color:transparent;touch-action:manipulation;overscroll-behavior:none}
+*,*::before,*::after{-webkit-tap-highlight-color:transparent}
+html,body{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;overscroll-behavior-y:none}
+a,button,.btn,.chip,.pill,.repo,.panel,.menu a,label,summary{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;-webkit-user-drag:none;touch-action:manipulation}
+button:focus:not(:focus-visible),a:focus:not(:focus-visible){outline:none}
+img,svg{-webkit-user-drag:none}
+input,textarea{-webkit-user-select:text;user-select:text;-webkit-touch-callout:default}
 ::selection{background:var(--fg);color:var(--bg)}
 :focus-visible{outline:2px solid var(--fg);outline-offset:3px}
 .sr-only{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
@@ -193,6 +201,7 @@ main{position:relative;z-index:1}
   transition:opacity .5s ease,filter .6s ease}
 .menu-open .menu a{opacity:1;filter:none;transition:opacity .8s var(--ease) calc(var(--i) * 70ms + .3s),filter .9s var(--ease) calc(var(--i) * 70ms + .3s)}
 .menu-open{overflow:hidden}
+body.is-locked{position:fixed;left:0;right:0;width:100%;overflow:hidden;overscroll-behavior:none}
 
 /* =====================================================================
    BUTTONS & CHIPS
@@ -615,6 +624,38 @@ a.case__all:hover{color:var(--fg)}
   .btn{padding:.9em 1.3em}
   .hero__foot{align-items:flex-start}
   .name{font-size:clamp(4rem,min(22vw,29vh),22rem)}
+}
+
+/* =====================================================================
+   MOBILE — cheap glass (no backdrop blur), blur-free reveals, stable menu
+   ===================================================================== */
+@media (max-width:760px), (pointer:coarse){
+  .glass{background-color:rgba(0,0,0,.34);-webkit-backdrop-filter:none;backdrop-filter:none}
+  :root[data-theme="light"] .glass{background-color:rgba(255,255,255,.55)}
+  .btn--glass{-webkit-backdrop-filter:none;backdrop-filter:none;background-color:rgba(0,0,0,.28)}
+  :root[data-theme="light"] .btn--glass{background-color:rgba(255,255,255,.55)}
+  .nav__pill{-webkit-backdrop-filter:none;backdrop-filter:none;background-color:rgba(0,0,0,.86)}
+  :root[data-theme="light"] .nav__pill{background-color:rgba(255,255,255,.93)}
+  .mini__tag,.modal__x,.case__meta span{-webkit-backdrop-filter:none;backdrop-filter:none}
+  .modal__back{-webkit-backdrop-filter:none;backdrop-filter:none;background:rgba(0,0,0,.8)}
+  .palette__back{-webkit-backdrop-filter:none;backdrop-filter:none;background:rgba(0,0,0,.78)}
+  .loader.is-done .loader__half{-webkit-backdrop-filter:none;backdrop-filter:none}
+  /* touch has no hover — kill sticky hover states */
+  .btn:hover::before{transform:translateY(102%);border-radius:50% 50% 0 0/120% 120% 0 0}
+  .btn--solid:hover{color:var(--bg);box-shadow:none}
+  .btn--glass:hover{color:var(--fg)}
+  .btn:hover svg{transform:none}
+  .glass:hover::before,.glass:hover::after{opacity:0}
+  .nav__btn:hover{background:none}
+  /* menu: solid overlay + opacity animation instead of clip-path + blur */
+  .menu{background:#050505;-webkit-backdrop-filter:none;backdrop-filter:none;clip-path:none;opacity:0;visibility:hidden;
+    transition:opacity .26s ease,visibility 0s .26s;touch-action:none;overscroll-behavior:contain}
+  :root[data-theme="light"] .menu{background:#fafafa}
+  .menu-open .menu{clip-path:none;opacity:1;visibility:visible;transition:opacity .26s ease,visibility 0s}
+  .menu a{filter:none;transform:translateY(14px);transition:opacity .32s ease,transform .32s var(--ease)}
+  .menu-open .menu a{filter:none;transform:none;transition:opacity .36s ease calc(var(--i) * 45ms + .06s),transform .42s var(--ease) calc(var(--i) * 45ms + .06s)}
+  /* reveals fade only — no blur, no scale, no transform layers */
+  .js .fx,.js [data-split] .sw>span,.js [data-react] .ch{filter:none!important;scale:none!important;transform:none!important}
 }
 
 /* =====================================================================
@@ -1113,8 +1154,9 @@ const CONFIG = {
   autoRefreshMinutes: 5,                       // the page re-checks GitHub on this interval while open
   newBadgeDays: 45                             // repos created within this many days get a "New" tag
 };
-/* Tuned-down canvases on modest machines — fewer dots, lower caps, same look. */
-const LOWPOWER = (navigator.hardwareConcurrency || 8) <= 4 || (navigator.deviceMemory || 8) <= 4;
+/* Tuned-down canvases on modest machines and every touch phone — fewer dots, lower caps, same look. */
+const MOBILE = matchMedia('(pointer: coarse)').matches || innerWidth <= 760;
+const LOWPOWER = MOBILE || (navigator.hardwareConcurrency || 8) <= 4 || (navigator.deviceMemory || 8) <= 4;
 
 /* Used only when GitHub's own description for a repo is empty. */
 const OVERRIDES = {
@@ -1330,7 +1372,7 @@ function themeInit(){
   const btn = $('#themeBtn');
   btn.addEventListener('click', () => {
     const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
-    if (!document.startViewTransition || reduced){ applyTheme(next); return; }
+    if (!document.startViewTransition || reduced || MOBILE){ applyTheme(next); return; }
     const r = btn.getBoundingClientRect(), x = r.left + r.width / 2, y = r.top + r.height / 2;
     const end = Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y));
     const vt = document.startViewTransition(() => applyTheme(next));
@@ -1786,6 +1828,7 @@ function revealInit(){
    GLASS — cursor-lit edges and tilt (event delegation, so new cards work)
    ===================================================================== */
 function glassFX(){
+  if (!finePointer) return;
   let ev = null, queued = false;
   const process = () => {
     queued = false; if (!ev) return;
@@ -2018,6 +2061,7 @@ function scrollInit(){
   st.innerHTML = text.split(' ').map(w => `<span class="w" aria-hidden="true">${esc(w)}</span>`).join(' ');
   const words = $$('.w', st);
 
+  const lite = LOWPOWER || !finePointer;
   let heroBlur = -1;
   function onScroll(){
     sweepReveal();
@@ -2026,8 +2070,10 @@ function scrollInit(){
     if (!reduced && y < vh * 1.2){
       const k = clamp(y / (vh * .75), 0, 1);
       heroWrap.style.opacity = Math.max(0, 1 - k * 1.05).toFixed(3);
-      const bl = k > .04 ? Math.round(k * 12) : 0;
-      if (bl !== heroBlur){ heroBlur = bl; heroWrap.style.filter = bl ? `blur(${bl}px)` : ''; }
+      if (!lite){
+        const bl = k > .04 ? Math.round(k * 12) : 0;
+        if (bl !== heroBlur){ heroBlur = bl; heroWrap.style.filter = bl ? `blur(${bl}px)` : ''; }
+      }
       heroWrap.style.transform = `translate3d(0,${(y * .14).toFixed(1)}px,0)`;
       sphereWrap.style.transform = `translate3d(0,${(y * .3).toFixed(1)}px,0) scale(${(1 - k * .12).toFixed(3)})`;
       sphereWrap.style.opacity = Math.max(0, 1 - k * 1.05).toFixed(3);
@@ -2041,7 +2087,7 @@ function scrollInit(){
         if (w._t !== tq){
           w._t = tq;
           w.style.opacity = (.16 + .84 * tq).toFixed(2);
-          w.style.filter = tq < 1 ? `blur(${((1 - tq) * 2.6).toFixed(1)}px)` : '';
+          if (!lite) w.style.filter = tq < 1 ? `blur(${((1 - tq) * 2.6).toFixed(1)}px)` : '';
         }
       });
     }
@@ -2080,11 +2126,26 @@ function scrollInit(){
    ===================================================================== */
 function menuInit(){
   const btn = $('#menuBtn'), menu = $('#menu');
+  let lockY = 0;
+  const isOpen = () => root.classList.contains('menu-open');
   const set = open => {
+    if (open === isOpen()) return;
+    if (open){
+      lockY = scrollY;
+      document.body.style.top = `-${lockY}px`;
+      document.body.classList.add('is-locked');
+    } else {
+      document.body.classList.remove('is-locked');
+      document.body.style.top = '';
+      const y = lockY; root.style.scrollBehavior = 'auto'; scrollTo(0, y); root.style.scrollBehavior = '';
+    }
     root.classList.toggle('menu-open', open);
     btn.setAttribute('aria-expanded', String(open)); btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    menu.setAttribute('aria-hidden', String(!open));
   };
-  btn.addEventListener('click', () => set(!root.classList.contains('menu-open')));
+  menu.setAttribute('aria-hidden', 'true');
+  btn.addEventListener('click', () => set(!isOpen()));
+  menu.addEventListener('click', e => { if (e.target === menu) set(false); });
   $$('a', menu).forEach(a => a.addEventListener('click', () => set(false)));
   addEventListener('keydown', e => { if (e.key === 'Escape') set(false); });
   addEventListener('resize', () => { if (innerWidth > 760) set(false); });
