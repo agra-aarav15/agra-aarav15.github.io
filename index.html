@@ -3,15 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Aarav Agrawal — Software, built by hand</title>
-<meta name="description" content="Aarav Agrawal is a 15-year-old software builder in Prayagraj, India — web apps, AI tools, firmware and a personal cloud, written by hand. No page builders.">
+<title>Aarav Agrawal — AI-focused developer</title>
+<meta name="description" content="Aarav Agrawal is an AI-focused developer building web interfaces, Python tools and firmware. Projects sync live from GitHub.">
 <meta name="theme-color" content="#000000">
 <meta name="color-scheme" content="dark light">
-<link rel="canonical" href="https://agra-aarav15.github.io/">
+<link rel="canonical" href="https://aarav.runs-on.dev/">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://agra-aarav15.github.io/">
-<meta property="og:title" content="Aarav Agrawal — Software, built by hand">
-<meta property="og:description" content="Web apps, AI tools, firmware and a personal cloud — written by hand. No page builders.">
+<meta property="og:url" content="https://aarav.runs-on.dev/">
+<meta property="og:title" content="Aarav Agrawal — AI-focused developer">
+<meta property="og:description" content="AI tools, web interfaces, Python tools and firmware — built with care, synced live from GitHub.">
 <meta name="twitter:card" content="summary">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%23000'/%3E%3Cpath d='M18 47 32 16l14 31M24 37h16' fill='none' stroke='%23fff' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -232,9 +232,9 @@ body.is-locked{position:fixed;left:0;right:0;width:100%;overflow:hidden;overscro
 .role{display:flex;gap:.45em;align-items:flex-start;line-height:1.35;font-size:clamp(1.15rem,2.2vw,1.75rem);letter-spacing:-.025em;color:var(--fg-2);margin-bottom:clamp(10px,2vh,24px)}
 .role>span:first-child{display:block;height:1.35em}
 .roller{display:inline-block;height:1.35em;overflow:hidden;vertical-align:bottom;color:var(--fg)}
-.roller__track{display:flex;flex-direction:column;animation:roll 10s cubic-bezier(.77,0,.18,1) infinite}
+.roller__track{display:flex;flex-direction:column;animation:roll 12s cubic-bezier(.77,0,.18,1) infinite}
 .roller__track span{display:block;height:1.35em;line-height:1.35;white-space:nowrap}
-@keyframes roll{0%,27%{transform:translateY(0)}33%,60%{transform:translateY(-1.35em)}66%,93%{transform:translateY(-2.7em)}100%{transform:translateY(-4.05em)}}
+@keyframes roll{0%,22%{transform:translateY(0)}27%,47%{transform:translateY(-1.35em)}52%,72%{transform:translateY(-2.7em)}77%,97%{transform:translateY(-4.05em)}100%{transform:translateY(-5.4em)}}
 .name{font-weight:300;font-size:clamp(4rem,min(19vw,29vh),22rem);line-height:.82;letter-spacing:-.05em;margin-left:-.04em}
 .name .line{display:block;white-space:nowrap;padding-bottom:.04em}
 .ch{display:inline-block}
@@ -337,6 +337,8 @@ h2{font-size:clamp(2.7rem,7.2vw,6.4rem);font-weight:300;line-height:.98;letter-s
 .repo__go{margin-left:auto;display:grid;place-items:center;width:34px;height:34px;border-radius:50%;box-shadow:inset 0 0 0 1px var(--line-strong);transition:transform .6s var(--ease),background-color .4s,color .4s}
 .repo__go svg{width:15px;height:15px}
 .repo:hover .repo__go{transform:rotate(45deg);background:var(--fg);color:var(--bg)}
+/* while the page is moving, a card sliding under a still cursor must not light its arrow */
+html.no-hover .repo:hover .repo__go{transform:none;background-color:transparent;color:inherit}
 .repo--sk{min-height:236px;gap:16px}
 .repo--sk .sk{height:14px;border-radius:7px}
 .grid__more{margin-top:36px;display:flex;justify-content:center}
@@ -629,13 +631,15 @@ a.case__all:hover{color:var(--fg)}
 /* =====================================================================
    MOBILE — cheap glass (no backdrop blur), blur-free reveals, stable menu
    ===================================================================== */
-@media (max-width:760px), (pointer:coarse){
+@media (max-width:760px), (pointer:coarse), (hover:none) and (any-pointer:coarse){
   .glass{background-color:rgba(0,0,0,.34);-webkit-backdrop-filter:none;backdrop-filter:none}
   :root[data-theme="light"] .glass{background-color:rgba(255,255,255,.55)}
   .btn--glass{-webkit-backdrop-filter:none;backdrop-filter:none;background-color:rgba(0,0,0,.28)}
   :root[data-theme="light"] .btn--glass{background-color:rgba(255,255,255,.55)}
-  .nav__pill{-webkit-backdrop-filter:none;backdrop-filter:none;background-color:rgba(0,0,0,.86)}
-  :root[data-theme="light"] .nav__pill{background-color:rgba(255,255,255,.93)}
+  .nav__pill{-webkit-backdrop-filter:none;backdrop-filter:none;background-color:#050505;transform:translateZ(0);-webkit-backface-visibility:hidden;backface-visibility:hidden}
+  :root[data-theme="light"] .nav__pill{background-color:#fafafa}
+  .grain{z-index:40}
+  .hero__wrap,.sphere,.orb,.statement .w{will-change:auto}
   .mini__tag,.modal__x,.case__meta span{-webkit-backdrop-filter:none;backdrop-filter:none}
   .modal__back{-webkit-backdrop-filter:none;backdrop-filter:none;background:rgba(0,0,0,.8)}
   .palette__back{-webkit-backdrop-filter:none;backdrop-filter:none;background:rgba(0,0,0,.78)}
@@ -656,6 +660,9 @@ a.case__all:hover{color:var(--fg)}
   .menu-open .menu a{filter:none;transform:none;transition:opacity .36s ease calc(var(--i) * 45ms + .06s),transform .42s var(--ease) calc(var(--i) * 45ms + .06s)}
   /* reveals fade only — no blur, no scale, no transform layers */
   .js .fx,.js [data-split] .sw>span,.js [data-react] .ch{filter:none!important;scale:none!important;transform:none!important}
+  /* the live card gets two lines instead of an ellipsis on narrow screens */
+  .live{max-width:100%}
+  .live__txt span{white-space:normal;overflow:visible;text-overflow:clip;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;line-height:1.35}
 }
 
 /* =====================================================================
@@ -712,7 +719,7 @@ a.case__all:hover{color:var(--fg)}
       </ul>
       <span class="nav__ind" id="navInd" aria-hidden="true"></span>
     </div>
-    <span class="nav__clock" id="navClock" title="Time in Prayagraj, India (IST)"><i aria-hidden="true"></i><span id="clockText">--:--</span></span>
+    <span class="nav__clock" id="navClock" title="India Standard Time (IST)"><i aria-hidden="true"></i><span id="clockText">--:--</span></span>
     <button class="nav__btn nav__k" id="paletteBtn" type="button" aria-label="Open command palette" aria-haspopup="dialog" title="Command palette">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="6.4"/><path d="m20 20-3.4-3.4"/></svg>
       <kbd id="paletteKbd">⌘K</kbd>
@@ -740,9 +747,9 @@ a.case__all:hover{color:var(--fg)}
   <div class="sphere" id="sphereWrap" aria-hidden="true"><canvas id="sphere"></canvas></div>
   <div class="wrap hero__wrap" id="heroWrap">
     <p class="role fx" style="--d:.05s">
-      <span>I build</span>
-      <span class="roller" aria-hidden="true"><span class="roller__track"><span>web front-ends</span><span>Python tools</span><span>ESP32 firmware</span><span>web front-ends</span></span></span>
-      <span class="sr-only">web front-ends, Python tools and ESP32 firmware</span>
+      <span>I code</span>
+      <span class="roller" aria-hidden="true"><span class="roller__track"><span>AI tools</span><span>web interfaces</span><span>Python tools</span><span>ESP32 firmware</span><span>AI tools</span></span></span>
+      <span class="sr-only">AI tools, web interfaces, Python tools and ESP32 firmware</span>
     </p>
     <h1 class="name" data-react aria-label="Aarav Agrawal">
       <span class="line" aria-hidden="true">Aarav</span>
@@ -750,7 +757,7 @@ a.case__all:hover{color:var(--fg)}
     </h1>
     <div class="hero__foot">
       <div class="hero__copy fx" style="--d:.45s">
-        <p class="lede">Fifteen years old, Class 10 at MPVM in Prayagraj. A software builder who writes everything by hand, with no page builders.</p>
+        <p class="lede">I’m an AI-focused developer. Most of my free time goes into turning ideas into working tools — web interfaces, Python utilities and firmware — and I care about the details.</p>
         <div class="cta">
           <a class="btn btn--solid btn--down" href="#projects" data-magnet><span>See the work</span>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg></a>
@@ -770,8 +777,8 @@ a.case__all:hover{color:var(--fg)}
 <!-- ============================ BAND ============================ -->
 <div class="band" aria-hidden="true">
   <div class="band__track">
-    <span>cfnkurties.in</span><span>AeroLink</span><span>ClipBlitz</span><span>MYRAA</span><span>MittiCloud</span><span>MittiGrid</span><span>MittiMotion</span><span>LeadPilot</span><span>LeadForge</span><span>no page builders, ever</span>
-    <span>cfnkurties.in</span><span>AeroLink</span><span>ClipBlitz</span><span>MYRAA</span><span>MittiCloud</span><span>MittiGrid</span><span>MittiMotion</span><span>LeadPilot</span><span>LeadForge</span><span>no page builders, ever</span>
+    <span>cfnkurties.in</span><span>AeroLink</span><span>ClipBlitz</span><span>MYRAA</span><span>MittiCloud</span><span>MittiGrid</span><span>MittiMotion</span><span>LeadPilot</span><span>LeadForge</span><span>no subscriptions, ever</span>
+    <span>cfnkurties.in</span><span>AeroLink</span><span>ClipBlitz</span><span>MYRAA</span><span>MittiCloud</span><span>MittiGrid</span><span>MittiMotion</span><span>LeadPilot</span><span>LeadForge</span><span>no subscriptions, ever</span>
   </div>
 </div>
 
@@ -779,15 +786,15 @@ a.case__all:hover{color:var(--fg)}
 <section class="section profile" id="profile" aria-labelledby="profile-h">
   <div class="wrap">
     <h2 class="sr-only" id="profile-h">Profile</h2>
-    <p class="statement" id="statement">Class 10 by day, shipping by night — balancing board exams with pull requests, and choosing hand-written code over drag-and-drop, every time.</p>
+    <p class="statement" id="statement">I got into code because I wanted to know how things on screen worked. Now I make AI tools and small self-hosted systems — and I want all of it to stay free.</p>
     <div class="profile__grid">
       <div class="profile__text fx">
-        <p>I build software, and I don’t much care where it runs — browsers, servers, or a six-dollar chip. On the web, that means responsive Tailwind layouts and React front-ends with an obsessive eye for type and motion.</p>
-        <p>Lower down the stack, it means Python utilities and C firmware — most recently <strong>AeroLink</strong>, a Wi-Fi range extender that serves its own glass dashboard.</p>
-        <p>Based in Prayagraj, India. Class 10 at MPVM, CBSE.</p>
+        <p>I’m an AI-focused developer who likes the whole stack — a React interface, a Python tool, or firmware on a six-dollar chip. I care about how it looks, how fast it feels, and whether it actually works.</p>
+        <p>Lately that means AI tools: ClipBlitz, MYRAA and LeadPilot. Lower down the stack, I write Python utilities and C firmware — most recently <strong>AeroLink</strong>, a Wi-Fi range extender that serves its own glass dashboard.</p>
+        <p>Based in India. Learning in public.</p>
       </div>
       <ul class="stats">
-        <li class="stat glass fx" data-tilt="6"><b data-count="" data-target="15">0</b><span>Years old</span></li>
+        <li class="stat glass fx" data-tilt="6"><b>2025</b><span>Building since</span></li>
         <li class="stat glass fx" data-tilt="6" style="--d:.08s"><b id="statRepos" data-count="" data-target="0">0</b><span>Public projects</span></li>
         <li class="stat glass fx" data-tilt="6" style="--d:.16s"><b id="statStars" data-count="" data-target="0">0</b><span>GitHub stars</span></li>
         <li class="stat glass fx" data-tilt="6" style="--d:.24s"><b id="statLangs" data-count="" data-target="0">0</b><span>Languages used</span></li>
@@ -803,11 +810,11 @@ a.case__all:hover{color:var(--fg)}
           <i class="pcard__led" aria-hidden="true"></i>
         </div>
         <ul class="pcard__rows">
-          <li><span>Base</span><b>Prayagraj, India — 25.43° N, 81.84° E</b></li>
-          <li><span>Ships in</span><b>C · Python · JavaScript · TypeScript</b></li>
+          <li><span>Base</span><b>India</b></li>
+          <li><span>Codes in</span><b>C · Python · JavaScript · TypeScript</b></li>
           <li><span>Live from GitHub</span><b id="profStats">Pulling repos, stars and languages…</b></li>
         </ul>
-        <div class="pcard__chips"><span>Hireable</span><span>Open source</span><span>Boards + PRs</span><span>No drag-and-drop</span></div>
+        <div class="pcard__chips"><span>Open to collaborations</span><span>Open source</span><span>Learning in public</span><span>AI + web</span></div>
         <a class="link pcard__foot" href="https://github.com/agra-aarav15" target="_blank" rel="noopener"><span>github.com/agra-aarav15</span>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
       </aside>
@@ -819,20 +826,20 @@ a.case__all:hover{color:var(--fg)}
 <section class="section work" id="work">
   <div class="wrap">
     <header class="sec-head">
-      <h2 data-split>Builds that shipped.</h2>
-      <p class="fx">A live store, an open-source Wi-Fi extender, an AI clipping studio, a 3D companion and a cloud in a drawer — 2025 to now.</p>
+      <h2 data-split>Selected work.</h2>
+      <p class="fx">A storefront rebuild, an open-source Wi-Fi extender, an AI clipping studio, a 3D companion and a personal cloud — 2025 to now.</p>
     </header>
 
     <article class="feature glass fx" data-tilt="2.2">
       <div class="feature__body">
         <div>
-          <div class="feature__meta"><i></i><span>2025 · live store</span></div>
+          <div class="feature__meta"><i></i><span>2025 · storefront · offline</span></div>
           <h3>cfnkurties.in</h3>
-          <p>Full visual and infrastructure overhaul for a live e-commerce store. Rebuilt in React and Tailwind, moved to Oracle Cloud, hardened Apache and UFW, and slimmed payloads for mobile.</p>
+          <p>Full visual and infrastructure overhaul for a production e-commerce store. Rebuilt in React and Tailwind, moved to Oracle Cloud, hardened Apache and UFW, and slimmed payloads for mobile. Currently offline — Oracle locked the VM after a free-tier limit change.</p>
           <ul class="tags"><li>React</li><li>Tailwind</li><li>OCI</li><li>Ubuntu</li><li>MySQL</li></ul>
         </div>
         <div class="feature__acts">
-          <a class="link" href="https://cfnkurties.in" target="_blank" rel="noopener"><span>Visit the store</span>
+          <a class="link" href="https://cfnkurties.in" target="_blank" rel="noopener" title="Currently offline — Oracle VM locked"><span>Visit the store</span>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
           <button class="link" type="button" data-case="cfnkurties"><span>Case study</span>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
@@ -938,52 +945,6 @@ a.case__all:hover{color:var(--fg)}
       </div>
     </article>
 
-    <div class="more">
-      <div class="more__head">
-        <h3>More in the archive</h3>
-        <p class="hint">Four more builds — each opens its own case study.</p>
-      </div>
-      <div class="more__grid">
-        <article class="mini glass fx" data-tilt="4">
-          <span class="mini__img"><span class="mini__tag">Systems · Compute</span><span class="art" data-art="mesh" aria-hidden="true"></span><img src="images/mesh.jpg" alt="Monochrome photograph from the MittiGrid case study." loading="lazy" onerror="this.remove()"></span>
-          <div class="mini__body">
-            <span class="mini__name">MittiGrid</span>
-            <p class="mini__line">Every device you own, one brain — pooled CPUs over LAN or Tailscale, honest tokens/sec.</p>
-            <button class="mini__case" type="button" data-case="mittigrid"><span>Case study</span>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
-          </div>
-        </article>
-        <article class="mini glass fx" data-tilt="4" style="--d:.08s">
-          <span class="mini__img"><span class="mini__tag">AI · Web</span><span class="art" data-art="video" aria-hidden="true"></span><img src="images/video.jpg" alt="Monochrome photograph from the MittiMotion case study." loading="lazy" onerror="this.remove()"></span>
-          <div class="mini__body">
-            <span class="mini__name">MittiMotion</span>
-            <p class="mini__line">A Filmora-style video editor in a browser tab — prompt-driven edits, zero servers.</p>
-            <button class="mini__case" type="button" data-case="mittimotion"><span>Case study</span>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
-          </div>
-        </article>
-        <article class="mini glass fx" data-tilt="4" style="--d:.16s">
-          <span class="mini__img"><span class="mini__tag">AI · Sales</span><span class="art" data-art="sales" aria-hidden="true"></span><img src="images/sales.jpg" alt="Monochrome photograph from the LeadPilot case study." loading="lazy" onerror="this.remove()"></span>
-          <div class="mini__body">
-            <span class="mini__name">LeadPilot</span>
-            <p class="mini__line">A WhatsApp sales rep that answers in seconds, scores every lead 0–100 and never drops one.</p>
-            <button class="mini__case" type="button" data-case="leadpilot-whatsapp-ai"><span>Case study</span>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
-          </div>
-        </article>
-        <article class="mini glass fx" data-tilt="4" style="--d:.24s">
-          <span class="mini__img"><span class="mini__tag">AI · Product</span><span class="art" data-art="hero" aria-hidden="true"></span><img src="images/hero.jpg" alt="Monochrome photograph from the LeadForge case study." loading="lazy" onerror="this.remove()"></span>
-          <div class="mini__body">
-            <span class="mini__name">LeadForge</span>
-            <p class="mini__line">Hunt, reach, close — a lead radar, outreach writer and DealLock closer in one workspace.</p>
-            <button class="mini__case" type="button" data-case="leadforge-ox"><span>Case study</span>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
-          </div>
-        </article>
-      </div>
-    </div>
-
-
   </div>
 </section>
 
@@ -1011,7 +972,7 @@ a.case__all:hover{color:var(--fg)}
     </div>
     <div class="gx fx" id="gx">
       <div class="gx__panel glass">
-        <div class="gx__h"><h3>Latest pushes</h3><span id="gxWhen">live from GitHub</span></div>
+        <div class="gx__h"><h3>Latest GitHub activity</h3><span id="gxWhen">live from GitHub</span></div>
         <div class="gx__list" id="gxActivity"></div>
       </div>
       <div class="gx__panel glass">
@@ -1030,7 +991,7 @@ a.case__all:hover{color:var(--fg)}
 <section class="section stack" id="stack">
   <div class="wrap">
     <header class="sec-head">
-      <h2 data-split>What I build with.</h2>
+      <h2 data-split>What I work with.</h2>
       <p class="fx">No percentage bars — nobody is 95% of a language. Here’s what I use, with proof.</p>
     </header>
     <div class="panels" id="panels">
@@ -1052,7 +1013,7 @@ a.case__all:hover{color:var(--fg)}
       <button class="panel glass fx" type="button" aria-expanded="false" style="--d:.24s">
         <span class="panel__ghost" aria-hidden="true">Re</span>
         <span class="panel__v">React and Tailwind</span>
-        <span class="panel__in"><span class="panel__t">React and Tailwind</span><span class="panel__p">Rebuilt a live storefront’s UI and kept it selling the whole time.</span><span class="panel__ref">Seen in cfnkurties.in</span></span>
+        <span class="panel__in"><span class="panel__t">React and Tailwind</span><span class="panel__p">Rebuilt a production storefront’s UI end to end, then moved its hosting to a server I controlled.</span><span class="panel__ref">Seen in cfnkurties.in</span></span>
       </button>
       <button class="panel glass fx" type="button" aria-expanded="false" style="--d:.32s">
         <span class="panel__ghost" aria-hidden="true">AI</span>
@@ -1080,8 +1041,8 @@ a.case__all:hover{color:var(--fg)}
 <!-- ============================ CONTACT ============================ -->
 <section class="section contact" id="contact">
   <div class="wrap">
-    <h2 class="contact__title" data-react aria-label="Let’s build something.">
-      <span class="line" aria-hidden="true">Let’s build</span>
+    <h2 class="contact__title" data-react aria-label="Let’s make something.">
+      <span class="line" aria-hidden="true">Let’s make</span>
       <span class="line" aria-hidden="true">something.</span>
     </h2>
     <div class="contact__row fx">
@@ -1104,7 +1065,7 @@ a.case__all:hover{color:var(--fg)}
     </div>
   </div>
   <footer class="wrap foot">
-    <span>© <span id="year">2026</span> Aarav Agrawal. Designed and hand-coded, no page builders.</span>
+    <span>© <span id="year">2026</span> Aarav Agrawal. Designed and coded with care.</span>
     <a class="link" href="#top"><span>Back to top</span>
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg></a>
   </footer>
@@ -1155,14 +1116,14 @@ const CONFIG = {
   newBadgeDays: 45                             // repos created within this many days get a "New" tag
 };
 /* Tuned-down canvases on modest machines and every touch phone — fewer dots, lower caps, same look. */
-const MOBILE = matchMedia('(pointer: coarse)').matches || innerWidth <= 760;
+const MOBILE = matchMedia('(max-width: 760px), (pointer: coarse), (hover: none) and (any-pointer: coarse)').matches || innerWidth <= 760;
 const LOWPOWER = MOBILE || (navigator.hardwareConcurrency || 8) <= 4 || (navigator.deviceMemory || 8) <= 4;
 
 /* Used only when GitHub's own description for a repo is empty. */
 const OVERRIDES = {
   'aerolink': { desc: 'ESP32 Wi-Fi range extender in C on ESP-IDF. Serves its own glass dashboard with a network scanner, firewall ACLs, OTA updates and MQTT.' },
   'myraa':    { desc: 'A personal 3D AI companion and autonomous PC control engine. It listens, remembers, speaks, and drives your computer. Windows, Android, macOS and Linux.' },
-  'agra-aarav15.github.io': { desc: 'The original hand-written portfolio — where this story started, kept online as the before photo while this archive pulls everything live from GitHub.' }
+  'agra-aarav15.github.io': { desc: 'The original portfolio — where this story started, kept online as the before photo while this archive pulls everything live from GitHub.' }
 };
 
 /* Offline copy. Shown only if GitHub can't be reached AND the visitor has no cached copy. */
@@ -1175,7 +1136,7 @@ const SNAPSHOT = [
   { name:'leadpilot-whatsapp-ai', lang:'JavaScript', stars:0, forks:0, desc:'WhatsApp AI sales rep — answers leads in seconds, scores them 0-100, escalates hot leads. Cloud API, QR mode, n8n workflow pack and a drag and drop CRM.' },
   { name:'leadforge-ox', lang:'TypeScript', stars:0, forks:0, desc:'LeadForge ox-alpha build — AI lead radar (Maps / Search / Crawl), multi-channel outreach and the DealLock closer CRM.' },
   { name:'mittimotion', lang:'JavaScript', stars:0, forks:0, desc:'Free AI video editor in your browser — Filmora-style timeline where Gemini edits YOUR video from a prompt. Zero servers.' },
-  { name:'agra-aarav15.github.io', lang:'HTML', stars:0, forks:0, desc:'The original hand-written portfolio — live store and firmware projects, pulled together on GitHub Pages. The first home of this site.', homepage:'https://agra-aarav15.github.io' }
+  { name:'agra-aarav15.github.io', lang:'HTML', stars:0, forks:0, desc:'The original portfolio — store and firmware projects, pulled together on GitHub Pages. The first home of this site.', homepage:'https://agra-aarav15.github.io' }
 ].map(r => ({ ...r, url:`https://github.com/${CONFIG.user}/${r.name}`, pushed:null, created:null, homepage:r.homepage || '', fork:false }));
 
 /* Offline activity, used when the events API can't be reached. */
@@ -1193,15 +1154,16 @@ const FALLBACK_EVENTS = [
    ===================================================================== */
 const CASES = {
   'cfnkurties': {
-    id:'cfnkurties', title:'cfnkurties.in', tagline:'A live storefront, rebuilt by hand.', year:'2025',
+    id:'cfnkurties', title:'cfnkurties.in', tagline:'A storefront rebuild — currently offline.', year:'2025',
     categories:['Web','Product'], license:null, repo:null, noDownload:true,
     liveUrl:'https://cfnkurties.in', liveLabel:'Visit the store', art:'store', image:'images/store.jpg',
     story:[
-      'cfnkurties.in is a working storefront, not a mockup. The whole visual layer was rebuilt in React and Tailwind, with the hosting moved to Oracle Cloud and the delivery path hardened: an Apache proxy in front, UFW locked down, and payloads trimmed for slower mobile connections.',
-      'It is the project that best explains the working style — design and infrastructure treated as one job. The store had to stay live while it changed underneath, so the rollout was careful, measurable and boring in the best way.'
+      'cfnkurties.in is a real storefront, not a mockup. The whole visual layer was rebuilt in React and Tailwind, with hosting moved to Oracle Cloud and the delivery path hardened: an Apache proxy in front, UFW locked down, and payloads trimmed for slower mobile connections.',
+      'The old setup’s weak point was hosting. The rebuild gave the store a lighter mobile front end and a server I controlled end to end — the UI became more consistent, pages became easier to change, and the proxy and firewall were mine to manage.',
+      'It is currently offline. Oracle changed its free-tier limits and locked the VM, so the store is waiting for a new machine. The link stays here for when it is back.'
     ],
-    highlights:['Live production e-commerce storefront','Rebuilt in React and Tailwind','Moved to Oracle Cloud hosting','Apache reverse proxy configured','UFW firewall hardening','Mobile payload optimisation'],
-    stack:['React','Tailwind CSS','Oracle Cloud','Apache','UFW','Linux']
+    highlights:['Production storefront, currently offline','React + Tailwind rebuild','Oracle Cloud + Cloudflare','Apache reverse proxy','UFW hardening','Mobile payload optimisation'],
+    stack:['React','Tailwind CSS','Oracle Cloud','Cloudflare','Apache','UFW','Linux']
   },
   'mitticloud': {
     id:'mitticloud', title:'MittiCloud', tagline:'Your drawer-phone is a cloud now.', year:'2026',
@@ -1302,14 +1264,14 @@ const CASES = {
     stack:['TypeScript','Next.js','OpenStreetMap','DuckDuckGo','Gemini']
   },
   'agra-aarav15.github.io': {
-    id:'agra-aarav15.github.io', title:'The first home', tagline:'The original hand-written portfolio. Still standing.', year:'2026',
+    id:'agra-aarav15.github.io', title:'The first home', tagline:'The original portfolio. Still standing.', year:'2026',
     categories:['Web'], license:null, repo:'agra-aarav15.github.io',
     liveUrl:'https://agra-aarav15.github.io', liveLabel:'Visit the original',
     story:[
-      'The first portfolio was written by hand and pushed to GitHub Pages: a small, honest home for the projects that existed then. It listed a live store, an open-source firmware project and a promise to keep shipping.',
+      'The first portfolio was a small static site pushed to GitHub Pages: an honest home for the projects that existed then. It listed a store, an open-source firmware project and a promise to keep making things.',
       'That page is still live, and its content is the seed for this archive — which reads the public GitHub feed directly, so every repository, including the next one, has a place to live without a rewrite.'
     ],
-    highlights:['Hand-written HTML on GitHub Pages','The content seed for this archive','Still live at agra-aarav15.github.io','Kept online as a historical version'],
+    highlights:['Static HTML on GitHub Pages','The content seed for this archive','Still live at agra-aarav15.github.io','Kept online as a historical version'],
     stack:['HTML','CSS','JavaScript','GitHub Pages']
   }
 };
@@ -1425,7 +1387,9 @@ async function ghJSON(url, key){
 const repoSig = list => list.map(r => [r.name, r.pushed, r.stars, r.forks, r.lang, (r.desc || '').slice(0, 90)].join('|')).join('\n');
 const normEvents = raw => raw.map(ev => ({
   type: ev.type, repo: (ev.repo && ev.repo.name) || '', at: ev.created_at,
-  commits: ev.payload && ev.payload.commits ? ev.payload.commits.length : 0
+  commits: ev.payload && ev.payload.commits ? ev.payload.commits.length : 0,
+  action: (ev.payload && ev.payload.action) || '',
+  merged: !!(ev.payload && ev.payload.pull_request && ev.payload.pull_request.merged)
 })).filter(ev => ev.repo && !ev.repo.endsWith('/.github') && ev.repo.startsWith(CONFIG.user + '/'));
 
 function rateText(){
@@ -1731,8 +1695,7 @@ function render(res){
   setStat('statRepos', list.length);
   setStat('statStars', list.reduce((a, r) => a + r.stars, 0));
   setStat('statLangs', new Set(list.map(r => r.lang).filter(Boolean)).size);
-  const top = list.find(r => r.pushed);
-  $('#liveLine').textContent = top ? `Latest push to ${top.name}, ${ago(top.pushed)}` : `${list.length} projects on GitHub`;
+  updateLiveLine(list);
   renderMix(list);
   applyStats();
   updateSync(res);
@@ -2073,9 +2036,9 @@ function scrollInit(){
       if (!lite){
         const bl = k > .04 ? Math.round(k * 12) : 0;
         if (bl !== heroBlur){ heroBlur = bl; heroWrap.style.filter = bl ? `blur(${bl}px)` : ''; }
+        heroWrap.style.transform = `translate3d(0,${(y * .14).toFixed(1)}px,0)`;
+        sphereWrap.style.transform = `translate3d(0,${(y * .3).toFixed(1)}px,0) scale(${(1 - k * .12).toFixed(3)})`;
       }
-      heroWrap.style.transform = `translate3d(0,${(y * .14).toFixed(1)}px,0)`;
-      sphereWrap.style.transform = `translate3d(0,${(y * .3).toFixed(1)}px,0) scale(${(1 - k * .12).toFixed(3)})`;
       sphereWrap.style.opacity = Math.max(0, 1 - k * 1.05).toFixed(3);
     }
     if (!reduced){
@@ -2093,8 +2056,9 @@ function scrollInit(){
     }
   }
   let ticking = false;
-  const req = () => { if (!ticking){ ticking = true; requestAnimationFrame(() => { ticking = false; onScroll(); }); } };
+  const req = () => { root.classList.add('no-hover'); if (!ticking){ ticking = true; requestAnimationFrame(() => { ticking = false; onScroll(); }); } };
   addEventListener('scroll', req, { passive: true }); addEventListener('resize', req); onScroll();
+  addEventListener('pointermove', () => root.classList.remove('no-hover'), { passive: true });
 
   /* nav indicator */
   const links = $$('#navLinks a'), ind = $('#navInd'); let active = null;
@@ -2241,7 +2205,7 @@ async function copyText(text){
 }
 
 /* =====================================================================
-   CLOCK — Prayagraj time, always
+   CLOCK — India time, always
    ===================================================================== */
 function clock(){
   const k = $('#paletteKbd');
@@ -2406,19 +2370,67 @@ function caseStudies(){
 /* =====================================================================
    ACTIVITY + LANGUAGE MIX
    ===================================================================== */
-const EV_TEXT = { PushEvent:'pushed', CreateEvent:'created', IssuesEvent:'touched issues in', PullRequestEvent:'worked on', WatchEvent:'starred', ForkEvent:'forked', ReleaseEvent:'released', DeleteEvent:'cleaned up' };
+let latestEv = null, latestEvSource = '';
 function eventVerb(ev){
-  if (ev.type === 'PushEvent' && ev.commits) return `pushed ${ev.commits} commit${ev.commits > 1 ? 's' : ''} to`;
-  return (EV_TEXT[ev.type] || 'worked on') + ' ';
+  if (ev.type === 'PushEvent'){
+    const n = ev.commits || 1;
+    return `pushed ${n} commit${n === 1 ? '' : 's'}`;
+  }
+  if (ev.type === 'PullRequestEvent'){
+    if (ev.merged) return 'merged a pull request';
+    if (ev.action === 'closed') return 'closed a pull request';
+    if (ev.action === 'reopened') return 'reopened a pull request';
+    return 'opened a pull request';
+  }
+  if (ev.type === 'IssuesEvent') return `${ev.action || 'opened'} an issue`;
+  return {
+    CreateEvent:'was created', WatchEvent:'was starred', ForkEvent:'was forked',
+    ReleaseEvent:'released a new version', DeleteEvent:'was cleaned up'
+  }[ev.type] || 'had activity';
+}
+function eventPhrase(ev){
+  const name = String(ev.repo || '').split('/').pop();
+  if (ev.type === 'PushEvent'){
+    const n = ev.commits || 1;
+    return `pushed ${n} commit${n === 1 ? '' : 's'} to ${name}`;
+  }
+  if (ev.type === 'PullRequestEvent'){
+    if (ev.merged) return `merged a pull request in ${name}`;
+    if (ev.action === 'closed') return `closed a pull request in ${name}`;
+    if (ev.action === 'reopened') return `reopened a pull request in ${name}`;
+    return `opened a pull request in ${name}`;
+  }
+  if (ev.type === 'IssuesEvent') return `${ev.action || 'opened'} an issue in ${name}`;
+  if (ev.type === 'WatchEvent') return `starred ${name}`;
+  if (ev.type === 'ForkEvent') return `forked ${name}`;
+  if (ev.type === 'ReleaseEvent') return `released a new version of ${name}`;
+  if (ev.type === 'CreateEvent') return `created ${name}`;
+  if (ev.type === 'DeleteEvent') return `cleaned up ${name}`;
+  return `worked on ${name}`;
+}
+function updateLiveLine(list){
+  const el = $('#liveLine'); if (!el) return;
+  if (latestEv){
+    const lead = latestEvSource === 'snapshot' ? 'Saved copy' : 'Latest on GitHub';
+    el.textContent = `${lead}: ${eventPhrase(latestEv)} · ${ago(latestEv.at)}`;
+    return;
+  }
+  const repos = list || (current ? visibleRepos(current.repos) : []);
+  const top = [...repos].filter(r => r.pushed).sort((a, b) => Date.parse(b.pushed) - Date.parse(a.pushed))[0];
+  el.textContent = top ? `Latest on GitHub: pushed to ${top.name} · ${ago(top.pushed)}` : `${repos.length} projects on GitHub`;
 }
 function renderActivity(list, source){
   const box = $('#gxActivity'); if (!box) return;
-  box.innerHTML = list.slice(0, 6).map(ev => {
+  const sorted = [...(list || [])].sort((a, b) => Date.parse(b.at || 0) - Date.parse(a.at || 0));
+  latestEv = sorted.find(ev => ev.type === 'PushEvent' || ev.type === 'PullRequestEvent') || null;
+  latestEvSource = source || '';
+  box.innerHTML = sorted.slice(0, 6).map(ev => {
     const name = String(ev.repo).split('/').pop();
     return `<div class="gx__row"><i aria-hidden="true"></i><a href="https://github.com/${esc(ev.repo)}" target="_blank" rel="noopener">${esc(name)}</a><em>${esc(eventVerb(ev))}</em><time data-ago="${esc(ev.at)}">${ago(ev.at)}</time></div>`;
   }).join('') || '<div class="gx__row"><em>No public activity yet.</em></div>';
   const when = $('#gxWhen');
   if (when) when.textContent = (source === 'live' || source === 'cache') ? 'live from GitHub' : 'saved copy';
+  updateLiveLine();
 }
 /* activity now flows through refreshEvents() in the GitHub sync block — no cache-first loader here */
 function renderMix(list){
@@ -2441,7 +2453,7 @@ const paletteEl = $('#palette'), paletteInput = $('#paletteInput'), paletteList 
 let paletteOpen = false, paletteSel = 0, paletteResults = [];
 function paletteItems(){
   const items = [];
-  [['profile','Profile','Who I am'],['work','Work','Builds that shipped'],['projects','Projects','Live from GitHub'],['stack','Stack','What I build with'],['contact','Contact','Say hello']]
+  [['profile','Profile','Who I am'],['work','Work','Selected work'],['projects','Projects','Live from GitHub'],['stack','Stack','What I work with'],['contact','Contact','Say hello']]
     .forEach(([id, t, s]) => items.push({ kind:'Section', icon:ICON.hash, title:t, sub:s, run:() => { location.hash = '#' + id; } }));
   Object.values(CASES).forEach(c => items.push({ kind:'Case study', icon:ICON.box, title:c.title, sub:c.tagline, run:() => openCase(c.id) }));
   [
@@ -2449,7 +2461,7 @@ function paletteItems(){
     ['LinkedIn', 'aarav-agrawal-86a3553bb', 'https://www.linkedin.com/in/aarav-agrawal-86a3553bb/'],
     ['Instagram', 'agrawalaarav_1', 'https://www.instagram.com/agrawalaarav_1/'],
     ['X', 'aarav_4261', 'https://x.com/aarav_4261'],
-    ['cfnkurties.in', 'The live store', 'https://cfnkurties.in'],
+    ['cfnkurties.in', 'A storefront rebuild — currently offline', 'https://cfnkurties.in'],
     ['ClipBlitz studio', 'Download v4.2.0 for Windows', 'https://github.com/agra-aarav15/clipblitz-ai-shorts/releases/latest'],
     ['MittiCloud APK', 'Install the latest Android build', 'https://github.com/agra-aarav15/mitticloud/releases/latest'],
     ['AeroLink firmware', 'Flash packages for every board', 'https://github.com/agra-aarav15/Aerolink/releases/latest'],
